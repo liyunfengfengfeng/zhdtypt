@@ -1,0 +1,438 @@
+<dataSource name="MySQL - zhdtypt@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="zhdtypt">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="appliancesales" />
+    <schema id="3" name="db2" />
+    <schema id="4" name="examonline" />
+    <schema id="5" name="feedback" />
+    <schema id="6" name="information_schema" />
+    <schema id="7" name="itcast0228crm" />
+    <schema id="8" name="mmall" />
+    <schema id="9" name="mysql" />
+    <schema id="10" name="order" />
+    <schema id="11" name="performance_schema" />
+    <schema id="12" name="pertest" />
+    <schema id="13" name="test" />
+    <table id="14" parent="1" name="t_account">
+      <comment>??????????????????????????????
+ Status_active  ??0 ¶ƒ????   ????1 ?</comment>
+    </table>
+    <table id="15" parent="1" name="t_department">
+      <comment>??????¶À???</comment>
+    </table>
+    <table id="16" parent="1" name="t_organization" />
+    <table id="17" parent="1" name="t_post">
+      <comment>?????????¶À</comment>
+    </table>
+    <table id="18" parent="1" name="t_seq" />
+    <table id="19" parent="1" name="t_personnel" />
+    <column id="20" parent="14" name="Account_0_id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="21" parent="14" name="Name">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="22" parent="14" name="Email">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="23" parent="14" name="Password">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="24" parent="14" name="Id_number">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="25" parent="14" name="Sex">
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="26" parent="14" name="Bath">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="27" parent="14" name="Depart_id">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="28" parent="14" name="Post_id">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="29" parent="14" name="Cmp_id">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="30" parent="14" name="Status">
+      <data-type>int(11)|0</data-type>
+      <default-expression>'0'</default-expression>
+    </column>
+    <column id="31" parent="14" name="Create_by">
+      <comment>…Û∫À»À</comment>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="32" parent="14" name="Create_date">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="33" parent="14" name="Modity_date">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="34" parent="14" name="Modify_by">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <key id="35" parent="14" name="PRIMARY">
+      <columns>Account_0_id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="36" parent="15" name="Depart_id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="37" parent="15" name="Depart_name">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="38" parent="15" name="Cmp_id">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="39" parent="15" name="Charge_person">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="40" parent="15" name="Business_scope">
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <index id="41" parent="15" name="pk_org_department">
+      <columns>Cmp_id</columns>
+      <desc-columns />
+    </index>
+    <key id="42" parent="15" name="PRIMARY">
+      <columns>Depart_id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="43" parent="15" name="pk_org_department">
+      <columns>Cmp_id</columns>
+      <ref-key>~.t_organization.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="44" parent="16" name="Cmp_id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="45" parent="16" name="Cmp_code">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="46" parent="16" name="Cmp_name">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="47" parent="16" name="Cmp_name_eng">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="48" parent="16" name="Cmp_address">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="49" parent="16" name="Business_type">
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="50" parent="16" name="Gps_longitude">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="51" parent="16" name="Gps_latitude">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="52" parent="16" name="Employee_number">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="53" parent="16" name="Phone">
+      <data-type>varchar(13)|0</data-type>
+    </column>
+    <column id="54" parent="16" name="Rescue_tel">
+      <data-type>varchar(13)|0</data-type>
+    </column>
+    <column id="55" parent="16" name="Mail">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="56" parent="16" name="Cmp_type">
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="57" parent="16" name="Checkout_flag">
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="58" parent="16" name="Make_flag">
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="59" parent="16" name="Build_flag">
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="60" parent="16" name="Maintenan_flag">
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="61" parent="16" name="Use_flag">
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="62" parent="16" name="Licence_no">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="63" parent="16" name="Charge_person">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="64" parent="16" name="Certificate_code">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="65" parent="16" name="Country">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="66" parent="16" name="Area">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="67" parent="16" name="Post_code">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="68" parent="16" name="Register_capital">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="69" parent="16" name="Fixed_assets">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="70" parent="16" name="License_no">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="71" parent="16" name="License_department">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="72" parent="16" name="Business_term">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="73" parent="16" name="Law_person">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="74" parent="16" name="Law_code">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="75" parent="16" name="Website">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="76" parent="16" name="Business_scope">
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="77" parent="16" name="Economic_type">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="78" parent="16" name="Org_level">
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="79" parent="16" name="Total_no">
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="80" parent="16" name="Approve_department">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="81" parent="16" name="Status">
+      <data-type>varchar(3)|0</data-type>
+    </column>
+    <column id="82" parent="16" name="Rmk">
+      <data-type>text|0</data-type>
+    </column>
+    <column id="83" parent="16" name="Create_date">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="84" parent="16" name="Create_by">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="85" parent="16" name="Modify_by">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="86" parent="16" name="Modify_date">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="87" parent="16" name="Fax">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <key id="88" parent="16" name="PRIMARY">
+      <columns>Cmp_id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="89" parent="17" name="Post_id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="90" parent="17" name="Post_name">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="91" parent="17" name="Depart_id">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="92" parent="17" name="Post_Charge">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <index id="93" parent="17" name="fk_department_post">
+      <columns>Depart_id</columns>
+      <desc-columns />
+    </index>
+    <key id="94" parent="17" name="PRIMARY">
+      <columns>Post_id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="95" parent="17" name="fk_department_post">
+      <columns>Depart_id</columns>
+      <ref-key>~.t_department.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="96" parent="18" name="Id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(40)|0</data-type>
+    </column>
+    <column id="97" parent="18" name="textValue">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="98" parent="18" name="PRIMARY">
+      <columns>Id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="99" parent="19" name="Id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="100" parent="19" name="User_code">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="101" parent="19" name="Name">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="102" parent="19" name="Login_name">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="103" parent="19" name="Password">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="104" parent="19" name="Id_no">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="105" parent="19" name="Sex">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="106" parent="19" name="Area_code">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="107" parent="19" name="Post_address">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="108" parent="19" name="Army_date">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="109" parent="19" name="Political_status">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="110" parent="19" name="Party_date">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="111" parent="19" name="Party_duty">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="112" parent="19" name="Passport_no">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="113" parent="19" name="Master_date">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="114" parent="19" name="Post">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="115" parent="19" name="operate_date">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="116" parent="19" name="Belong_cmp">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="117" parent="19" name="Technical_title">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="118" parent="19" name="Rate_time">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="119" parent="19" name="professional">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="120" parent="19" name="Foreign_language">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="121" parent="19" name="Post_cmp">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="122" parent="19" name="Post_ situation">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="123" parent="19" name="Post_duty">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="124" parent="19" name="Marry">
+      <data-type>char(10)|0</data-type>
+    </column>
+    <column id="125" parent="19" name="Marry_name">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="126" parent="19" name="Marry_cmp">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="127" parent="19" name="Marry_tel">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="128" parent="19" name="Retire_date">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="129" parent="19" name="Retire_duty">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="130" parent="19" name="Con_Address">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="131" parent="19" name="Leave_date">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="132" parent="19" name="Post_code">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="133" parent="19" name="Status">
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="134" parent="19" name="File_no">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="135" parent="19" name="User_type">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="136" parent="19" name="Phone">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="137" parent="19" name="Mail">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="138" parent="19" name="Age">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="139" parent="19" name="Job">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="140" parent="19" name="Address">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="141" parent="19" name="Education">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="142" parent="19" name="Rmk">
+      <data-type>text|0</data-type>
+    </column>
+    <column id="143" parent="19" name="Create_date">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="144" parent="19" name="Create_by">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="145" parent="19" name="Modity_by">
+      <data-type>varchar(30)|0</data-type>
+    </column>
+    <column id="146" parent="19" name="Modity_date">
+      <data-type>datetime|0</data-type>
+    </column>
+    <key id="147" parent="19" name="PRIMARY">
+      <columns>Id</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>

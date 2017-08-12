@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="website_index" extends="json-default" namespace="/">
+        <!-- 打开WEB站点首页 -->
+        <action name="index" class="com.newage.iep.action.test.TestAction" method="index">
+            <result name="success">/WEB-INF/views/index.html</result>
+        </action>
+        <action name="testAjax" class="com.newage.iep.action.test.TestAction" method="testAjax">
+            <result name="success" type="json"></result>
+        </action>
+        <!--处理accountAction采用匹配符进行处理-->
+        <action name="AccountAction_*" class="com.newage.iep.action.account.AccountAction" method="{1}">
+            <result name="login">/WEB-INF/views/login.jsp</result>
+            <result name="register">/WEB-INF/views/register.jsp</result>
+            <result name="success" type="json">
+
+            </result>
+        </action>
+        <!--PersonnelAction 处理个人信息-->
+        <action name="PersonnelAction_*" class="com.newage.iep.action.account.PersonnelAction" method="{1}">
+            <result name="personInfo">/WEB-INF/views/personInfo/personInfo.jsp</result>
+        </action>
+    </package>
+</struts>

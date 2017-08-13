@@ -1,14 +1,12 @@
-package com.newage.iep.pojos;
+package com.newage.iep.form;
 
 
-
-import java.util.Date;
 
 /**
  * Created by a1996_000 on 2017/8/12.
  */
 //人员信息表
-public class Personnel {
+public class PersonnelForm {
     private String  Id;
     private String  User_code;
     private String  Name;
@@ -19,17 +17,17 @@ public class Personnel {
     private String  Bath;
     private String  Area_code;
     private String  Post_address;
-    private Date  Army_date;
+    private String  Army_date;
     private String   Political_status;
-    private Date   Party_date;
+    private String   Party_date;
     private String    Party_duty;
     private String  Passport_no;
-    private Date  Master_date;
+    private String  Master_date;
     private String      Post;
-    private Date  operate_date;
+    private String  operate_date;
     private String      Belong_cmp;
     private String   Technical_title;
-    private Date   Rate_time;
+    private String   Rate_time;
     private String      professional;
     private String   Foreign_language;
     private String  Post_cmp;
@@ -39,25 +37,25 @@ public class Personnel {
     private String   Marry_name;
     private String   Marry_cmp;
     private String  Marry_tel;
-    private Date  Retire_date;
+    private String  Retire_date;
     private String      Retire_duty;
     private String  Con_Address;
-    private Date  Leave_date;
+    private String  Leave_date;
     private String      Post_code;
     private String   Statu;
     private String   File_no;
     private String   User_type;
     private String   Phone;
     private String   Mail;
-    private int Age;
+    private String Age;
     private String   Job;
     private String   Address;
     private String   Education;
     private String   Rmk;
-    private Date      Create_date;
+    private String      Create_date;
     private String    Create_by;
     private String   Modity_by;
-    private Date Modity_date ;
+    private String Modity_date ;
 
     public String getId() {
         return Id;
@@ -139,11 +137,11 @@ public class Personnel {
         Post_address = post_address;
     }
 
-    public Date getArmy_date() {
+    public String getArmy_date() {
         return Army_date;
     }
 
-    public void setArmy_date(Date army_date) {
+    public void setArmy_date(String army_date) {
         Army_date = army_date;
     }
 
@@ -155,11 +153,11 @@ public class Personnel {
         Political_status = political_status;
     }
 
-    public Date getParty_date() {
+    public String getParty_date() {
         return Party_date;
     }
 
-    public void setParty_date(Date party_date) {
+    public void setParty_date(String party_date) {
         Party_date = party_date;
     }
 
@@ -179,11 +177,11 @@ public class Personnel {
         Passport_no = passport_no;
     }
 
-    public Date getMaster_date() {
+    public String getMaster_date() {
         return Master_date;
     }
 
-    public void setMaster_date(Date master_date) {
+    public void setMaster_date(String master_date) {
         Master_date = master_date;
     }
 
@@ -195,11 +193,11 @@ public class Personnel {
         Post = post;
     }
 
-    public Date getOperate_date() {
+    public String getOperate_date() {
         return operate_date;
     }
 
-    public void setOperate_date(Date operate_date) {
+    public void setOperate_date(String operate_date) {
         this.operate_date = operate_date;
     }
 
@@ -219,11 +217,11 @@ public class Personnel {
         Technical_title = technical_title;
     }
 
-    public Date getRate_time() {
+    public String getRate_time() {
         return Rate_time;
     }
 
-    public void setRate_time(Date rate_time) {
+    public void setRate_time(String rate_time) {
         Rate_time = rate_time;
     }
 
@@ -299,11 +297,11 @@ public class Personnel {
         Marry_tel = marry_tel;
     }
 
-    public Date getRetire_date() {
+    public String getRetire_date() {
         return Retire_date;
     }
 
-    public void setRetire_date(Date retire_date) {
+    public void setRetire_date(String retire_date) {
         Retire_date = retire_date;
     }
 
@@ -323,11 +321,11 @@ public class Personnel {
         Con_Address = con_Address;
     }
 
-    public Date getLeave_date() {
+    public String getLeave_date() {
         return Leave_date;
     }
 
-    public void setLeave_date(Date leave_date) {
+    public void setLeave_date(String leave_date) {
         Leave_date = leave_date;
     }
 
@@ -379,11 +377,11 @@ public class Personnel {
         Mail = mail;
     }
 
-    public int getAge() {
+    public String getAge() {
         return Age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         Age = age;
     }
 
@@ -419,11 +417,11 @@ public class Personnel {
         Rmk = rmk;
     }
 
-    public Date getCreate_date() {
+    public String getCreate_date() {
         return Create_date;
     }
 
-    public void setCreate_date(Date create_date) {
+    public void setCreate_date(String create_date) {
         Create_date = create_date;
     }
 
@@ -443,11 +441,11 @@ public class Personnel {
         Modity_by = modity_by;
     }
 
-    public Date getModity_date() {
+    public String getModity_date() {
         return Modity_date;
     }
 
-    public void setModity_date(Date modity_date) {
+    public void setModity_date(String modity_date) {
         Modity_date = modity_date;
     }
 }

@@ -30,7 +30,7 @@ public class AccountAction extends ActionSupport implements ModelDriven<Account>
     //账户对象
     private Account account = new Account();
     //人员信息对象
-    private Personnel personnel = new Personnel();
+    //private Personnel personnel = new Personnel();
     //注入账户业务层
     @Autowired
     @Qualifier("accountService")
@@ -39,10 +39,6 @@ public class AccountAction extends ActionSupport implements ModelDriven<Account>
     @Autowired
     @Qualifier("organizationService")
     OrganizationService organizationService;
-    //人员信息业务层
-    @Autowired
-    @Qualifier("personnelService")
-    PersonnelService personnelService;
     HttpServletRequest request;
     HttpServletResponse response;
     //邮箱是否已经被注册的校验信息
@@ -51,6 +47,9 @@ public class AccountAction extends ActionSupport implements ModelDriven<Account>
     List orgs;
     //组织代号
     private String cmp_code;
+    @Autowired
+    @Qualifier("personnelService")
+    PersonnelService personnelService;
     /**
      * 跳转到注册页面
      * @return
@@ -63,19 +62,14 @@ public class AccountAction extends ActionSupport implements ModelDriven<Account>
      * 检查用户输入的邮箱是否已经被注册过
      */
     public String checkEmail(){
-        System.out.println("用户输入的邮箱是");
         String email = (String)request.getParameter("email");
-        System.out.println("email is  :" + email);
         boolean flag = accountService.queryEmail(email);
-        System.out.println("flag is :" + flag);
         //邮箱已经被注册过了 flag设置为true
         if(flag){
             //将数据存储在map里，再转换成json类型数据，也可以自己手动构造json类型数据
-
             Map<String,Object> map = new HashMap<String,Object>();
             map.put("flag", true);
             JSONObject json = JSONObject.fromObject(map);//将map对象转换成json类型数据
-
             result = json.toString();//给result赋值，传递给页面
         }
         return Action.SUCCESS;
@@ -84,17 +78,19 @@ public class AccountAction extends ActionSupport implements ModelDriven<Account>
      * 用户注册
      */
     public String register(){
-
+        //检查用户输入的组织代号是否为空
+        if(cmp_code.equals("")){
+            this.addFieldError("cmpCodeError", "组织代号不能为空");
+            return "register";
+        }
         //检查用户输入的组织代号是否有效
         boolean cmpCode = organizationService.checkCmpCode(cmp_code);
+
         if(!cmpCode){
             this.addFieldError("cmpCodeError", "组织代号不存在");
             return "register";
         }
-        //将信息保存在人员信息表中
-        Personnel personnel = new Personnel();
-        personnel.setSex(account.getSex());
-        personnelService.registerPersonnelInfo(personnel);
+
         //注册时注册  创建日期
         Date date = new Date();
         account.setCreate_date(date);
@@ -102,6 +98,14 @@ public class AccountAction extends ActionSupport implements ModelDriven<Account>
         account.setStatus(0L);
         //注册账户信息
         boolean flag = accountService.register(account);
+        Personnel personnel = new Personnel();
+        personnel.setName(account.getName());
+        personnel.setSex(account.getSex());
+        personnel.setId_no(account.getId_number());
+        personnel.setBath(account.getBath().toString());//待转化
+        personnel.setMail(account.getEmail());
+        //注册人员信息
+        personnelService.registerPersonnelInfo(personnel);
         if(flag){
             return "login";
         }else{
@@ -156,13 +160,7 @@ public class AccountAction extends ActionSupport implements ModelDriven<Account>
         this.cmp_code = cmp_code;
     }
 
-    public Personnel getPersonnel() {
-        return personnel;
-    }
 
-    public void setPersonnel(Personnel personnel) {
-        this.personnel = personnel;
-    }
 
     //设置request
     @Override

@@ -302,10 +302,10 @@
       <data-type>varchar(30)|0</data-type>
     </column>
     <column id="104" parent="19" name="Id_no">
-      <data-type>varchar(20)|0</data-type>
+      <data-type>varchar(40)|0</data-type>
     </column>
     <column id="105" parent="19" name="Sex">
-      <data-type>datetime|0</data-type>
+      <data-type>varchar(10)|0</data-type>
     </column>
     <column id="106" parent="19" name="Area_code">
       <data-type>varchar(30)|0</data-type>

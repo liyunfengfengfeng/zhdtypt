@@ -1,6 +1,6 @@
 package com.newage.iep.action.test;
 
-import com.newage.iep.serivce.TestService;
+import com.newage.iep.serivce.account.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 

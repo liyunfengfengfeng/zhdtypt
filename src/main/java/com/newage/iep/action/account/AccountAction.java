@@ -2,9 +2,9 @@ package com.newage.iep.action.account;
 
 import com.newage.iep.pojos.Account;
 import com.newage.iep.pojos.Personnel;
-import com.newage.iep.serivce.AccountService;
-import com.newage.iep.serivce.OrganizationService;
-import com.newage.iep.serivce.PersonnelService;
+import com.newage.iep.serivce.account.AccountService;
+import com.newage.iep.serivce.account.OrganizationService;
+import com.newage.iep.serivce.account.PersonnelService;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -58,6 +58,14 @@ public class AccountAction extends ActionSupport implements ModelDriven<Account>
 
         return "register";
     }
+
+    /**
+     * 跳转至登录页面
+     * @return
+     */
+    public String toLogin(){
+        return "login";
+    }
     /**
      * 检查用户输入的邮箱是否已经被注册过
      */
@@ -74,6 +82,7 @@ public class AccountAction extends ActionSupport implements ModelDriven<Account>
         }
         return Action.SUCCESS;
     }
+
     /**
      * 用户注册
      */

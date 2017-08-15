@@ -1,4 +1,12 @@
+<%@page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
+
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
@@ -84,8 +92,8 @@
                          <h5 class="text-center">系统管理员</h5>
                      </div>
                 <ul class="nav">
-                    <li><a href="account.html" target="show">个人账户</a></li>
-                    <li><a href="infor.html" target="show">个人信息</a></li>
+                    <li><a href="../account.html" target="show">个人账户</a></li>
+                    <li><a href="../infor.html" target="show">个人信息</a></li>
                 </ul>
 
             </div>
@@ -156,7 +164,7 @@
         </aside>
     </div>
     <div id="content">
-        <a href="manageAudit.html" target="show">点击进入注册管理</a>
+        <a href="../manageAudit.html" target="show">点击进入注册管理</a>
         <iframe src="" name="show" width="100%"></iframe>
     </div>
 <!--</div>-->

@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <p>欢迎注册智慧电梯管理平台</p>
                     <div id="wrapper">
                         <div id="steps">
-                            <form id="formElem" name="formElem" action="" method="post">
+                            <form id="formElem" name="formElem" action="RegisterAction_registerUser.do" method="post">
                                 <fieldset class="step">
                                     <legend>个人账户</legend>
                                     <p>

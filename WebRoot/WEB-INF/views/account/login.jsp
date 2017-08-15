@@ -82,7 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-5" style="padding-left: 0px">
                         <button id="submit" type="button" class="btn btn-info" style="float:left;font-size: 20px">&nbsp;登&nbsp;&nbsp;录&nbsp;</button>
-                        <button id="register" type="button " class="btn btn-success" style="float: right;font-size: 20px">&nbsp;注&nbsp;&nbsp;册&nbsp;</button>
+                        <button id="register" type="button " class="btn btn-success" style="float: right;font-size: 20px"><a href="AccountAction_toRegister.do">&nbsp;注&nbsp;&nbsp;册&nbsp;</a></button>
                     </div>
                 </div>
             </form>
@@ -112,6 +112,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             angle:'45deg'
         });
     })
+
+
 </script>
 </body>
 </html>

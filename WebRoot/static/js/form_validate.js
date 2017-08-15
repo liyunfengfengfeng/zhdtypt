@@ -6,6 +6,7 @@ var validate=function (form) {
         var id=/^\d{14,17}(\d|X)$/gi
         return id.test(value);
     },$.validator.format("请确保输入正确的身份证号码"));
+
     jQuery.validator.addMethod('birthdate',function (value) {
         var date=new Date();
         // var date1=date.getYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
@@ -14,7 +15,24 @@ var validate=function (form) {
         console.log(date2)
         return date>date2;
     },$.validator.format("请正确选择出生日期"));
+
+    jQuery.validator.addMethod("checkEmail",function (value) {
+        console.log("ggg");
+        // $.ajax({
+        //     type:"POST",
+        //     url:"",
+        //     data:"email="+value,
+        //     statusCode:{
+        //         200:function (data) {
+        //
+        //         }
+        //     }
+        //
+        // })
+        return true;
+    },$.validator.format("该邮箱已被注册"));
     jQuery.validator.addMethod('checkorganizId',function(value){
+        console.log("ggg");
         $.ajax({
             type:"POST",
             url:"",
@@ -27,24 +45,19 @@ var validate=function (form) {
 
         })
     },$.validator.format("该组织代码不存在"));
-    jQuery.validator.addMethod("checkEmail",function (value) {
-        $.ajax({
-            type:"POST",
-            url:"",
-            data:"email="+value,
-            statusCode:{
-                200:function (data) {
 
-                }
-            }
 
-        })
-    },$.validator.format("该邮箱已被注册"));
+
+
+
+
+
     $(form).validate({
         rules: {
             email: {
                 required: true,
-                email: true
+                email: true,
+                checkEmail:true
             },
             password: {
                 required: true,
@@ -101,7 +114,7 @@ var validate=function (form) {
             },
             organize:{
                 required:"请填写组织代号"
-            }
+            },
         },
 
 

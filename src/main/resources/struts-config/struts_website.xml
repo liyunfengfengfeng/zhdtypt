@@ -7,14 +7,14 @@
 
         <!-- 打开WEB站点首页
         <action name="index" class="com.newage.iep.action.test.TestAction" method="index">
-            <result name="success">/WEB-INF/views/index.html</result>
+            <result name="success">/WEB-INF/views/index.jsp</result>
         </action>
         <action name="testAjax" class="com.newage.iep.action.test.TestAction" method="testAjax">
             <result name="success" type="json"></result>
         </action>-->
         <!--处理accountAction采用匹配符进行处理-->
         <action name="AccountAction_*" class="com.newage.iep.action.account.AccountAction" method="{1}">
-            <result name="login">/WEB-INF/views/login.jsp</result>
+            <result name="login">/WEB-INF/views/account/login.jsp</result>
             <result name="register">/WEB-INF/views/account/register.jsp</result>
             <result name="success" type="json">
 
@@ -24,7 +24,7 @@
         <action name="LoginAction_*" class="com.newage.iep.action.account.LoginAction" method="{1}">
             <interceptor-ref name="json"/>
             <!--登陆成功到首页
-            <result name="index">/WEB-INF/views/index.html</result>-->
+            <result name="index">/WEB-INF/views/index.jsp</result>-->
             <result name="login" type="json">
                 <param name="root">result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 --></param>
             </result>
@@ -35,7 +35,18 @@
         </action>
         <!--登录成功到首页-->
         <action name="IndexAction_*" class="com.newage.iep.action.account.IndexAction" method="{1}">
-            <result name="index">/WEB-INF/views/index.html</result>
+            <result name="index">/WEB-INF/views/index/index.jsp</result>
+        </action>
+        <!--处理用户的注册信息-->
+        <action name="RegisterAction_*" class="com.newage.iep.action.account.RegisterAction" method="{1}">
+            <result name="login">/WEB-INF/views/account/login.jsp</result><!--注册成功-->
+            <result name="register">/WEB-INF/views/account/register.jsp</result><!--注册成功-->
+            <interceptor-ref name="json"/>
+            <!--校验用户邮箱
+            <result name="index">/WEB-INF/views/index.jsp</result>-->
+            <result name="checkEmail" type="json">
+                <param name="root">result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 --></param>
+            </result>
         </action>
     </package>
 </struts>

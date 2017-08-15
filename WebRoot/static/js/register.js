@@ -143,7 +143,11 @@ $(function() {
             alert('请认真检查表单中的错误，并改正后提交');
             return false;
         }else{
-
+        //提交注册表单
+            var form1=document.getElementById("formElem");
+            form1.action="RegisterAction_registerUser.do";//设置提交路径
+            //alert('注册成功');
+            form1.submit();
         }
     });
 });

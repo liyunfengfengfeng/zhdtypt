@@ -16,11 +16,11 @@ public class OrganizationServiceImpl extends GenericHibernateDAO implements Orga
     /**
      * 检查用户输入的组织代号是否有效
      * @param cmp_code
-     * @return
+     * @return true有效 false无效 不合法的组织
      */
     @Override
     public boolean checkCmpCode(String cmp_code) {
-        Query query = this.createQuery(" from Organization organization where organization.cmp_code=:cmp_code ");
+        Query query = this.createQuery(" from Organization organization where organization.cmp_name=:cmp_code ");
         query.setString("cmp_code",cmp_code);
         List orgs = query.list();
         //用户输入的组织代号有效
@@ -28,5 +28,16 @@ public class OrganizationServiceImpl extends GenericHibernateDAO implements Orga
             return true;
         }
         return false;
+    }
+
+    /**
+     * 查询出所有的组织
+     * @return
+     */
+    @Override
+    public List queryAllOrgs() {
+        Query query =  this.createQuery(" from Organization ");
+        List orgs = query.list();
+        return orgs;
     }
 }

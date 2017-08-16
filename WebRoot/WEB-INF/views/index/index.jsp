@@ -92,8 +92,8 @@
                          <h5 class="text-center">系统管理员</h5>
                      </div>
                 <ul class="nav">
-                    <li><a href="../account.html" target="show">个人账户</a></li>
-                    <li><a href="../infor.html" target="show">个人信息</a></li>
+                    <li><a href="IndexAction_toAccount.do" target="show">个人账户</a></li>
+                    <li><a href="IndexAction_toInfor.do" target="show">个人信息</a></li>
                 </ul>
 
             </div>

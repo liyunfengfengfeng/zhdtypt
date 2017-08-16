@@ -40,7 +40,7 @@ public class AccountServiceImpl extends GenericHibernateDAO implements AccountSe
     /**
      * 检查用户输入的邮箱是否存在
      * @param email
-     * @return
+     * @return  true邮箱已经被注册过了 false邮箱未注册
      */
     @Override
     public boolean queryEmail(String email) {
@@ -48,7 +48,7 @@ public class AccountServiceImpl extends GenericHibernateDAO implements AccountSe
         Query query = this.createQuery(" from Account account where account.email=:emailname");
         query.setString("emailname",email);
         List emails = query.list();
-        System.out.println("emails.size()" + emails.size());
+        //System.out.println("emails.size()" + emails.size());
         //用户的邮箱已经注册过了
         if(emails!=null&&emails.size()>0){
             return true;

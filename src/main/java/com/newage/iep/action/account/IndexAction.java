@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Created by a1996_000 on 2017/8/14.
  */
+//到达首页之后的操作
 public class IndexAction extends ActionSupport implements ServletRequestAware,ServletResponseAware {
     HttpServletRequest request;
     HttpServletResponse response;
@@ -21,6 +22,21 @@ public class IndexAction extends ActionSupport implements ServletRequestAware,Se
     public String index(){
         //System.out.println("===============================================================================");
         return "index";
+    }
+
+    /**
+     * 到达账户信息页面
+     * @return
+     */
+    public String toAccount(){
+        return "toAccount";
+    }
+    /**
+     * 到达人员信息页面
+     * @return
+     */
+    public String toInfor(){
+        return "toInfor";
     }
     @Override
     public void setServletRequest(HttpServletRequest request) {

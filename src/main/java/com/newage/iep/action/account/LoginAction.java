@@ -1,6 +1,7 @@
 package com.newage.iep.action.account;
 
 import com.newage.iep.serivce.account.AccountService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONObject;
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -8,6 +9,7 @@ import org.apache.struts2.interceptor.ServletResponseAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
@@ -30,8 +32,8 @@ public class LoginAction extends ActionSupport implements ServletRequestAware,Se
      * 处理用户登录
      */
     public String login(){
-        System.out.println("登录输入的邮箱是 " + email);
-        System.out.println("登录输入的密码是 " + password);
+//        System.out.println("登录输入的邮箱是 " + email);
+//        System.out.println("登录输入的密码是 " + password);
         //检查用户名与密码是否匹配
         boolean flag = accountService.checkLogin(email,password);
         //将数据存储在map里，再转换成json类型数据，也可以自己手动构造json类型数
@@ -49,7 +51,22 @@ public class LoginAction extends ActionSupport implements ServletRequestAware,Se
                 JSONObject json = JSONObject.fromObject(map1);//将map对象转换成json类型数据
                 result = json.toString();//给result赋值，传递给页面
             }else if(state==1){//审核通过可以登录
+                //为用户添加cookie
+                String sun=request.getParameter("sun");
+                if(sun!=null) {
+                    Cookie uc=new Cookie("ffu",email);
+                    uc.setMaxAge(3600*24*7);
+                    response.addCookie(uc);
+                    Cookie up=new Cookie("ffp",password);
+                    up.setMaxAge(3600*24*7);
+                    response.addCookie(up);
+                }
+
                 map1.put("state", 1);//审核通过可以登录
+                //用户登录成功 将用户的邮箱到session中
+                ActionContext actionContext = ActionContext.getContext();
+                Map session = actionContext.getSession();
+                session.put("user_email",email);
                 JSONObject json = JSONObject.fromObject(map1);//将map对象转换成json类型数据
                 result = json.toString();//给result赋值，传递给页面
             }else if(state==2){//审核未通过

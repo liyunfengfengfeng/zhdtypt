@@ -6,7 +6,6 @@ var validate=function (form) {
         var id=/^\d{14,17}(\d|X)$/gi
         return id.test(value);
     },$.validator.format("请确保输入正确的身份证号码"));
-
     jQuery.validator.addMethod('birthdate',function (value) {
         var date=new Date();
         // var date1=date.getYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
@@ -15,43 +14,66 @@ var validate=function (form) {
         console.log(date2)
         return date>date2;
     },$.validator.format("请正确选择出生日期"));
-
+    // jQuery.validator.addMethod('checkorganizId',function(value){
+    //     var json=JSON.stringify($("#organize").serializeObject());
+    //     $.ajax({
+    //         type:"POST",
+    //         url:"RegisterAction_checkOrg.do",
+    //         contentType:"application/json",
+    //         dataType:"html json",
+    //         data:json,
+    //         statusCode:{
+    //             200:function (data) {
+    //                 var jsondata = eval("("+data+")");
+    //                 var result = jsondata.state;
+    //                 //consule.log(result);
+    //                 if(result==0){//
+    //                        $('#organize').next().html('组织代码不存在');
+    //                        //$('#registerButton').attr('disabled','disabled');
+    //                 }else{
+    //                     $('#organize').next().html('组织代码存在');
+    //                     //$('#registerButton').removeAttr('disabled');
+    //                 }
+    //                 console.log(data);
+    //             }
+    //         }
+    //
+    //     })
+    //     return true;
+    // },$.validator.format("该组织代码不存在"));
+    
+    //校验邮箱 true已注册 false未注册
     jQuery.validator.addMethod("checkEmail",function (value) {
-        console.log("ggg");
-        // $.ajax({
-        //     type:"POST",
-        //     url:"",
-        //     data:"email="+value,
-        //     statusCode:{
-        //         200:function (data) {
-        //
-        //         }
-        //     }
-        //
-        // })
-        return true;
-    },$.validator.format("该邮箱已被注册"));
-    jQuery.validator.addMethod('checkorganizId',function(value){
-        console.log("ggg");
+        var json=JSON.stringify($("#email").serializeObject());
+        var flag = "";
         $.ajax({
             type:"POST",
-            url:"",
-            data:"email="+value,
+            url:"RegisterAction_checkEmail.do",
+            contentType:"application/json",
+            dataType:"html json",
+            data:json,
             statusCode:{
                 200:function (data) {
-
+                    //console.log(data);
+                    var jsondata = eval("("+data+")");
+                    var result = jsondata.state;
+                    console.log(result);
+                    // // return result=='false';
+                    // console.log(parseInt(result)==1);
+                    // flag =  parseInt(result)==0;
+                    if(parseInt(result)==0){
+                        $('#email').next().html("该邮箱已注册");
+                        $('#emailbutton').removeClass('show');
+                    }else{//没有注册
+                        $('#email').next().html("");
+                        $('#emailbutton').addClass('show');
+                    }
                 }
             }
 
         })
-    },$.validator.format("该组织代码不存在"));
-
-
-
-
-
-
-
+        return true;
+    },$.validator.format("该邮箱已被注册"));
     $(form).validate({
         rules: {
             email: {
@@ -83,13 +105,14 @@ var validate=function (form) {
                 birthdate:true
             },
             organize:{
-                required:true
+                required:true,
+                checkorganizId:true
             }
         },
         messages: {
             email: {
                 required: "请输入邮箱",
-                email: "请输入正确的邮箱地址"
+                email: "请输入正确的邮箱地址",
             },
             password: {
                 required: "请输入密码",
@@ -113,11 +136,10 @@ var validate=function (form) {
                 required:"请填写出生日期"
             },
             organize:{
-                required:"请填写组织代号"
-            },
+                required:"请填写组织代号",
+            }
         },
-
-
+        debug:true,
         errorPlacement: function (error, element) { //指定错误信息位置
             if (element.is(':radio') || element.is(':checkbox')) { //如果是radio或checkbox
                 var eid = element.attr('name'); //获取元素的name属性

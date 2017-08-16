@@ -33,18 +33,39 @@
         <action name="PersonnelAction_*" class="com.newage.iep.action.account.PersonnelAction" method="{1}">
             <result name="personInfo">/WEB-INF/views/personInfo/personInfo.jsp</result>
         </action>
-        <!--登录成功到首页-->
+        <!--登录成功到首页  存储登录到首页之后的操作-->
         <action name="IndexAction_*" class="com.newage.iep.action.account.IndexAction" method="{1}">
             <result name="index">/WEB-INF/views/index/index.jsp</result>
+            <result name="toAccount">/WEB-INF/views/index/account.jsp</result>
+            <result name="toInfor">/WEB-INF/views/index/infor.jsp</result>
         </action>
         <!--处理用户的注册信息-->
         <action name="RegisterAction_*" class="com.newage.iep.action.account.RegisterAction" method="{1}">
             <result name="login">/WEB-INF/views/account/login.jsp</result><!--注册成功-->
-            <result name="register">/WEB-INF/views/account/register.jsp</result><!--注册成功-->
+            <result name="register">/WEB-INF/views/account/register.jsp</result><!--注册失败-->
             <interceptor-ref name="json"/>
             <!--校验用户邮箱
             <result name="index">/WEB-INF/views/index.jsp</result>-->
             <result name="checkEmail" type="json">
+                <param name="root">result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 --></param>
+            </result>
+            <!--校验用户组织
+            <result name="index">/WEB-INF/views/index.jsp</result>-->
+            <result name="checkOrg" type="json">
+                <param name="root">result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 --></param>
+            </result>
+            <result name="returnlogin" type="json">
+                <param name="root">result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 --></param>
+            </result>
+            <result name="returnregister" type="json">
+                <param name="root">result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 --></param>
+            </result>
+            <!--发送验证码-->
+            <result name="sendEmail" type="json">
+                <param name="root">result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 --></param>
+            </result>
+            <!--校验验证码-->
+            <result name="checkVericode" type="json">
                 <param name="root">result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 --></param>
             </result>
         </action>

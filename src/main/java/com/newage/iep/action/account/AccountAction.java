@@ -50,15 +50,26 @@ public class AccountAction extends ActionSupport implements ModelDriven<Account>
     @Autowired
     @Qualifier("personnelService")
     PersonnelService personnelService;
+    //注册页面需要的数据
+    private String email;
+    private String vericode;
+    private String password;
+    private String repassword;
+    private String name;
+    private String idCard;
+    private String sex;
+    private String birth;
+    private String organize;
     /**
      * 跳转到注册页面
      * @return
      */
     public String toRegister(){
-
+        //查询出所有的组织
+        List orgs = organizationService.queryAllOrgs();
+        request.setAttribute("orgs",orgs);
         return "register";
     }
-
     /**
      * 跳转至登录页面
      * @return
@@ -122,7 +133,15 @@ public class AccountAction extends ActionSupport implements ModelDriven<Account>
         }
     }
 
-
+    /**
+     * 注册新用户
+     * @return
+     */
+    public String registerNewUser(){
+        System.out.println("=============================================================================");
+        System.out.println(getEmail()+" : "+getPassword());
+        return "login";
+    }
     //返回表单模型
     @Override
     public Account getModel() {
@@ -180,5 +199,77 @@ public class AccountAction extends ActionSupport implements ModelDriven<Account>
     @Override
     public void setServletResponse(HttpServletResponse response) {
         this.response = response;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getVericode() {
+        return vericode;
+    }
+
+    public void setVericode(String vericode) {
+        this.vericode = vericode;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRepassword() {
+        return repassword;
+    }
+
+    public void setRepassword(String repassword) {
+        this.repassword = repassword;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getBirth() {
+        return birth;
+    }
+
+    public void setBirth(String birth) {
+        this.birth = birth;
+    }
+
+    public String getOrganize() {
+        return organize;
+    }
+
+    public void setOrganize(String organize) {
+        this.organize = organize;
     }
 }

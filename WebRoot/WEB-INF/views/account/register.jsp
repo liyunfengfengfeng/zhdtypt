@@ -38,6 +38,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             text-shadow:3px 2px 2px #fff;
             padding:20px;
         }
+        #emailbutton{
+
+        }
+        .show{
+            display:block;
+
+        }
     </style>
 </head>
 <body>
@@ -65,17 +72,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <p>欢迎注册智慧电梯管理平台</p>
                     <div id="wrapper">
                         <div id="steps">
-                            <form id="formElem" name="formElem" action="RegisterAction_registerUser.do" method="post">
+                            <form id="formElem" name="formElem" action="AccountAction_registerUser.do" method="post">
                                 <fieldset class="step">
                                     <legend>个人账户</legend>
                                     <p>
                                         <label for="email">邮箱账号</label>
                                         <input id="email" name="email" placeholder="info@htmleaf.com" type="email" AUTOCOMPLETE=OFF />
-                                        <button type="button" class="" style="width: 150px;font-size: 10px;height: 30px;">发送验证码</button>
+                                        <span></span>
+                                        <button type="button" class="" id="emailbutton" style="width: 150px; font-size: 10px;height: 30px;display: none;">发送验证码</button>
                                     </p>
                                     <p>
                                         <label for="vericode">请填写验证码</label>
                                         <input id="vericode" name="vericode" />
+                                        <span></span>
                                     </p>
                                     <p>
                                         <label for="password">密码</label>
@@ -112,13 +121,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <legend>注册</legend>
                                     <p>
                                         <label for="organize">组织代码</label>
-                                        <input id="organize" name="organize"  type="text" AUTOCOMPLETE=OFF />
+                                        <select id="organize" name="organize">
+                                            <s:if test="%{#request.orgs!=null}">
+                                            <s:iterator value="%{#request.orgs}" var="org">
+                                                <option value="<s:property value="%{#org.cmp_id}"/>"> <s:property value="%{#org.cmp_name}"/></option>
+                                            </s:iterator>
+                                            </s:if>
+                                        </select>
+                                        <span></span>
                                     </p>
                                     <p>
                                         请确保信息填写完整无误后提交
                                     </p>
                                     <p class="submit">
-                                        <button id="registerButton" type="submit">注册</button>
+                                        <button id="registerButton" type="submit">注册</button><!--disabled-->
                                     </p>
                                 </fieldset>
                             </form>
@@ -146,6 +162,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="/static/js/jquery.gradientify.min.js"></script>
 <script src="/static/js/bootstrap/bootstrap.min.js"></script>
 <script src="/static/js/iziToast.min.js"></script> <!--消息框-->
+<script src="/static/js/tojson.js"></script>
 <script src="/static/js/login.js"></script>
 <script src="/static/js/jquery.validate.js"></script>
 <script src="/static/js/form_validate.js"></script>

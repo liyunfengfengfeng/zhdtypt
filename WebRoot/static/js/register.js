@@ -2,6 +2,43 @@
  * Created by fangjiejie on 2017/8/10.
  */
 $(function() {
+    $('#emailbutton').on('click',function () {
+        alert('已发送验证码至你的邮箱，请查收');
+        //ajax发送
+        var json=JSON.stringify($("#email").serializeObject());
+        //console.log("=========="+json);
+        $.ajax({
+            type:"POST",
+            url:"RegisterAction_sendEmail.do",
+            contentType:"application/json",
+            dataType:"html json",
+            data:json,
+            success:function (data) {
+                var jsondata = eval("("+data+")");
+                var result = jsondata.state;
+                console.log(result);
+                // if(parseInt(result)==0){
+                //     //     console.log("与注册成功的路上渐行渐远");
+                //     //     window.location.href=="AccountAction_toRegister.do";
+                //     //     //window.navigate("AccountAction_toRegister.do");
+                //     window.location="AccountAction_toRegister.do";
+                // }else{//注册成功
+                //     //     console.log("正在眺望注册成功的道路上");
+                //     //     window.location.href=="AccountAction_toLogin.do";
+                //     //     //window.navigate("AccountAction_toLogin.do");
+                //     window.location="AccountAction_toLogin.do";
+                // }
+
+            }
+
+        })
+
+
+
+
+
+    })
+
     var $formElem=$('#formElem');
     validate($formElem);
     /*
@@ -143,11 +180,68 @@ $(function() {
             alert('请认真检查表单中的错误，并改正后提交');
             return false;
         }else{
-        //提交注册表单
-            var form1=document.getElementById("formElem");
-            form1.action="RegisterAction_registerUser.do";//设置提交路径
-            //alert('注册成功');
-            form1.submit();
+            //提交注册表单
+            // console.log("提交用户的注册信息");
+            // var form1=document.getElementById("formElem");
+            // form1.action="RegisterAction_registerUser.do";//设置提交路径
+            // //alert('注册成功');
+            // form1.submit();
+
+
+            var json=JSON.stringify($("#formElem").serializeObject());
+            //console.log("=========="+json);
+            $.ajax({
+                type:"POST",
+                url:"RegisterAction_registerUser.do",
+                contentType:"application/json",
+                dataType:"html json",
+                data:json,
+                success:function (data) {
+                    var jsondata = eval("("+data+")");
+                    var result = jsondata.flag;
+                    console.log(result+"=====");
+                    if(parseInt(result)==0){
+                    //     console.log("与注册成功的路上渐行渐远");
+                    //     window.location.href=="AccountAction_toRegister.do";
+                    //     //window.navigate("AccountAction_toRegister.do");
+                        window.location="AccountAction_toRegister.do";
+                    }else{//注册成功
+                    //     console.log("正在眺望注册成功的道路上");
+                    //     window.location.href=="AccountAction_toLogin.do";
+                    //     //window.navigate("AccountAction_toLogin.do");
+                        window.location="AccountAction_toLogin.do";
+                    }
+
+                }
+
+            })
         }
+    });
+    //校验验证码
+    $('#vericode').bind('blur',function(){
+
+            var json=JSON.stringify($("#vericode").serializeObject());
+            $.ajax({
+                type:"POST",
+                url:"RegisterAction_checkVericode.do",
+                contentType:"application/json",
+                dataType:"html json",
+                data:json,
+                success:function (data) {
+                    //var jsondata = eval("("+data+")");
+                    //var result = jsondata.flag;
+                    //console.log(jsondata);
+                    var jsonStr=data;
+                    var jsonObj =  JSON.parse(jsonStr);
+                    //Juery 写法 var jsonObj = $.parseJSON(jsonStr)
+                    // console.log(jsonStr);
+                    console.log(jsonObj.state);
+                    if(jsonObj.state==1){//验证码正确
+                        $('#vericode').next().html("验证码正确");
+                    }else{//验证码错误
+                        $('#vericode').next().html("验证码错误");
+                    }
+                }
+            })
     });
 });

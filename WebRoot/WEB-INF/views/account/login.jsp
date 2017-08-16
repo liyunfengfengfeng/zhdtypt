@@ -72,7 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="form-group" >
                     <div class="col-sm-offset-2 col-sm-7" >
                         <div class="checkbox" style="float: left">
-                            <label style="color: #e9f4e6"><input type="checkbox" />下次自动登录</label>
+                            <label style="color: #e9f4e6"><input type="checkbox" name="sun"/>记住密码</label>
                         </div>
                         <div style="float: right">
                         <a href=""><p class="form-control-static" style="color: #c4e3f3">忘记密码？</p></a>
@@ -94,6 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div >
 
 <script type="text/javascript" src="/static/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.cookie.js"></script>
 <script type="text/javascript" src="/static/js/jquery.gradientify.min.js"></script>
 <script src="/static/js/bootstrap/bootstrap.min.js"></script>
 <script src="/static/js/iziToast.min.js"></script> <!--消息框-->
@@ -111,6 +112,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             ],
             angle:'45deg'
         });
+        var email=$.cookie('email');
+        var password=$.cookie('password');
+        $('#email').val(email);
+        $('#password').val('password');
     })
 
 

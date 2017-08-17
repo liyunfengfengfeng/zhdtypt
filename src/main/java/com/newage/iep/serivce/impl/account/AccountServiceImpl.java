@@ -91,5 +91,34 @@ public class AccountServiceImpl extends GenericHibernateDAO implements AccountSe
         return null;
     }
 
+    /**
+     * 根据邮箱查询账户
+     * @param email1
+     * @return
+     */
+    @Override
+    public Account queryAccountByEmail(String email1) {
+        Query query = this.createQuery(" from Account account where account.email=:emailname");
+        query.setString("emailname",email1);
+        List list = query.list();
+        if(list!=null&&list.size()==1){
+            Object obj = list.get(0);
+            Account account = (Account)obj;
+            return account;
+        }else{
+            return null;
+        }
+    }
+
+    /**
+     * 更新账户信息
+     * @param account
+     */
+    @Transactional
+    @Override
+    public void updateAccountInfo(Account account) {
+        this.update(account);
+    }
+
 
 }

@@ -39,4 +39,17 @@ public interface AccountService {
      * @return
      */
     String getStatus(String email);
+
+    /**
+     * 根据邮箱查询当前账户信息
+     * @param email1
+     * @return
+     */
+    Account queryAccountByEmail(String email1);
+
+    /**
+     * 更新账户信息
+     * @param account
+     */
+    void updateAccountInfo(Account account);
 }

@@ -69,5 +69,12 @@
                 <param name="root">result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 --></param>
             </result>
         </action>
+        <!--修改account账户信息-->
+        <action name="ModifyAction_*" class="com.newage.iep.action.account.ModifyAction" method="{1}">
+            <result name="modifyPwd">/WEB-INF/views/index/account.jsp</result>
+            <result name="updatePersonInfo" type="redirectAction">
+                <param name="actionName">IndexAction_toInfor</param>
+            </result>
+        </action>
     </package>
 </struts>

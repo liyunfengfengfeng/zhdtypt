@@ -52,12 +52,31 @@ public class PersonnelServiceImpl extends GenericHibernateDAO implements Personn
     }
 
     /**
-     * 更新用户信息
+     * 更新人员信息
      * @param personnel
      */
     @Transactional
     @Override
     public void updatePersonnelInfo(Personnel personnel) {
         this.update(personnel);
+    }
+
+    /**
+     * 根据邮箱查询人员信息
+     * @param email1
+     * @return
+     */
+    @Override
+    public Personnel queryPersonnelByEmail(String email1) {
+        Query query = this.createQuery(" from Personnel personnel where personnel.Mail=:emailname");
+        query.setString("emailname",email1);
+        List list = query.list();
+        if(list!=null&&list.size()==1){
+            Object obj = list.get(0);
+            Personnel personnel = (Personnel)obj;
+            return personnel;
+        }else{
+            return null;
+        }
     }
 }

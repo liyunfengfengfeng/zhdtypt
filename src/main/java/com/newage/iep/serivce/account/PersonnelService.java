@@ -24,6 +24,10 @@ public interface PersonnelService {
      * @return
      */
     Personnel queryPersonByMail(String mail);
-    //更新用户信息
+    //更新人员信息信息
     void updatePersonnelInfo(Personnel personnel);
+    //根据邮箱查询人员信息
+    Personnel queryPersonnelByEmail(String email1);
+
+
 }

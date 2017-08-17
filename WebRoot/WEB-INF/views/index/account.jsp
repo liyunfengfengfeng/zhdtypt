@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="form-group">
         <label class="col-sm-2 control-label name">邮箱：</label>
         <div class="col-sm-9">
-            <input type="email" class="form-control "  placeholder="454674513@qq.com" disabled/>
+            <input type="email" class="form-control "  placeholder="${email}" disabled/>
         </div>
     </div>
     <div class="form-group">
@@ -69,11 +69,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     </div>
 </form>
-<form class="form-horizontal form" id="form2" role="form">
+<form class="form-horizontal form" id="form2" role="form" action="ModifyAction_modifyPwd.do">
         <div class="form-group">
             <label class="col-sm-2 control-label name">邮箱：</label>
             <div class="col-sm-9">
-                <input type="email" class="form-control "  placeholder="454674513@qq.com" disabled/>
+                <input type="hidden" name="email1" class="form-control "  value="${email}" />
+                <input type="email" name="email" class="form-control "  placeholder="${email}" disabled/>
             </div>
         </div>
         <div class="form-group">
@@ -85,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="form-group repass" >
             <label  class="col-sm-2 control-label relable">重复密码：</label>
             <div class="col-sm-9" >
-                <input type="text" class="form-control"  name="repassword"  placeholder="******"/>
+                <input type="password" class="form-control"  name="repassword"  placeholder="******"/>
             </div>
         </div>
     <div class="form-group" id="btn">

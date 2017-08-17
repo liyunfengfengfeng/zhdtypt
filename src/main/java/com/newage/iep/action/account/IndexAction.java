@@ -1,6 +1,8 @@
 package com.newage.iep.action.account;
 
+import com.newage.iep.pojos.Organization;
 import com.newage.iep.pojos.Personnel;
+import com.newage.iep.serivce.account.OrganizationService;
 import com.newage.iep.serivce.account.PersonnelService;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
@@ -23,12 +25,22 @@ public class IndexAction extends ActionSupport implements ServletRequestAware,Se
     @Autowired
     @Qualifier("personnelService")
     PersonnelService personnelService;
+    @Autowired
+    @Qualifier("organizationService")
+    OrganizationService organizationService;
     /**
      * 跳转到首页
      * @return
      */
     public String index(){
         //System.out.println("===============================================================================");
+        //从session中获取邮箱信息
+        HttpSession session = ServletActionContext.getRequest().getSession();
+        String email = (String)session.getAttribute("user_email");
+        Personnel personnel = personnelService.queryPersonnelByEmail(email);
+        if(personnel!=null){
+            request.setAttribute("name",personnel.getName());
+        }
         return "index";
     }
 
@@ -52,7 +64,12 @@ public class IndexAction extends ActionSupport implements ServletRequestAware,Se
         HttpSession session = ServletActionContext.getRequest().getSession();
         String email = (String)session.getAttribute("user_email");
         Personnel personnel = personnelService.queryPersonnelByEmail(email);
-
+        //组织单位id
+        String orgid = personnel.getBelong_cmp();
+        //根据id查询到组织
+        Organization organization = organizationService.queryOrgById(orgid);
+        //组织名称 所属单位
+        personnel.setBelong_cmp(organization.getCmp_name());
         //System.out.println(personnel.getMail()+"人员信息要展示的邮箱"+personnel.getPost_duty());
 
 

@@ -107,59 +107,25 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟
         System.out.println("simplePersonInfoForm.getArmy_date() 入伍时间  ：" + simplePersonInfoForm.getArmy_date());
         String dstr=simplePersonInfoForm.getArmy_date();
-        try {
-            if(dstr!=null&&!dstr.equals("")) {
-                Date date = sdf.parse(dstr);
-                personnel.setArmy_date(date);//入伍时间
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        personnel.setArmy_date(dstr);//入伍时间
         personnel.setPolitical_status(simplePersonInfoForm.getPolitical_status());//政治面貌
 
         String dstr1=simplePersonInfoForm.getParty_date();
-        try {
-            if(dstr1!=null&&!dstr1.equals("")) {
-                Date date = sdf.parse(dstr1);
-                personnel.setParty_date(date);//入党时间
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        personnel.setParty_date(dstr1);//入党时间
         personnel.setPassport_no(simplePersonInfoForm.getPassport_no());//护照号码
 
         String dstr2=simplePersonInfoForm.getMaster_date();
-        try {
-            if(dstr2!=null&&!dstr2.equals("")) {
-                Date date = sdf.parse(dstr2);
-                personnel.setMaster_date(date);//任职时间
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        personnel.setMaster_date(dstr2);//任职时间
         personnel.setPost(simplePersonInfoForm.getPost());//岗位
 
         String dstr3=simplePersonInfoForm.getOperate_date();
-        try {
-            if(dstr3!=null&&!dstr3.equals("")) {
-                Date date = sdf.parse(dstr3);
-                personnel.setOperate_date(date);//工作时间
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        personnel.setOperate_date(dstr3);//工作时间
         //所属单位 职称 评定时间 专业特长 外语 原工作单位 在职情况 婚否 配偶姓名 配偶工作单位 配偶电话
         personnel.setBelong_cmp(simplePersonInfoForm.getBelong_cmp());
         personnel.setTechnical_title(simplePersonInfoForm.getTechnical_title());
         String dstr4=simplePersonInfoForm.getRate_time();
-        try {
-            if(dstr4!=null&&!dstr4.equals("")) {
-                Date date = sdf.parse(dstr4);
-                personnel.setRate_time(date);//评定时间
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        personnel.setRate_time(dstr4);//评定时间
+
         personnel.setProfessional(simplePersonInfoForm.getProfessional());
         personnel.setForeign_language(simplePersonInfoForm.getForeign_language());
         personnel.setPost_cmp(simplePersonInfoForm.getPost_cmp());
@@ -172,26 +138,14 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
         //退休时间 退休职务 职系地址 离职日期 邮政编码 状态 档案编号 人员类型 电话号 邮箱 年龄 工作 地址 教育情况 创建日期 审核人 修改人 修改日期 备注
 
         String dstr5=simplePersonInfoForm.getRetire_date();
-        try {
-            if(dstr5!=null&&!dstr5.equals("")) {
-                Date date = sdf.parse(dstr5);
-                personnel.setRetire_date(date);//退休时间
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        personnel.setRetire_date(dstr5);//退休时间
+
         personnel.setRetire_duty(simplePersonInfoForm.getRetire_duty());
         personnel.setCon_Address(simplePersonInfoForm.getCon_address());
-
+        //System.out.println("当前输入的离职日期是 " + simplePersonInfoForm.getLeave_date());
         String dstr6=simplePersonInfoForm.getLeave_date();
-        try {
-            if(dstr6!=null&&!dstr6.equals("")) {
-                Date date = sdf.parse(dstr6);
-                personnel.setLeave_date(date);//离职日期
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        personnel.setLeave_date(dstr6);//离职日期
+
         personnel.setPost_code(simplePersonInfoForm.getPost_code());
         personnel.setStatu(simplePersonInfoForm.getStatus());
         personnel.setFile_no(simplePersonInfoForm.getFile_no());
@@ -206,25 +160,10 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
         personnel.setModity_by(simplePersonInfoForm.getModity_by());
         personnel.setRmk(simplePersonInfoForm.getRmk());
         String dstr7=simplePersonInfoForm.getCreate_date();
-        try {
-            if(dstr7!=null&&!dstr7.equals("")){
-                Date date=sdf.parse(dstr7);
-                personnel.setLeave_date(date);//创建日期
-            }
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        personnel.setCreate_date(dstr7);//创建日期
 
         String dstr8=simplePersonInfoForm.getModity_date();
-        try {
-            if(dstr8!=null&&!dstr8.equals("")) {
-                Date date = sdf.parse(dstr8);
-                personnel.setLeave_date(date);//修改日期
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        personnel.setModity_date(dstr8);//修改日期
         personnelService.updatePersonnelInfo(personnel);
         return "updatePersonInfo";
     }

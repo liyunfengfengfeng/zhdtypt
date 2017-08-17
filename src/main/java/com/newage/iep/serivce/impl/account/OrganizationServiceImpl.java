@@ -1,6 +1,7 @@
 package com.newage.iep.serivce.impl.account;
 
 import com.newage.iep.business.dao.GenericHibernateDAO;
+import com.newage.iep.pojos.Organization;
 import com.newage.iep.serivce.account.OrganizationService;
 import org.hibernate.Query;
 import org.springframework.stereotype.Service;
@@ -39,5 +40,22 @@ public class OrganizationServiceImpl extends GenericHibernateDAO implements Orga
         Query query =  this.createQuery(" from Organization ");
         List orgs = query.list();
         return orgs;
+    }
+
+    /**
+     * 根据id查询组织单位
+     * @param orgid
+     * @return
+     */
+    @Override
+    public Organization queryOrgById(String orgid) {
+        Query query = this.createQuery("from Organization organization where organization.cmp_id=:cmp_id1 ");
+        query.setString("cmp_id1",orgid);
+        List list = query.list();
+        if(list!=null&&list.size()==1){
+            Organization organization = (Organization) list.get(0);
+            return organization;
+        }
+        return null;
     }
 }

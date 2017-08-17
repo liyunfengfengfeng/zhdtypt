@@ -13,4 +13,6 @@ public interface OrganizationService {
     boolean checkCmpCode(String cmp_code);
     //查询出所有的组织
     List<Organization> queryAllOrgs();
+    //根据id查询组织单位
+    Organization queryOrgById(String orgid);
 }

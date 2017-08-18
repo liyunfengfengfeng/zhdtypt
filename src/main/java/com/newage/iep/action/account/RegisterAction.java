@@ -93,7 +93,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven<Registe
 
                 Date date1=sdf.parse(dstr);
                 account.setBath(date1);
-                personnel.setBath(date1.toString());//待转化
+                personnel.setBath(dstr);//待转化
             }
 
 
@@ -111,6 +111,8 @@ public class RegisterAction extends ActionSupport implements ModelDriven<Registe
         personnel.setMail(account.getEmail());
         personnel.setBelong_cmp(account.getCmp_id());
         personnel.setPassword(account.getPassword());
+
+        personnel.setPicture_path("/static/img/pic.png");
         //状态设为0未审核1审核通过2审核未通过
         personnel.setStatu(String.valueOf(0));
         //注册人员信息

@@ -5,8 +5,10 @@ import com.newage.iep.pojos.Account;
 import com.newage.iep.pojos.Personnel;
 import com.newage.iep.serivce.account.AccountService;
 import com.newage.iep.serivce.account.PersonnelService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
@@ -17,11 +19,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
-import java.text.ParseException;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import static com.runqian.report4.ide.base.FuncManager.getFileName;
+import java.util.Random;
 
 /**
  * Created by a1996_000 on 2017/8/16.
@@ -45,11 +46,11 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
     private String repassword;
     //上传头像
     //获取上传文件,名称必须和表单file控件名相同
-    private File pic;
+    private File upload_file;
     //获取上传文件名,命名格式：表单file控件名+FileName(固定)
-    private String picFileName;
+    private String upload_fileFileName;
     //获取上传文件类型,命名格式：表单file控件名+ContentType(固定)
-    private String uploadfileContentType;
+    private String upload_fileContentType;
 
     /**
      * 修改账户信息
@@ -79,12 +80,45 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
     public String updatePersonInfo(){
         System.out.println("更新人员简单信息");
         System.out.println("处理用户头像的上传");
-        System.out.println("fileName:"+getFileName());
+        //System.out.println("fileName:"+getUpload_file());
         //System.out.println("contentType:"+getUploadImageContentType());
         //System.out.println("File:"+getPic());
+        //保存到根目录下的Images文件夹下
+        String realPath = ServletActionContext.getServletContext().getRealPath("/uploadOImages");    //取得真实路径
+        System.out.println(realPath);
+        System.out.println(upload_fileFileName);
+        System.out.println(upload_fileContentType);
+
+        //自动命名
+        Random random = new Random(99999);
+        int tempInt = random.nextInt();
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
+        int last = upload_fileFileName.lastIndexOf(".");
+        String head = upload_fileFileName.substring(0,last);
+        String type = upload_fileFileName.substring(last);
+        upload_fileFileName = simpleDateFormat.format(date) + tempInt + type;
+        System.out.println("新的文件名称是："+upload_fileFileName);
+
+        //创建父文件夹
+        if(upload_file!=null){
+            File saveFile = new File(new File(realPath), upload_fileFileName);
+            if(!saveFile.getParentFile().exists()){     //如果Images文件夹不存在
+                saveFile.getParentFile().mkdirs();  //则创建新的多级文件夹
+
+            }
+            try {
+                FileUtils.copyFile(upload_file, saveFile);     //保存文件
+                ActionContext.getContext().put("message", "上传成功！");
+                request.setAttribute("uploadsuccess", upload_fileFileName);
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            }
+        }
 
         //获取要保存文件夹的物理路径(绝对路径)
-        String realPath=ServletActionContext.getServletContext().getRealPath("G:/workspace/zhdtypt/WebRoot/static/picture");
+        //String realPath=ServletActionContext.getServletContext().getRealPath("G:/workspace/zhdtypt/WebRoot/static/picture");
        // File file = new File(realPath);
 
         //测试此抽象路径名表示的文件或目录是否存在。若不存在，创建此抽象路径名指定的目录，包括所有必需但不存在的父目录。
@@ -101,26 +135,27 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
         HttpSession session = ServletActionContext.getRequest().getSession();
         String email = (String)session.getAttribute("user_email");
         //更新人员信息
-        Personnel personnel = personnelService.queryPersonnelByEmail(email);
-        personnel.setBath(simplePersonInfoForm.getBirth());
-        personnel.setName(simplePersonInfoForm.getName());
-        personnel.setSex(simplePersonInfoForm.getSex());
-        personnel.setId_no(simplePersonInfoForm.getIdnumber());
-        personnelService.updatePersonnelInfo(personnel);
+//        Personnel personnel = personnelService.queryPersonnelByEmail(email);
+//        personnel.setBath(simplePersonInfoForm.getBirth());
+//        personnel.setName(simplePersonInfoForm.getName());
+//        personnel.setSex(simplePersonInfoForm.getSex());
+//        personnel.setId_no(simplePersonInfoForm.getIdnumber());
+//        personnelService.updatePersonnelInfo(personnel);
         //更新账户信息
-        Account account = accountService.queryAccountByEmail(email);
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟
-        String dstr=simplePersonInfoForm.getBirth();
-        try {
-            Date date=sdf.parse(dstr);
-            account.setBath(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        account.setSex(simplePersonInfoForm.getSex());
-        account.setId_number(simplePersonInfoForm.getIdnumber());
-        account.setName(simplePersonInfoForm.getName());
-        accountService.updateAccountInfo(account);
+//        Account account = accountService.queryAccountByEmail(email);
+//        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟
+//        String dstr=simplePersonInfoForm.getBirth();
+//        System.out.println("获取到的生日日期是不是空啊？"+dstr);
+//        try {
+//            Date date=sdf.parse(dstr);
+//            account.setBath(date);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        account.setSex(simplePersonInfoForm.getSex());
+//        account.setId_number(simplePersonInfoForm.getIdnumber());
+//        account.setName(simplePersonInfoForm.getName());
+//        accountService.updateAccountInfo(account);
         return "updatePersonInfo";
     }
     public String updateMorePersonInfo(){
@@ -237,5 +272,27 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
         this.repassword = repassword;
     }
 
+    public File getUpload_file() {
+        return upload_file;
+    }
 
+    public void setUpload_file(File upload_file) {
+        this.upload_file = upload_file;
+    }
+
+    public String getUpload_fileFileName() {
+        return upload_fileFileName;
+    }
+
+    public void setUpload_fileFileName(String upload_fileFileName) {
+        this.upload_fileFileName = upload_fileFileName;
+    }
+
+    public String getUpload_fileContentType() {
+        return upload_fileContentType;
+    }
+
+    public void setUpload_fileContentType(String upload_fileContentType) {
+        this.upload_fileContentType = upload_fileContentType;
+    }
 }

@@ -70,7 +70,10 @@ public class IndexAction extends ActionSupport implements ServletRequestAware,Se
         //根据id查询到组织
         Organization organization = organizationService.queryOrgById(orgid);
         //组织名称 所属单位
-        personnel.setBelong_cmp(organization.getCmp_name());
+        if(organization!=null){
+            personnel.setBelong_cmp(organization.getCmp_name());
+        }
+
         //System.out.println(personnel.getMail()+"人员信息要展示的邮箱"+personnel.getPost_duty());
 
 

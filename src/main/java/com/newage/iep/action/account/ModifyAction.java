@@ -16,9 +16,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import static com.runqian.report4.ide.base.FuncManager.getFileName;
 
 /**
  * Created by a1996_000 on 2017/8/16.
@@ -40,6 +43,14 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
     private String email1;
     private String password;
     private String repassword;
+    //上传头像
+    //获取上传文件,名称必须和表单file控件名相同
+    private File pic;
+    //获取上传文件名,命名格式：表单file控件名+FileName(固定)
+    private String picFileName;
+    //获取上传文件类型,命名格式：表单file控件名+ContentType(固定)
+    private String uploadfileContentType;
+
     /**
      * 修改账户信息
      * @return
@@ -67,6 +78,24 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
      */
     public String updatePersonInfo(){
         System.out.println("更新人员简单信息");
+        System.out.println("处理用户头像的上传");
+        System.out.println("fileName:"+getFileName());
+        //System.out.println("contentType:"+getUploadImageContentType());
+        //System.out.println("File:"+getPic());
+
+        //获取要保存文件夹的物理路径(绝对路径)
+        String realPath=ServletActionContext.getServletContext().getRealPath("G:/workspace/zhdtypt/WebRoot/static/picture");
+       // File file = new File(realPath);
+
+        //测试此抽象路径名表示的文件或目录是否存在。若不存在，创建此抽象路径名指定的目录，包括所有必需但不存在的父目录。
+//        if(!file.exists())file.mkdirs();
+//
+//        try {
+//            //保存文件
+//            FileUtils.copyFile(uploadImage, new File(file,uploadImageFileName));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         //姓名 身份证号 性别 出生日期
         //从session中获取邮箱信息
         HttpSession session = ServletActionContext.getRequest().getSession();

@@ -56,7 +56,7 @@ public class Personnel {
     private String    Create_by;//审核人
     private String   Modity_by;
     private String Modity_date ;
-
+    private String picture_path;//存放图片路径
     //------------------------------------getter/setter----------------------------------------------------------------
 
     public String getId() {
@@ -449,5 +449,13 @@ public class Personnel {
 
     public void setModity_date(String modity_date) {
         Modity_date = modity_date;
+    }
+
+    public String getPicture_path() {
+        return picture_path;
+    }
+
+    public void setPicture_path(String picture_path) {
+        this.picture_path = picture_path;
     }
 }

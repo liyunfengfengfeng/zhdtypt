@@ -85,7 +85,7 @@
         <aside class="sidebar">
             <div class="infor">
                      <div class="pic center-block">
-                         <img src="/static/img/pic.png" class="img-responsive img-circle" alt="">
+                         <img src="${picture_path}" class="img-responsive img-circle" alt="">
                      </div>
                      <div class="">
                          <h4 class="text-center">您好，${name}</h4>

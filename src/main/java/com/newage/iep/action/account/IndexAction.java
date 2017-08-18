@@ -40,6 +40,7 @@ public class IndexAction extends ActionSupport implements ServletRequestAware,Se
         Personnel personnel = personnelService.queryPersonnelByEmail(email);
         if(personnel!=null){
             request.setAttribute("name",personnel.getName());
+            request.setAttribute("picture_path",personnel.getPicture_path());
         }
         return "index";
     }

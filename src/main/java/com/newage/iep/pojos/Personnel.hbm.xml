@@ -152,5 +152,9 @@
 		<property name="Modity_date">
 			<column name="Modity_date" />
 		</property>
+		<!--图片路径-->
+		<property name="picture_path">
+			<column name="picture_path" />
+		</property>
 	</class>
 </hibernate-mapping>

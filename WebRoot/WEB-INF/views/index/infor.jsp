@@ -75,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
   <div class="container">
-      <form action="ModifyAction_updatePersonInfo.do" id="inforform1" role="form">
+      <form action="ModifyAction_updatePersonInfo.do" id="inforform1" role="form" method="post" enctype="multipart/form-data">
           <s:if test="%{#request.personnel != null}">
           <s:iterator value="%{#request.personnel}" var="personnel">
           <div class="inforformtop">
@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <div class="row">
               <div class="col-md-6">
                   <div id="img" class="center-block">
-                      <img src="/static/img/pic.png" class="img-responsive" alt="">
+                      <img src="<s:property value="%{#personnel.picture_path}"/>" class="img-responsive" alt=""><!--上传头像-->
                   </div>
                   <div class="form-group text-center" style="margin-top: 20px;margin-left: 5px;">
                       <label  class="col-sm-2 control-label text-left"></label>
@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <div class="form-group center-block" style="margin-top: 20px;">
                       <label for="personpic"  class="col-sm-3 control-label text-left">更换头像</label>
                       <div class="col-sm-8">
-                          <input id="personpic" name="pic" class="form-control" type="file" AUTOCOMPLETE=OFF  disabled/>
+                          <input id="personpic" name="pic" class="form-control" type="file" AUTOCOMPLETE=OFF  disabled/><!--上传头像-->
                       </div>
                   </div>
               </div>

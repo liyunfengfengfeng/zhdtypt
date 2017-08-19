@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="form-group">
             <label class="col-sm-2 control-label name">邮箱：</label>
             <div class="col-sm-9">
-                <input type="email" class="form-control "  placeholder="454674513@qq.com" disabled/>
+                <input type="email" class="form-control "  placeholder="${email}" disabled/>
             </div>
         </div>
         <div class="form-group">
@@ -69,12 +69,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
         </div>
     </form>
-    <form class="form-horizontal form" id="form2" role="form" action="ModifyAction_modifyPwd.do">
+    <form class="form-horizontal form" id="form2" role="form" method="post" action="ModifyPwd_modifyAccountPwd.do">
         <div class="form-group">
             <label class="col-sm-2 control-label name">邮箱：</label>
             <div class="col-sm-9">
                 <input type="hidden" name="email1" class="form-control "  value="${email}" />
-                <input type="email" name="email" class="form-control "  placeholder="${email}" disabled/>
+                <input type="email" class="form-control " name="email" placeholder="${email}" value="" disabled/>
             </div>
         </div>
         <div class="form-group">
@@ -87,19 +87,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="form-group">
             <label  class="col-sm-2 control-label">新密码：</label>
             <div class="col-sm-9">
-                <input type="password" class="form-control"  name="password"  placeholder="******" />
+                <input type="password" class="form-control" id="password" name="password" value=""  placeholder="******" />
             </div>
         </div>
         <div class="form-group repass" >
             <label  class="col-sm-2 control-label relable">重复密码：</label>
             <div class="col-sm-9" >
-                <input type="password" class="form-control"  name="repassword"  placeholder="******"/>
+                <input type="password" class="form-control"  name="repassword" value="" placeholder="******"/>
             </div>
         </div>
         <div class="form-group" id="btn">
             <div class="col-sm-offset-3 col-sm-6">
                 <button id="cancel" type="button" class="btn btn-info" style="float:left;">取消</button>
-                <button id="submit" type="submit " class="btn btn-success" style="float: right;">提交</button>
+                <button id="submit" type="submit" class="btn btn-success" style="float: right;">提交</button>
             </div>
         </div>
     </form>
@@ -147,10 +147,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         $('#btn').toggleClass('show');
         $('#modify').toggleClass('hide')
     })
-
     <!--检查输入的原密码是否正确-->
     $('#oldpassword').bind('blur',function() {
+        //alert("123456");
         var json = JSON.stringify($("#oldpassword").serializeObject());
+
         $.ajax({
             type: "POST",
             url: "ModifyAction_checkOldPwd.do",
@@ -163,11 +164,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 console.log(jsonObj.state);
                 if(jsonObj.state==1){//原密码正确
                     $('#oldpassword').next().css("color","green").html("原密码正确");
-
                     $("#submit").attr('disabled',false);
                 }else{//验证码错误
                     $('#oldpassword').next().css("color","red").html("原密码错误");
-
                     $("#submit").attr('disabled',true);
                 }
             }

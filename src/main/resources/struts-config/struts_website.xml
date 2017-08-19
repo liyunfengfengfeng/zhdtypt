@@ -81,5 +81,10 @@
                 <param name="root">result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 --></param>
             </result>
         </action>
+        <!--修改账户密码-->
+        <action name="ModifyPwd_*" class="com.newage.iep.action.account.ModifyPwdAction" method="{1}">
+            <result name="modifyAccountPwd">/WEB-INF/views/index/account.jsp</result>
+
+        </action>
     </package>
 </struts>

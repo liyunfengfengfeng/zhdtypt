@@ -47,6 +47,7 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
     private String email1;
     private String password;
     private String repassword;
+    private String email;
     //上传头像
     //获取上传文件,名称必须和表单file控件名相同
     private File upload_file;
@@ -58,28 +59,6 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
     private String oldpassword;
     //传json
     private String result;
-    /**
-     * 修改账户信息
-     * @return
-     */
-    public String modifyPwd(){
-        System.out.println("成功修改密码"+email1 + ":" + password + ":" + repassword);
-        //根据邮箱获取当前登录账户
-        Account account = accountService.queryAccountByEmail(email1);
-        account.setPassword(password);
-        //更新账户信息
-        accountService.updateAccountInfo(account);
-        //根据邮箱获取当前人员信息
-        Personnel personnel = personnelService.queryPersonnelByEmail(email1);
-        personnel.setPassword(password);
-        personnelService.updatePersonnelInfo(personnel);
-        //邮箱回显
-        //从session中获取邮箱信息
-        HttpSession session = ServletActionContext.getRequest().getSession();
-        String email = (String)session.getAttribute("user_email");
-        request.setAttribute("email",email);
-        return "modifyPwd";
-    }
     /**
      * 人员信息页面更新人员信息的操作
      */
@@ -129,45 +108,6 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
             }
         }
 
-        //获取要保存文件夹的物理路径(绝对路径)
-        //String realPath=ServletActionContext.getServletContext().getRealPath("G:/workspace/zhdtypt/WebRoot/static/picture");
-       // File file = new File(realPath);
-
-        //测试此抽象路径名表示的文件或目录是否存在。若不存在，创建此抽象路径名指定的目录，包括所有必需但不存在的父目录。
-//        if(!file.exists())file.mkdirs();
-//
-//        try {
-//            //保存文件
-//            FileUtils.copyFile(uploadImage, new File(file,uploadImageFileName));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-        //姓名 身份证号 性别 出生日期
-        //从session中获取邮箱信息
-//        HttpSession session = ServletActionContext.getRequest().getSession();
-//        String email = (String)session.getAttribute("user_email");
-        //更新人员信息
-//        Personnel personnel = personnelService.queryPersonnelByEmail(email);
-//        personnel.setBath(simplePersonInfoForm.getBirth());
-//        personnel.setName(simplePersonInfoForm.getName());
-//        personnel.setSex(simplePersonInfoForm.getSex());
-//        personnel.setId_no(simplePersonInfoForm.getIdnumber());
-//        personnelService.updatePersonnelInfo(personnel);
-        //更新账户信息
-//        Account account = accountService.queryAccountByEmail(email);
-//        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟
-//        String dstr=simplePersonInfoForm.getBirth();
-//        System.out.println("获取到的生日日期是不是空啊？"+dstr);
-//        try {
-//            Date date=sdf.parse(dstr);
-//            account.setBath(date);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//        account.setSex(simplePersonInfoForm.getSex());
-//        account.setId_number(simplePersonInfoForm.getIdnumber());
-//        account.setName(simplePersonInfoForm.getName());
-//        accountService.updateAccountInfo(account);
         return "updatePersonInfo";
     }
     public String updateMorePersonInfo(){
@@ -347,5 +287,13 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
 
     public void setResult(String result) {
         this.result = result;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

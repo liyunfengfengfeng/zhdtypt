@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <html lang="en">
 <head>
@@ -24,7 +24,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             color: #000000;
         }
         .form label{
-
         }
         .container{
             margin: 200px auto;
@@ -151,10 +150,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     $('#oldpassword').bind('blur',function() {
         //alert("123456");
         var json = JSON.stringify($("#oldpassword").serializeObject());
-
         $.ajax({
             type: "POST",
-            url: "ModifyAction_checkOldPwd.do",
+            url: "CheckAction_checkOldPwd.do",
             contentType: "application/json",
             dataType: "html json",
             data: json,

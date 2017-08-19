@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <html lang="en">
 <head>
@@ -64,7 +64,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             padding: 35px;
             font-size: 16px;
             margin-bottom: 20px;
-
             /*color: #2b669a;*/
             color:#000000;
         }
@@ -453,7 +452,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $('#inforcancelbutton').removeClass('hide').addClass('show')
         })
         $('#inforcancelbutton').on('click',function () {
-
             $('#inforform2 input').attr('disabled','disabled');
             $(this).removeClass('show').addClass('hide');
             $('#btn4').removeClass('show').addClass('hide');
@@ -477,7 +475,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             console.log($('#upload-file').val())
         })
     })
-
 </script>
 
 

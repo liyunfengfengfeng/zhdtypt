@@ -87,8 +87,10 @@ public class IndexAction extends ActionSupport implements ServletRequestAware,Se
         request.setAttribute("modifydate",modifydate);
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date date2 = personnel.getModity_date();
-        String createdate=sdf2.format(date2);
-        request.setAttribute("createdate",createdate);
+        if(date2!=null) {
+            String createdate = sdf2.format(date2);
+            request.setAttribute("createdate", createdate);
+        }
         request.setAttribute("personnel",personnel);
         //设置状态
         int statu = Integer.parseInt(personnel.getStatu());

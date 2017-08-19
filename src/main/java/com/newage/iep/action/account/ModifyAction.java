@@ -1,14 +1,12 @@
 package com.newage.iep.action.account;
 
 import com.newage.iep.form.SimplePersonInfoForm;
-import com.newage.iep.pojos.Account;
 import com.newage.iep.pojos.Personnel;
 import com.newage.iep.serivce.account.AccountService;
 import com.newage.iep.serivce.account.PersonnelService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-import net.sf.json.JSONObject;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -23,8 +21,6 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 /**
@@ -163,11 +159,12 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
         personnel.setLeave_date(dstr6);//离职日期
 
         personnel.setPost_code(simplePersonInfoForm.getPost_code());
-        personnel.setStatu(simplePersonInfoForm.getStatus());
+        //personnel.setStatu(simplePersonInfoForm.getStatus());
         personnel.setFile_no(simplePersonInfoForm.getFile_no());
         personnel.setUser_type(simplePersonInfoForm.getUser_type());
         personnel.setPhone(simplePersonInfoForm.getPhone());
         personnel.setMail(simplePersonInfoForm.getMail());
+        System.out.println("simplePersonInfoForm.getAge()  " + simplePersonInfoForm.getAge());
         personnel.setAge(Integer.parseInt(simplePersonInfoForm.getAge()));
         personnel.setJob(simplePersonInfoForm.getJob());
         personnel.setAddress(simplePersonInfoForm.getAddress());
@@ -185,29 +182,7 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
         return "updatePersonInfo";
     }
 
-    /**
-     * 检查用户输入的原密码是否正确
-     * @return
-     */
-    public String checkOldPwd(){
-        System.out.println("用户输入的原密码是 ：" + oldpassword);
-        //从session中获取邮箱信息
-        HttpSession session = ServletActionContext.getRequest().getSession();
-        String email = (String)session.getAttribute("user_email");
-        //根据邮箱获取account
-        Account account = accountService.queryAccountByEmail(email);
-        Map<String, Object> map1 = new HashMap<String, Object>();
-        if(account!=null&&account.getPassword().equals(oldpassword)) {
-            map1.put("state", 1);//用户输入的原密码正确
-            JSONObject json = JSONObject.fromObject(map1);//将map对象转换成json类型数据
-            result = json.toString();//给result赋值，传递给页面
-        }else{
-            map1.put("state", -1);//用户输入的原密码错误
-            JSONObject json = JSONObject.fromObject(map1);//将map对象转换成json类型数据
-            result = json.toString();//给result赋值，传递给页面
-        }
-        return "checkOldPwd";
-    }
+
     //-------------------------访问servletAPI-----------------------------------------------
     @Override
     public SimplePersonInfoForm getModel() {

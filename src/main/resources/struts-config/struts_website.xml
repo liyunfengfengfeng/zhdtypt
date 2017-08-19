@@ -75,15 +75,19 @@
             <result name="updatePersonInfo" type="redirectAction">
                 <param name="actionName">IndexAction_toInfor</param>
             </result>
-            <!--检查用户输入的原密码是否正确-->
-            <interceptor-ref name="json"/>
-            <result name="checkOldPwd" type="json">
-                <param name="root">result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 --></param>
-            </result>
+
         </action>
         <!--修改账户密码-->
         <action name="ModifyPwd_*" class="com.newage.iep.action.account.ModifyPwdAction" method="{1}">
             <result name="modifyAccountPwd">/WEB-INF/views/index/account.jsp</result>
+
+        </action>
+        <action name="CheckAction_*" class="com.newage.iep.action.account.CheckAction" method="{1}">
+            <!--检查用户输入的原密码是否正确-->
+                        <interceptor-ref name="json"/>
+                        <result name="checkOldPwd" type="json">
+                            <param name="root">result</param>
+                        </result>
 
         </action>
     </package>

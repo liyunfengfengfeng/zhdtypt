@@ -12,6 +12,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by a1996_000 on 2017/8/12.
@@ -52,7 +55,20 @@ public class PersonnelAction extends ActionSupport implements ModelDriven<Person
         personnel.setId(personnelForm.getId());
         personnel.setMail(personnelForm.getMail());
         personnel.setName(personnelForm.getName());
-        personnel.setBath(personnelForm.getBath());
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟
+        String dstr = personnelForm.getBath();
+        try {
+            if(dstr!=null){
+
+                Date date1=sdf.parse(dstr);
+                personnel.setBath(date1);//待转化
+            }
+
+
+            // }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         personnel.setSex(personnelForm.getSex());
         personnel.setLogin_name(personnelForm.getLogin_name());
         personnelService.updatePersonnelInfo(personnel);

@@ -122,8 +122,10 @@ public class AccountAction extends ActionSupport implements ModelDriven<Account>
         personnel.setName(account.getName());
         personnel.setSex(account.getSex());
         personnel.setId_no(account.getId_number());
-        personnel.setBath(account.getBath().toString());//待转化
+        personnel.setBath(account.getBath());//待转化
         personnel.setMail(account.getEmail());
+        Date date1 = new Date();
+        personnel.setCreate_date(date1);
         //注册人员信息
         personnelService.registerPersonnelInfo(personnel);
         if(flag){

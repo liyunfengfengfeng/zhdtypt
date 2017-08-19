@@ -1,6 +1,7 @@
 package com.newage.iep.pojos;
 
 
+import java.util.Date;
 
 /**
  * Created by a1996_000 on 2017/8/12.
@@ -14,7 +15,7 @@ public class Personnel {
     private String  Password;
     private String  Id_no;
     private String  Sex;
-    private String  Bath;
+    private Date Bath;
     private String  Area_code;
     private String  Post_address;
     private String  Army_date;
@@ -52,10 +53,10 @@ public class Personnel {
     private String   Address;
     private String   Education;
     private String   Rmk;
-    private String      Create_date;
+    private Date      Create_date;
     private String    Create_by;//审核人
     private String   Modity_by;
-    private String Modity_date ;
+    private Date Modity_date ;
     private String picture_path;//存放图片路径
     //------------------------------------getter/setter----------------------------------------------------------------
 
@@ -115,11 +116,11 @@ public class Personnel {
         Sex = sex;
     }
 
-    public String getBath() {
+    public Date getBath() {
         return Bath;
     }
 
-    public void setBath(String bath) {
+    public void setBath(Date bath) {
         Bath = bath;
     }
 
@@ -419,13 +420,7 @@ public class Personnel {
         Rmk = rmk;
     }
 
-    public String getCreate_date() {
-        return Create_date;
-    }
 
-    public void setCreate_date(String create_date) {
-        Create_date = create_date;
-    }
 
     public String getCreate_by() {
         return Create_by;
@@ -443,11 +438,19 @@ public class Personnel {
         Modity_by = modity_by;
     }
 
-    public String getModity_date() {
+    public Date getCreate_date() {
+        return Create_date;
+    }
+
+    public void setCreate_date(Date create_date) {
+        Create_date = create_date;
+    }
+
+    public Date getModity_date() {
         return Modity_date;
     }
 
-    public void setModity_date(String modity_date) {
+    public void setModity_date(Date modity_date) {
         Modity_date = modity_date;
     }
 

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by a1996_000 on 2017/8/14.
@@ -75,9 +76,25 @@ public class IndexAction extends ActionSupport implements ServletRequestAware,Se
         }
 
         //System.out.println(personnel.getMail()+"人员信息要展示的邮箱"+personnel.getPost_duty());
-
-
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date date = personnel.getBath();
+        String birthday=sdf.format(date);
+        request.setAttribute("birthday",birthday);
+        //修改时间
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date date1 = personnel.getModity_date();
+        String modifydate=sdf1.format(date);
+        request.setAttribute("modifydate",modifydate);
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date date2 = personnel.getModity_date();
+        String createdate=sdf2.format(date2);
+        request.setAttribute("createdate",createdate);
         request.setAttribute("personnel",personnel);
+        //设置状态
+        int statu = Integer.parseInt(personnel.getStatu());
+        if(statu==1){
+            request.setAttribute("info","通过审核");
+        }
         return "toInfor";
     }
     @Override

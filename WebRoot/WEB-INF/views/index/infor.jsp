@@ -163,7 +163,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="form-group">
                     <label for="birth" class="col-sm-3 control-label text-left">出生日期</label>
                     <div class="col-sm-8">
-                        <input id="birth" name="birth" class="form-control" value="<s:property value="%{#personnel.Bath}"/>" type="date" AUTOCOMPLETE=OFF disabled/>
+                        <input id="birth" name="birth" class="form-control" value="${birthday}" type="date" AUTOCOMPLETE=OFF disabled/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -346,7 +346,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="form-group">
                     <label for="status" class="col-sm-3 control-label text-left">状态</label>
                     <div class="col-sm-8">
-                        <input id="status" name="status" class="form-control" value="<s:property value="%{#personnel.Statu}"/>" type="text" AUTOCOMPLETE=OFF disabled/>
+                        <input id="status" name="status" class="form-control" value="${info}" type="text" AUTOCOMPLETE=OFF disabled/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -398,7 +398,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="form-group">
                     <label for="create_date" class="col-sm-3 control-label text-left">创建日期</label>
                     <div class="col-sm-8">
-                        <input id="create_date" name="create_date" class="form-control" value="<s:property value="%{#personnel.Create_date}"/>" type="date" AUTOCOMPLETE=OFF disabled/>
+                        <input id="create_date" name="create_date" class="form-control" value="${createdate}" type="date" AUTOCOMPLETE=OFF disabled/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -416,7 +416,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="form-group">
                     <label for="modity_date" class="col-sm-3 control-label text-left">修改日期</label>
                     <div class="col-sm-8">
-                        <input id="modity_date" name="modity_date" class="form-control" value="<s:property value="%{#personnel.Modity_date}"/>" type="date" AUTOCOMPLETE=OFF disabled/>
+                        <input id="modity_date" name="modity_date" class="form-control" value="${modifydate}" type="date" AUTOCOMPLETE=OFF disabled/>
                     </div>
                 </div>
                 <div class="form-group">

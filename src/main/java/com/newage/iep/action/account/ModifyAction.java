@@ -8,6 +8,7 @@ import com.newage.iep.serivce.account.PersonnelService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import net.sf.json.JSONObject;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -22,6 +23,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -51,7 +54,10 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
     private String upload_fileFileName;
     //获取上传文件类型,命名格式：表单file控件名+ContentType(固定)
     private String upload_fileContentType;
-
+    //用户输入的原密码
+    private String oldpassword;
+    //传json
+    private String result;
     /**
      * 修改账户信息
      * @return
@@ -84,7 +90,7 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
         //System.out.println("contentType:"+getUploadImageContentType());
         //System.out.println("File:"+getPic());
         //保存到根目录下的Images文件夹下
-        String realPath = ServletActionContext.getServletContext().getRealPath("/uploadOImages");    //取得真实路径
+        String realPath = ServletActionContext.getServletContext().getRealPath("/static/uploadOImages");    //取得真实路径
         System.out.println(realPath);
         System.out.println(upload_fileFileName);
         System.out.println(upload_fileContentType);
@@ -98,8 +104,14 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
         String head = upload_fileFileName.substring(0,last);
         String type = upload_fileFileName.substring(last);
         upload_fileFileName = simpleDateFormat.format(date) + tempInt + type;
-        System.out.println("新的文件名称是："+upload_fileFileName);
-
+        System.out.println("新的文件名称是："+upload_fileFileName);//*.jpg
+        //根据邮箱获取当前人员信息
+        //从session中获取邮箱信息
+        HttpSession session = ServletActionContext.getRequest().getSession();
+        String email1 = (String)session.getAttribute("user_email");
+        Personnel personnel = personnelService.queryPersonnelByEmail(email1);
+        personnel.setPicture_path("/static/uploadOImages/"+upload_fileFileName);
+        personnelService.updatePersonnelInfo(personnel);
         //创建父文件夹
         if(upload_file!=null){
             File saveFile = new File(new File(realPath), upload_fileFileName);
@@ -132,8 +144,8 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
 //        }
         //姓名 身份证号 性别 出生日期
         //从session中获取邮箱信息
-        HttpSession session = ServletActionContext.getRequest().getSession();
-        String email = (String)session.getAttribute("user_email");
+//        HttpSession session = ServletActionContext.getRequest().getSession();
+//        String email = (String)session.getAttribute("user_email");
         //更新人员信息
 //        Personnel personnel = personnelService.queryPersonnelByEmail(email);
 //        personnel.setBath(simplePersonInfoForm.getBirth());
@@ -223,13 +235,38 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
         personnel.setCreate_by(simplePersonInfoForm.getCreate_by());
         personnel.setModity_by(simplePersonInfoForm.getModity_by());
         personnel.setRmk(simplePersonInfoForm.getRmk());
-        String dstr7=simplePersonInfoForm.getCreate_date();
-        personnel.setCreate_date(dstr7);//创建日期
+//        String dstr7=simplePersonInfoForm.getCreate_date();
+//        Date date7 = new Date(dstr7);
+//        personnel.setCreate_date(date7);//创建日期
 
-        String dstr8=simplePersonInfoForm.getModity_date();
-        personnel.setModity_date(dstr8);//修改日期
+        Date date8 = new Date();
+        personnel.setModity_date(date8);//修改日期
         personnelService.updatePersonnelInfo(personnel);
         return "updatePersonInfo";
+    }
+
+    /**
+     * 检查用户输入的原密码是否正确
+     * @return
+     */
+    public String checkOldPwd(){
+        System.out.println("用户输入的原密码是 ：" + oldpassword);
+        //从session中获取邮箱信息
+        HttpSession session = ServletActionContext.getRequest().getSession();
+        String email = (String)session.getAttribute("user_email");
+        //根据邮箱获取account
+        Account account = accountService.queryAccountByEmail(email);
+        Map<String, Object> map1 = new HashMap<String, Object>();
+        if(account!=null&&account.getPassword().equals(oldpassword)) {
+            map1.put("state", 1);//用户输入的原密码正确
+            JSONObject json = JSONObject.fromObject(map1);//将map对象转换成json类型数据
+            result = json.toString();//给result赋值，传递给页面
+        }else{
+            map1.put("state", -1);//用户输入的原密码错误
+            JSONObject json = JSONObject.fromObject(map1);//将map对象转换成json类型数据
+            result = json.toString();//给result赋值，传递给页面
+        }
+        return "checkOldPwd";
     }
     //-------------------------访问servletAPI-----------------------------------------------
     @Override
@@ -294,5 +331,21 @@ public class ModifyAction extends ActionSupport implements ModelDriven<SimplePer
 
     public void setUpload_fileContentType(String upload_fileContentType) {
         this.upload_fileContentType = upload_fileContentType;
+    }
+
+    public String getOldpassword() {
+        return oldpassword;
+    }
+
+    public void setOldpassword(String oldpassword) {
+        this.oldpassword = oldpassword;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
     }
 }

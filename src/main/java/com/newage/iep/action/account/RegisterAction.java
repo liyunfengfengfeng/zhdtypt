@@ -93,7 +93,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven<Registe
 
                 Date date1=sdf.parse(dstr);
                 account.setBath(date1);
-                personnel.setBath(dstr);//待转化
+                personnel.setBath(date1);//待转化
             }
 
 

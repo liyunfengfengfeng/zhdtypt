@@ -88,7 +88,13 @@
                         <result name="checkOldPwd" type="json">
                             <param name="root">result</param>
                         </result>
-
+        </action>
+        <!--动态生成菜单-->
+        <action name="MenuAction_*" class="com.newage.iep.action.menu.MenuAction" method="{1}">
+            <!--检查用户输入的原密码是否正确-->
+            <result name="queryAccountMenus" type="json">
+                <param name="root">result</param>
+            </result>
         </action>
     </package>
 </struts>

@@ -30,7 +30,7 @@ public class IndexAction extends ActionSupport implements ServletRequestAware,Se
     @Qualifier("organizationService")
     OrganizationService organizationService;
     /**
-     * 跳转到首页
+     * 跳转到首页   此时登录已经成功
      * @return
      */
     public String index(){
@@ -43,6 +43,7 @@ public class IndexAction extends ActionSupport implements ServletRequestAware,Se
             request.setAttribute("name",personnel.getName());
             request.setAttribute("picture_path",personnel.getPicture_path());
         }
+
         return "index";
     }
 

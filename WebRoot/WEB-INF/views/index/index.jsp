@@ -81,86 +81,158 @@
 <!--<button class="send " style="position: fixed;right: 300px;">dgsd</button>                                     &lt;!&ndash;main&ndash;&gt;-->
 <div id="main" class="container" >
     <!--sider-->
-    <div id="sider" >
+    <div id="sider">
         <aside class="sidebar">
             <div class="infor">
-                     <div class="pic center-block">
-                         <img src="${picture_path}" class="img-responsive img-circle" alt="">
-                     </div>
-                     <div class="">
-                         <h4 class="text-center">您好，${name}</h4>
-                         <h5 class="text-center">系统管理员</h5>
-                     </div>
+                <div class="pic center-block">
+                    <img src="img/pic.png" class="img-responsive img-circle" alt="">
+                </div>
+                <div class="">
+                    <h4 class="text-center">您好，***</h4>
+                    <h5 class="text-center" style="color: #f5f5f5">系统管理员</h5>
+                </div>
                 <ul class="nav">
-                    <li><a href="IndexAction_toAccount.do" target="show">个人账户</a></li>
-                    <li><a href="IndexAction_toInfor.do" target="show">个人信息</a></li>
+                    <li><a href="account.html" target="show">个人账户</a></li>
+                    <li><a href="infor.html" target="show">个人信息</a></li>
                 </ul>
-
             </div>
-            <nav class="sidebar-nav">
-                <!--<ul id="menu" class="metismenu menu" class="" style="height: 0px;" aria-expanded="true">-->
-                    <!--<li class=""><a href="#" aria-expanded="true" >Menu 0-->
-                        <!--<i class="icon-chevron-right" style="float: right"></i> </a>-->
-                        <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
-                            <!--<li><a href="page1.html" target="show">item 0.1</a></li>-->
-                            <!--<li><a href="page2.html" target="show">item 0.2</a></li>-->
-                            <!--<li><a href="page3.html" target="show">item 0.3</a></li>-->
-                            <!--<li><a href="page4.html" target="show">item 0.4</a></li>-->
-                        <!--</ul>-->
+            <h5>业务导航</h5>
+            <div id="servicenav" class="optiscroll" >
+                <nav class="sidebar-nav sidemenu1">
+                    <!--<ul id="menu" class="metismenu menu" class="" style="height: 0px;" aria-expanded="true">-->
+                    <!--<li class=""><a href="login.html" aria-expanded="true" >Menu 0-->
+                    <!--<i class="icon-chevron-right" style="float: right"></i> </a>-->
+                    <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
+                    <!--<li><a href="page1.html" target="show">item 0.1</a></li>-->
+                    <!--<li><a href="page2.html" target="show">item 0.2</a></li>-->
+                    <!--<li><a href="page3.html" target="show">item 0.3</a></li>-->
+                    <!--<li><a href="page4.html" target="show">item 0.4</a></li>-->
+                    <!--</ul>-->
                     <!--</li>-->
                     <!--<li class=""><a href="#" aria-expanded="false" >Menu 1-->
-                        <!--<i class="icon-chevron-right" style="float: right"></i> </a>-->
-                        <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
-                            <!--<li><a href="#">item 1.1</a></li>-->
-                            <!--<li><a href="#" aria-expanded="true">item 1.2 <i class="icon-chevron-right" style="float: right"></i>-->
-                            <!--</a>-->
-                                <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
-                                    <!--<li><a href="#">item 1.2.1</a></li>-->
-                                    <!--<li><a href="#">item 1.2.2</a></li>-->
-                                    <!--<li><a href="#">item 1.2.3</a></li>-->
-                                    <!--<li><a href="#">item 1.2.4</a></li>-->
-                                <!--</ul>-->
-                            <!--</li>-->
-                            <!--<li><a href="#">item 1.3</a></li>-->
-                            <!--<li><a href="#">item 1.4</a></li>-->
-                        <!--</ul>-->
+                    <!--<i class="icon-chevron-right" style="float: right"></i> </a>-->
+                    <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
+                    <!--<li><a href="#">item 1.1</a></li>-->
+                    <!--<li><a href="#" aria-expanded="true">item 1.2 <i class="icon-chevron-right" style="float: right"></i>-->
+                    <!--</a>-->
+                    <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
+                    <!--<li><a href="#">item 1.2.1</a></li>-->
+                    <!--<li><a href="#">item 1.2.2</a></li>-->
+                    <!--<li><a href="#">item 1.2.3</a></li>-->
+                    <!--<li><a href="#">item 1.2.4</a></li>-->
+                    <!--</ul>-->
+                    <!--</li>-->
+                    <!--<li><a href="#">item 1.3</a></li>-->
+                    <!--<li><a href="#">item 1.4</a></li>-->
+                    <!--</ul>-->
                     <!--</li>-->
                     <!--<li class=""><a href="#" aria-expanded="false" >Menu 2-->
-                        <!--<i class="icon-chevron-right" style="float: right"></i></a>-->
-                        <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
-                            <!--<li><a href="#">item 2.1</a></li>-->
-                            <!--<li><a href="#">item 2.2</a></li>-->
-                            <!--<li><a href="#">item 2.3</a></li>-->
-                            <!--<li><a href="#">item 2.4</a></li>-->
-                        <!--</ul>-->
+                    <!--<i class="icon-chevron-right" style="float: right"></i></a>-->
+                    <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
+                    <!--<li><a href="#">item 2.1</a></li>-->
+                    <!--<li><a href="#">item 2.2</a></li>-->
+                    <!--<li><a href="#">item 2.3</a></li>-->
+                    <!--<li><a href="#">item 2.4</a></li>-->
+                    <!--</ul>-->
                     <!--</li>-->
                     <!--<li class=""><a href="#" aria-expanded="false" >Menu 3-->
-                        <!--<i class="icon-chevron-right" style="float: right"></i></a>-->
-                        <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
-                            <!--<li><a href="#">item 3.1</a></li>-->
-                            <!--<li><a href="#">item 3.2</a></li>-->
-                            <!--<li><a href="#">item 3.3</a></li>-->
-                            <!--<li><a href="#">item 3.4</a></li>-->
-                        <!--</ul>-->
+                    <!--<i class="icon-chevron-right" style="float: right"></i></a>-->
+                    <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
+                    <!--<li><a href="#">item 3.1</a></li>-->
+                    <!--<li><a href="#">item 3.2</a></li>-->
+                    <!--<li><a href="#">item 3.3</a></li>-->
+                    <!--<li><a href="#">item 3.4</a></li>-->
+                    <!--</ul>-->
                     <!--</li>-->
                     <!--<li class=""><a href="#" aria-expanded="false" >Menu 4-->
-                        <!--<i class="icon-chevron-right" style="float: right"></i></a>-->
-                        <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
-                            <!--<li><a href="#">item 4.1</a></li>-->
-                            <!--<li><a href="#" aria-expanded="false">item 4.2 <i class="icon-chevron-right" style="float: right"></i></a>-->
-                                <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
-                                    <!--<li><a href="#">item 4.2.1</a></li>-->
-                                    <!--<li><a href="#">item 4.2.2</a></li>-->
-                                    <!--<li><a href="#">item 4.2.3</a></li>-->
-                                    <!--<li><a href="#">item 4.2.4</a></li>-->
-                                <!--</ul>-->
-                            <!--</li>-->
-                            <!--<li><a href="#">item 4.3</a></li>-->
-                            <!--<li><a href="#">item 4.4</a></li>-->
-                        <!--</ul>-->
+                    <!--<i class="icon-chevron-right" style="float: right"></i></a>-->
+                    <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
+                    <!--<li><a href="#">item 4.1</a></li>-->
+                    <!--<li><a href="#" aria-expanded="false">item 4.2 <i class="icon-chevron-right" style="float: right"></i></a>-->
+                    <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
+                    <!--<li><a href="#">item 4.2.1</a></li>-->
+                    <!--<li><a href="#">item 4.2.2</a></li>-->
+                    <!--<li><a href="#">item 4.2.3</a></li>-->
+                    <!--<li><a href="#">item 4.2.4</a></li>-->
+                    <!--</ul>-->
                     <!--</li>-->
-                <!--</ul>-->
-            </nav>
+                    <!--<li><a href="#">item 4.3</a></li>-->
+                    <!--<li><a href="#">item 4.4</a></li>-->
+                    <!--</ul>-->
+                    <!--</li>-->
+                    <!--</ul>-->
+                </nav>
+            </div>
+            <h5>功能模块</h5>
+            <div id="functionnav" class="optiscroll">
+                <nav class="sidebar-nav sidemenu2">
+                    <!--<ul id="menu" class="metismenu menu" class="" style="height: 0px;" aria-expanded="true">-->
+                    <!--<li class=""><a href="#" aria-expanded="true" >Menu 0-->
+                    <!--<i class="icon-chevron-right" style="float: right"></i> </a>-->
+                    <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
+                    <!--<li><a href="page1.html" target="show">item 0.1</a></li>-->
+                    <!--<li><a href="page2.html" target="show">item 0.2</a></li>-->
+                    <!--<li><a href="page3.html" target="show">item 0.3</a></li>-->
+                    <!--<li><a href="page4.html" target="show">item 0.4</a></li>-->
+                    <!--</ul>-->
+                    <!--</li>-->
+                    <!--<li class=""><a href="#" aria-expanded="false" >Menu 1-->
+                    <!--<i class="icon-chevron-right" style="float: right"></i> </a>-->
+                    <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
+                    <!--<li><a href="#">item 1.1</a></li>-->
+                    <!--<li><a href="#" aria-expanded="true">item 1.2 <i class="icon-chevron-right" style="float: right"></i>-->
+                    <!--</a>-->
+                    <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
+                    <!--<li><a href="#">item 1.2.1</a></li>-->
+                    <!--<li><a href="#">item 1.2.2</a></li>-->
+                    <!--<li><a href="#">item 1.2.3</a></li>-->
+                    <!--<li><a href="#">item 1.2.4</a></li>-->
+                    <!--</ul>-->
+                    <!--</li>-->
+                    <!--<li><a href="#">item 1.3</a></li>-->
+                    <!--<li><a href="#">item 1.4</a></li>-->
+                    <!--</ul>-->
+                    <!--</li>-->
+                    <!--<li class=""><a href="#" aria-expanded="false" >Menu 2-->
+                    <!--<i class="icon-chevron-right" style="float: right"></i></a>-->
+                    <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
+                    <!--<li><a href="#">item 2.1</a></li>-->
+                    <!--<li><a href="#">item 2.2</a></li>-->
+                    <!--<li><a href="#">item 2.3</a></li>-->
+                    <!--<li><a href="#">item 2.4</a></li>-->
+                    <!--</ul>-->
+                    <!--</li>-->
+                    <!--<li class=""><a href="#" aria-expanded="false" >Menu 3-->
+                    <!--<i class="icon-chevron-right" style="float: right"></i></a>-->
+                    <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
+                    <!--<li><a href="#">item 3.1</a></li>-->
+                    <!--<li><a href="#">item 3.2</a></li>-->
+                    <!--<li><a href="#">item 3.3</a></li>-->
+                    <!--<li><a href="#">item 3.4</a></li>-->
+                    <!--</ul>-->
+                    <!--</li>-->
+                    <!--<li class=""><a href="#" aria-expanded="false" >Menu 4-->
+                    <!--<i class="icon-chevron-right" style="float: right"></i></a>-->
+                    <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
+                    <!--<li><a href="#">item 4.1</a></li>-->
+                    <!--<li><a href="#" aria-expanded="false">item 4.2 <i class="icon-chevron-right" style="float: right"></i></a>-->
+                    <!--<ul class="" style="height: 0px;" aria-expanded="true">-->
+                    <!--<li><a href="#">item 4.2.1</a></li>-->
+                    <!--<li><a href="#">item 4.2.2</a></li>-->
+                    <!--<li><a href="#">item 4.2.3</a></li>-->
+                    <!--<li><a href="#">item 4.2.4</a></li>-->
+                    <!--</ul>-->
+                    <!--</li>-->
+                    <!--<li><a href="#">item 4.3</a></li>-->
+                    <!--<li><a href="#">item 4.4</a></li>-->
+                    <!--</ul>-->
+                    <!--</li>-->
+                    <!--</ul>-->
+                </nav>
+            </div>
+            <%--<a href="manageAudit.html" target="show">点击进入注册管理</a> <br>--%>
+            <%--<a href="dataPermission.html" target="show">点击进入数据权限管理</a> <br>--%>
+            <%--<a href="orgdepartment.html" target="show">点击进入组织管理</a>--%>
         </aside>
     </div>
     <div id="content">
@@ -184,24 +256,68 @@
 
 //获取模块菜单
     var str="";
+//    function getMenu(data) {
+//        str+="<ul class='metismenu' style='height: 0px;' aria-expanded='true'>";
+//        $(data).each(function (index) {
+//            var turn= data[index].target=="#"? "javascript:void(0)":data[index].target+".html";
+//            str+="<li class=''><a href='"+turn+"' aria-expanded='true' target='show'>"
+//                    +data[index].name
+//                    +"</a>";
+//            if(data[index].child!=null){
+//                getMenu(data[index].child);
+//            }
+//            str+="</li>";
+//        })
+//        str+="</ul>";
+//        return str;
+//    }
     function getMenu(data) {
         str+="<ul class='metismenu' style='height: 0px;' aria-expanded='true'>";
         $(data).each(function (index) {
-            var turn= data[index].target=="#"? "javascript:void(0)":data[index].target+".html";
+            var turn= data[index].url=="#"? "javascript:void(0)":data[index].url+".html";
             str+="<li class=''><a href='"+turn+"' aria-expanded='true' target='show'>"
-                    +data[index].name
+                    +data[index].title
                     +"</a>";
-            if(data[index].child!=null){
-                getMenu(data[index].child);
+            if(data[index].childList.length>0){
+                getMenu(data[index].childList);
             }
             str+="</li>";
         })
         str+="</ul>";
         return str;
     }
-    var rs=getMenu(menu);
-    $(".sidebar-nav").append(rs);
-    $(".sidebar-nav>ul").addClass("menu");
+    //查询菜单信息
+    $.ajax({
+        url:"MenuAction_queryAccountMenus.do",
+        type:"post",
+        data:"",
+        contentType:"application/json",
+        dataType:"html json",
+        success:function (data) {
+
+            var jsonStr=data;
+            var jsonObj =  JSON.parse(jsonStr);
+//            console.log(jsonObj);
+//            var rs=getMenu(jsonObj);
+//            $(".sidemenu2").append(rs);
+//            $(".sidemenu1").append(rs);
+//            $(".sidebar-nav>ul").addClass("menu");
+            var menu=jsonObj.menus;
+            var rs=getMenu(menu);
+            $(".sidemenu2").append(rs);
+            $(".sidemenu1").append(rs);
+            $(".sidebar-nav>ul").addClass("menu");
+//            console.log(menu[0].url);
+//            $(menu).each(function (i) {
+//                console.log(menu[i].url);
+//            })
+
+        }
+    })
+
+    //    var rs=getMenu(menu);
+//    $(".sidebar-nav").append(rs);
+//    $(".sidebar-nav>ul").addClass("menu");
     $('#sider .menu').metisMenu({
             toggle: false
         });

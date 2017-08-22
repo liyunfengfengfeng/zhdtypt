@@ -24,6 +24,7 @@ public class LoginAction extends ActionSupport implements ServletRequestAware,Se
     private String email;
     private String password;
     private String result = "";
+    private String sun;//记住我
     //注入账户业务层
     @Autowired
     @Qualifier("accountService")
@@ -52,7 +53,8 @@ public class LoginAction extends ActionSupport implements ServletRequestAware,Se
                 result = json.toString();//给result赋值，传递给页面
             }else if(state==1){//审核通过可以登录
                 //为用户添加cookie
-//                String sun=request.getParameter("sun");
+//                System.out.println("sun is   :" + sun);
+//
 //                if(sun!=null) {
 //                    Cookie uc=new Cookie("ffu",email);
 //                    uc.setMaxAge(3600*24*7);
@@ -110,5 +112,13 @@ public class LoginAction extends ActionSupport implements ServletRequestAware,Se
 
     public void setResult(String result) {
         this.result = result;
+    }
+
+    public String getSun() {
+        return sun;
+    }
+
+    public void setSun(String sun) {
+        this.sun = sun;
     }
 }

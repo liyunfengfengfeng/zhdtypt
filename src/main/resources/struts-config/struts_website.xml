@@ -4,7 +4,24 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
     <package name="website_index" extends="struts-default,json-default" namespace="/">
+        <!-- 定义一个拦截器 -->
+        <interceptors>
+            <interceptor name="authority"
+                         class="com.newage.iep.interceptor.ChekLoginInterceptor">
+            </interceptor>
+            <!-- 拦截器栈 -->
+            <interceptor-stack name="mydefault">
+                <interceptor-ref name="defaultStack" />
+                <interceptor-ref name="authority" />
+            </interceptor-stack>
+        </interceptors>
+        <!-- 定义默认栈
+        <default-interceptor-ref name="mydefault" /> -->
 
+        <!-- 定义全局结果 -->
+        <global-results>
+            <result name="login">/WEB-INF/views/account/login.jsp</result>
+        </global-results>
         <!-- 打开WEB站点首页
         <action name="index" class="com.newage.iep.action.test.TestAction" method="index">
             <result name="success">/WEB-INF/views/index.jsp</result>
@@ -31,10 +48,12 @@
         </action>
         <!--PersonnelAction 处理个人信息-->
         <action name="PersonnelAction_*" class="com.newage.iep.action.account.PersonnelAction" method="{1}">
+            <interceptor-ref name="mydefault"/>
             <result name="personInfo">/WEB-INF/views/personInfo/personInfo.jsp</result>
         </action>
         <!--登录成功到首页  存储登录到首页之后的操作-->
         <action name="IndexAction_*" class="com.newage.iep.action.account.IndexAction" method="{1}">
+            <interceptor-ref name="mydefault"/>
             <result name="index">/WEB-INF/views/index/index.jsp</result>
             <result name="toAccount">/WEB-INF/views/index/account.jsp</result>
             <result name="toInfor">/WEB-INF/views/index/infor.jsp</result>
@@ -71,6 +90,7 @@
         </action>
         <!--修改account账户信息-->
         <action name="ModifyAction_*" class="com.newage.iep.action.account.ModifyAction" method="{1}">
+            <interceptor-ref name="mydefault"/>
             <result name="modifyPwd">/WEB-INF/views/index/account.jsp</result>
             <result name="updatePersonInfo" type="redirectAction">
                 <param name="actionName">IndexAction_toInfor</param>
@@ -79,6 +99,7 @@
         </action>
         <!--修改账户密码-->
         <action name="ModifyPwd_*" class="com.newage.iep.action.account.ModifyPwdAction" method="{1}">
+            <interceptor-ref name="mydefault"/>
             <result name="modifyAccountPwd">/WEB-INF/views/index/account.jsp</result>
 
         </action>
@@ -91,6 +112,7 @@
         </action>
         <!--动态生成菜单-->
         <action name="MenuAction_*" class="com.newage.iep.action.menu.MenuAction" method="{1}">
+            <interceptor-ref name="mydefault"/>
             <!--检查用户输入的原密码是否正确-->
             <result name="queryAccountMenus" type="json">
                 <param name="root">result</param>

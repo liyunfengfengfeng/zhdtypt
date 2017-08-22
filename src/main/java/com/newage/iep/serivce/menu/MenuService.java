@@ -10,4 +10,6 @@ public interface MenuService {
     List querySecondMenus();
     //查询该登陆用户所具有的一级菜单
     List queryFirstMenus(List root_menus_ids);
+    //根据跟菜单id查询所有的跟菜单  功能模块菜单
+    List queryFirstFunctionMenus(List root_menus_ids);
 }

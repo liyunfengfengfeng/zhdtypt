@@ -17,6 +17,9 @@ public class Menu {
     private String url;// 菜单url
     private String image_path;// 图片路径
     private List childList;//子菜单
+    //新增字段
+    private String module_name;
+    private Integer menu_order;
 
     public String getMenu_id() {
         return menu_id;
@@ -72,5 +75,21 @@ public class Menu {
 
     public void setChildList(List childList) {
         this.childList = childList;
+    }
+
+    public String getModule_name() {
+        return module_name;
+    }
+
+    public void setModule_name(String module_name) {
+        this.module_name = module_name;
+    }
+
+    public Integer getMenu_order() {
+        return menu_order;
+    }
+
+    public void setMenu_order(Integer menu_order) {
+        this.menu_order = menu_order;
     }
 }

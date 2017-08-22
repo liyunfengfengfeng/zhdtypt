@@ -47,6 +47,7 @@ public class MenuAction extends ActionSupport implements ServletRequestAware,Ser
     MenuService menuService;
     //返回json数据
     private String result;
+    private String result1;
     /**
      * 动态查询菜单 不同用户由于角色不同产生不同的菜单
      * @param
@@ -62,10 +63,11 @@ public class MenuAction extends ActionSupport implements ServletRequestAware,Ser
         //查询出当前登录用户的所有角色
         if(account!=null) {
             List roles = accountRoleService.queryAllRoles(account.getAccount_0_id());//返回所有角色id
-            //根据角色id查询出所有的根菜单  1级菜单
+            //根据角色id查询出所有的根菜单 业务导航菜单  1级菜单
             List root_menus_ids = roleMenuService.queryAllRootMenuIds(roles);
-            //根据跟菜单id查询所有的跟菜单
+            //根据跟菜单id查询所有的跟菜单  业务导航菜单
             List root_menus = menuService.queryFirstMenus(root_menus_ids);
+            System.out.println("业务导航菜单  :" + root_menus.size());
             System.out.println("root_menus is   :" + root_menus);
             //根据跟菜单查询出所有子菜单    2级菜单
             List child_menus = menuService.querySecondMenus();
@@ -86,8 +88,36 @@ public class MenuAction extends ActionSupport implements ServletRequestAware,Ser
             }
             Map<String,Object> map1 = new HashMap<String,Object>();
             map1.put("menus", root_menus);//用户名密码错误
+
+
+
+            /**
+             * 处理模块菜单
+             */
+            //根据跟菜单id查询所有的跟菜单  功能模块菜单
+            List function_menus = menuService.queryFirstFunctionMenus(root_menus_ids);
+            System.out.println("功能模块菜单有   :" + function_menus.size());
+            //根据跟菜单查询出所有子菜单    2级菜单
+            List childFunction_menus = menuService.querySecondMenus();
+            System.out.println("子菜单是   :" + child_menus);
+            //System.out.println("该用户根菜单的数量是  :" + root_menus.size());
+            for (Object obj:function_menus) {
+                Menu parentmenu = (Menu)obj;
+                List<Menu> childList = new ArrayList<>();
+                for (Object obj1:childFunction_menus) {
+                    Menu childmenu = (Menu)obj1;
+                    if (parentmenu.getMenu_id().equals(childmenu.getParent_id())){
+                        childList.add(childmenu);
+                    }
+                }
+                //childList.sort(new MenuComparator());
+                parentmenu.setChildList(childList);
+
+            }
+            map1.put("function_menus", function_menus);//用户名密码错误
             JSONObject json = JSONObject.fromObject(map1);//将map对象转换成json类型数据
-            result = json.toString();//给result赋值，传递给页面
+            result = json.toString();//给result1赋值，传递给页面
+
         }else{
             System.out.println("account is null");
         }
@@ -110,5 +140,13 @@ public class MenuAction extends ActionSupport implements ServletRequestAware,Ser
 
     public void setResult(String result) {
         this.result = result;
+    }
+
+    public String getResult1() {
+        return result1;
+    }
+
+    public void setResult1(String result1) {
+        this.result1 = result1;
     }
 }

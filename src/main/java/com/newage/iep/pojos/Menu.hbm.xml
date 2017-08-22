@@ -23,5 +23,11 @@
 		<property name="image_path">
 			<column name="image_path" />
 		</property>
+		<property name="module_name">
+			<column name="module_name" />
+		</property>
+		<property name="menu_order">
+			<column name="menu_order" />
+		</property>
 	</class>
 </hibernate-mapping>

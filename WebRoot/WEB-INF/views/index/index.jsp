@@ -347,7 +347,11 @@
 
 
     //获取模块菜单
-    var str="";
+    var str;
+    function getMenus(data) {
+             str="";
+            return getMenu(data)
+    }
     function getMenu(data) {
         str+="<ul class='metismenu' style='height:0px' aria-expanded='true'>";
         $(data).each(function (index) {
@@ -376,12 +380,14 @@
             var jsonObj =  JSON.parse(jsonStr);
             console.log(jsonObj);
             var menu=jsonObj.menus;
-            var rs=getMenu(menu);
-            $(".sidemenu2").append(rs);
-            $(".sidemenu1").append(rs);
-            $(".sidebar-nav>ul").addClass("menu");
-            console.log(menu[0].url);
+            var rs1=getMenus(menu);
+            $(".sidemenu1").append(rs1);
 
+            var funcmenu=jsonObj.function_menus;
+            var rs2=getMenus(funcmenu);
+            $(".sidemenu2").append(rs2);
+
+            $(".sidebar-nav>ul").addClass("menu");
             $('#sider .menu').metisMenu({
                 toggle: false
             });
@@ -395,9 +401,9 @@
     //    var rs=getMenu(menu);
     //    $(".sidebar-nav").append(rs);
     //    $(".sidebar-nav>ul").addClass("menu");
-    $('#sider .menu').metisMenu({
-        toggle: false
-    });
+//    $('#sider .menu').metisMenu({
+//        toggle: false
+//    });
 </script>
 <script type="text/javascript">
     //修改菜单栏滚动条样式

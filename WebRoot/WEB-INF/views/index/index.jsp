@@ -56,7 +56,7 @@
             <ul class=" nav navbar-nav navbar-right" >
                 <li id="search"><a href="#" ><span class="glyphicon glyphicon-search "></span></a></li>
                 <li id="fullscreen"><a href="#" ><span class="glyphicon glyphicon-resize-full "></span></a></li>
-                <li><a href="#" ><span class="glyphicon glyphicon-log-out "></span></a></li>
+                <li><a href="LoginOutAction_quit.do" ><span class="glyphicon glyphicon-log-out "></span></a></li>
                 <li id="msg" >
                     <a href="#"  data-container="body" data-toggle="popover" data-placement="bottom"
                        data-content="右侧的 Popover 中的一些内容" data-animation="true">

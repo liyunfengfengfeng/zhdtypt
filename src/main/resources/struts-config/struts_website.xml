@@ -118,5 +118,11 @@
                 <param name="root">result</param>
             </result>
         </action>
+        <!--用户退出操作-->
+        <action name="LoginOutAction_*" class="com.newage.iep.action.account.LoginOutAction" method="{1}">
+            <interceptor-ref name="mydefault"/>
+            <result name="quit">/WEB-INF/views/account/login.jsp</result>
+
+        </action>
     </package>
 </struts>

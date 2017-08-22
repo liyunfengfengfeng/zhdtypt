@@ -35,7 +35,9 @@ body{
     padding: 40px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
     -webkit-box-pack: center;
+    -moz-box-pack: center;
     border-radius: 15px;
 }
 #publicity p{

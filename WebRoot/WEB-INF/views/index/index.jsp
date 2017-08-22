@@ -260,7 +260,7 @@
 <!--<script src="js/bootstrap/dropdown.js"></script>-->
 <script src="/static/js/jquery/jquery.optiscroll.js"></script> <!--滚动条样式-->
 <script src="/static/js/metisMenu/metisMenu.min.js"></script> <!--侧边菜单样式-->
-<script src="/static/js/menu_data.js"></script><!--动态菜单数据-->
+<%--<script src="/static/js/menu_data.js"></script><!--动态菜单数据-->--%>
 <script src="/static/js/index.js"></script>
 <script src="/static/js/jquery.warpdrive.min.js"></script><!--顶部菜单背景-->
 <script>
@@ -349,33 +349,20 @@
     //获取模块菜单
     var str="";
     function getMenu(data) {
-        str+="<ul class='metismenu' style='height: 0px;' aria-expanded='true'>";
+        str+="<ul class='metismenu' style='height:0px' aria-expanded='true'>";
         $(data).each(function (index) {
-            var turn= data[index].target=="#"? "javascript:void(0)":data[index].target+".html";
+            var turn= data[index].url==""? "javascript:void(0)":data[index].url+".html";
             str+="<li class=''><a href='"+turn+"' aria-expanded='true' target='show'>"
-                    +data[index].name
+                    +data[index].title
                     +"</a>";
-            if(data[index].child!=null){
-                getMenu(data[index].child);
+            if(data[index].childList.length>=1){
+                getMenu(data[index].childList);
             }
             str+="</li>";
         })
         str+="</ul>";
         return str;
     }
-//    $.ajax({
-//        url:"",
-//        type:"post",
-//        data:"",
-//        contentType:"",
-//        dataType:"",
-//        success:function (data) {
-//            var rs=getMenu(data);
-//            $(".sidemenu2").append(rs);
-//            $(".sidemenu1").append(rs);
-//            $(".sidebar-nav>ul").addClass("menu");
-//        }
-//    })
     //查询菜单信息
     $.ajax({
         url:"MenuAction_queryAccountMenus.do",
@@ -387,17 +374,17 @@
 
             var jsonStr=data;
             var jsonObj =  JSON.parse(jsonStr);
-//            console.log(jsonObj);
-//            var rs=getMenu(jsonObj);
-//            $(".sidemenu2").append(rs);
-//            $(".sidemenu1").append(rs);
-//            $(".sidebar-nav>ul").addClass("menu");
+            console.log(jsonObj);
             var menu=jsonObj.menus;
             var rs=getMenu(menu);
             $(".sidemenu2").append(rs);
             $(".sidemenu1").append(rs);
             $(".sidebar-nav>ul").addClass("menu");
-//            console.log(menu[0].url);
+            console.log(menu[0].url);
+
+            $('#sider .menu').metisMenu({
+                toggle: false
+            });
 //            $(menu).each(function (i) {
 //                console.log(menu[i].url);
 //            })
@@ -411,10 +398,6 @@
     $('#sider .menu').metisMenu({
         toggle: false
     });
-    $(".sidebar-nav>ul").addClass("menu");
-    $('#sider .menu').metisMenu({
-            toggle: false
-        });
 </script>
 <script type="text/javascript">
     //修改菜单栏滚动条样式

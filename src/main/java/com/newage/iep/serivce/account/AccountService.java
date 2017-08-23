@@ -52,4 +52,11 @@ public interface AccountService {
      * @param account
      */
     void updateAccountInfo(Account account);
+
+    /**
+     * 检查邮箱是否存在
+     * @param email
+     * @return
+     */
+    boolean checkEmail(String email);
 }

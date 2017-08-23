@@ -120,5 +120,24 @@ public class AccountServiceImpl extends GenericHibernateDAO implements AccountSe
         this.update(account);
     }
 
+    /**
+     * 检查邮箱是否存在
+     * @param email
+     * @return
+     */
+    @Override
+    public boolean checkEmail(String email) {
+        Query query = this.createQuery(" from Account account where account.email=:emailname");
+        query.setString("emailname",email);//true 有效 false无效 邮箱不存在为无效
+        List list = query.list();
+        if(list!=null&&list.size()==0){
+            return false;
+        }
+        if(list!=null&&list.size()==1){//邮箱存在且唯一
+            return true;
+        }
+        return false;
+    }
+
 
 }

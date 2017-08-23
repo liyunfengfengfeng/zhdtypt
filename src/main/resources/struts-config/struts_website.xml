@@ -124,5 +124,30 @@
             <result name="quit">/WEB-INF/views/account/login.jsp</result>
 
         </action>
+        <!--忘记密码-->
+        <action name="ForgetPwdAction_*" class="com.newage.iep.action.account.ForgetPwdAction" method="{1}">
+            <result name="forgetpwd">/WEB-INF/views/account/forgotPassword.jsp</result>
+            <interceptor-ref name="json"/>
+            <!--校验邮箱-->
+            <result name="checkEmail" type="json">
+                <param name="root">result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 --></param>
+            </result>
+        </action>
+        <!--发送验证码找回密码-->
+        <action name="SendEmailAction_*" class="com.newage.iep.action.account.SendEmailAction" method="{1}">
+            <interceptor-ref name="json"/>
+            <!--校验邮箱-->
+            <result name="sendEmail" type="json">
+                <param name="root">result</param>
+            </result>
+            <!--校验验证码-->
+            <result name="checkVericode" type="json">
+                <param name="root">result</param>
+            </result>
+            <!--忘记密码提交表单修改密码-->
+            <result name="updatepassword" type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
     </package>
 </struts>

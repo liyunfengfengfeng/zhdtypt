@@ -75,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <label style="color: #e9f4e6"><input type="checkbox" name="sun"/>记住密码</label>
                         </div>
                         <div style="float: right">
-                        <a href=""><p class="form-control-static" style="color: #c4e3f3">忘记密码？</p></a>
+                        <a href="ForgetPwdAction_forgetpwd.do"><p class="form-control-static" style="color: #c4e3f3">忘记密码？</p></a>
                         </div>
                     </div>
                 </div>

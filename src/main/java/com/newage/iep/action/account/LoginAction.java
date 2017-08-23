@@ -9,6 +9,7 @@ import org.apache.struts2.interceptor.ServletResponseAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -33,6 +34,10 @@ public class LoginAction extends ActionSupport implements ServletRequestAware,Se
      * 处理用户登录
      */
     public String login(){
+        response = ServletActionContext.getResponse();
+        request = ServletActionContext.getRequest();
+        System.out.println(" request is  :" + request);
+        System.out.println(" response is  :" + response);
 //        System.out.println("登录输入的邮箱是 " + email);
 //        System.out.println("登录输入的密码是 " + password);
         //检查用户名与密码是否匹配
@@ -53,16 +58,16 @@ public class LoginAction extends ActionSupport implements ServletRequestAware,Se
                 result = json.toString();//给result赋值，传递给页面
             }else if(state==1){//审核通过可以登录
                 //为用户添加cookie
-//                System.out.println("sun is   :" + sun);
-//
-//                if(sun!=null) {
-//                    Cookie uc=new Cookie("ffu",email);
-//                    uc.setMaxAge(3600*24*7);
-//                    response.addCookie(uc);
-//                    Cookie up=new Cookie("ffp",password);
-//                    up.setMaxAge(3600*24*7);
-//                    response.addCookie(up);
-//                }
+                System.out.println("sun is   :" + sun);
+
+                if(sun!=null) {
+                    Cookie uc=new Cookie("email",email);
+                    uc.setMaxAge(3600*24*7);
+                    response.addCookie(uc);
+                    Cookie up=new Cookie("password",password);
+                    up.setMaxAge(3600*24*7);
+                    response.addCookie(up);
+                }
 
                 map1.put("state", 1);//审核通过可以登录
                 //用户登录成功 将用户的邮箱到session中

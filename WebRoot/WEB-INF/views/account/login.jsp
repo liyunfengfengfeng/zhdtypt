@@ -115,7 +115,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         var email=$.cookie('email');
         var password=$.cookie('password');
         $('#email').val(email);
-        $('#password').val('password');
+        $('#password').val(password);
     })
 
 

@@ -43,6 +43,10 @@ $(function () {
             str="您申请的账号未通过审核，请重新注册"
         }else if(state==1){
             str="登陆正常，等待跳转"
+            // if($('input[name|="sun"]').is(':checked')){
+            //     $.cookie('email',$('#email').val(),{expires:7});
+            //     $.cookie('password',$('#password').val(),{expires:7})
+            // }
             window.location="IndexAction_index.do";
         }
         iziToast.show({

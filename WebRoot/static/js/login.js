@@ -32,6 +32,11 @@ $(function () {
                 error.insertAfter( element).wrapInner('<span class="errormsg"/>');
         }
     })
+    function unlockscreen() {
+        $('#bg').css("z-index","-1");
+        $('#lock').removeClass('show');
+        $.cookie('lock','unlock');
+    }
     var msgtip=function (state) {
         var str="";
         if(state==-1){
@@ -47,6 +52,7 @@ $(function () {
             //     $.cookie('email',$('#email').val(),{expires:7});
             //     $.cookie('password',$('#password').val(),{expires:7})
             // }
+            unlockscreen();
             window.location="IndexAction_index.do";
         }
         iziToast.show({

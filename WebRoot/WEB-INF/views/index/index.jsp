@@ -30,6 +30,21 @@
 <body>
 <div id="bg" style="position: fixed;width: 100%;height: 100%;z-index: -1">
 </div>
+<div id="lock">
+    <div style="margin: 200px auto">
+        <h3 class="text-center">请输入登录密码解锁</h3>
+        <div class="unlock">
+            <input type="password" >
+            <span></span>
+            <div class="switch-box">
+                <input id="default" class="switch-box-input" type="checkbox" style="display: none"/>
+                <label for="default" class="switch-box-slider"></label>
+                <label for="default" class="switch-box-label">解锁</label>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--header-->
 <div class="navbar" role="navigation" id="header">
     <div id="logo" class="">
@@ -51,7 +66,7 @@
             <ul  class="nav navbar-nav navbar-left " >
                 <li class="hidemenu"><a href="#"><span class="glyphicon glyphicon-align-justify "></span></a></li>
                 <li class="user"><a href="#"><span class="glyphicon glyphicon-user icon-white"></span></a></li>
-                <li><a href="#" ><span class="glyphicon glyphicon-lock icon-white"></span></a></li>
+                <li class="lockscreen"><a href="#" ><span class="glyphicon glyphicon-lock icon-white"></span></a></li>
             </ul>
             <ul class=" nav navbar-nav navbar-right" >
                 <li id="search"><a href="#" ><span class="glyphicon glyphicon-search "></span></a></li>
@@ -256,14 +271,19 @@
 </div>
 <script src="/static/js/jquery/jquery-2.1.1.min.js"></script>
 <script src="/static/js/bootstrap/bootstrap.min.js"></script>
-<!--<script src="js/bootstrap/popover.js"></script>-->
-<!--<script src="js/bootstrap/dropdown.js"></script>-->
+<script src="/static/js/jquery.cookie.js"></script><!--顶部菜单背景-->
 <script src="/static/js/jquery/jquery.optiscroll.js"></script> <!--滚动条样式-->
 <script src="/static/js/metisMenu/metisMenu.min.js"></script> <!--侧边菜单样式-->
 <%--<script src="/static/js/menu_data.js"></script><!--动态菜单数据-->--%>
 <script src="/static/js/index.js"></script>
 <script src="/static/js/jquery.warpdrive.min.js"></script><!--顶部菜单背景-->
+<script src="/static/js/tojson.js"></script><!--顶部菜单背景-->
 <script>
+    if($.cookie('lock')=='lock'){
+        lockscreen();
+    }else{
+        unlockscreen();
+    }
     var settings = {
         width: 800,
         height:800,

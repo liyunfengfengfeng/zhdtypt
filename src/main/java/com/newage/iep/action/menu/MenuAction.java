@@ -67,11 +67,11 @@ public class MenuAction extends ActionSupport implements ServletRequestAware,Ser
             List root_menus_ids = roleMenuService.queryAllRootMenuIds(roles);
             //根据跟菜单id查询所有的跟菜单  业务导航菜单
             List root_menus = menuService.queryFirstMenus(root_menus_ids);
-            System.out.println("业务导航菜单  :" + root_menus.size());
-            System.out.println("root_menus is   :" + root_menus);
+            //System.out.println("业务导航菜单  :" + root_menus.size());
+            //System.out.println("root_menus is   :" + root_menus);
             //根据跟菜单查询出所有子菜单    2级菜单
             List child_menus = menuService.querySecondMenus();
-            System.out.println("子菜单是   :" + child_menus);
+            //System.out.println("子菜单是   :" + child_menus);
             //System.out.println("该用户根菜单的数量是  :" + root_menus.size());
             for (Object obj:root_menus) {
                 Menu parentmenu = (Menu)obj;
@@ -96,10 +96,10 @@ public class MenuAction extends ActionSupport implements ServletRequestAware,Ser
              */
             //根据跟菜单id查询所有的跟菜单  功能模块菜单
             List function_menus = menuService.queryFirstFunctionMenus(root_menus_ids);
-            System.out.println("功能模块菜单有   :" + function_menus.size());
+            //System.out.println("功能模块菜单有   :" + function_menus.size());
             //根据跟菜单查询出所有子菜单    2级菜单
             List childFunction_menus = menuService.querySecondMenus();
-            System.out.println("子菜单是   :" + child_menus);
+            //System.out.println("子菜单是   :" + child_menus);
             //System.out.println("该用户根菜单的数量是  :" + root_menus.size());
             for (Object obj:function_menus) {
                 Menu parentmenu = (Menu)obj;

@@ -59,4 +59,5 @@ public interface AccountService {
      * @return
      */
     boolean checkEmail(String email);
+
 }

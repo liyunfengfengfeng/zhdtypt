@@ -28,4 +28,44 @@ $('#search').on('click',function () {
         })
     })
 })
+$('#header .lockscreen').on('click',function () {
+    lockscreen();
+})
+function lockscreen() {
+    $('#bg').css("z-index","2");
+    $('#lock').addClass('show');
+    $.cookie('lock','lock');
+}
+function unlockscreen() {
+    $('#bg').css("z-index","-1");
+    $('#lock').removeClass('show');
+    $.cookie('lock','unlock');
+}
+$('#lock .unlock .switch-box').on('click',function () {
+    if($('.switch-box-input').val()=="on"){
+        var ps=$("#lock .unlock input[type=password]").val();
+        var  json = {password:ps}
+        //解锁
+        $.ajax({
+            type:"POST",
+            url:"UnlockAction_unlockScreen.do",
+            contentType:"application/json",
+            dataType:"html json",
+            data:JSON.stringify(json),
+            success:function (data) {
+                var jsonStr=data;
+                var jsonObj =  JSON.parse(jsonStr);
+                console.log(jsonObj.state);
+                if(jsonObj.state==1){//解锁成功
+                    unlockscreen();
+                    window.location="IndexAction_index.do";
+                }else{//解锁失败
+                    $('#lock .unlock input[type=password]').next().html("密码错误");
 
+                }
+
+
+            }
+        })
+    }
+})

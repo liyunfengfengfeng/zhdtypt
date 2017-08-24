@@ -149,5 +149,13 @@
                 <param name="root">result</param>
             </result>
         </action>
+        <!--屏幕解锁-->
+        <action name="UnlockAction_*" class="com.newage.iep.action.account.UnlockAction" method="{1}">
+            <interceptor-ref name="json"/>
+            <!--校验锁屏-->
+            <result name="unlockScreen" type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
     </package>
 </struts>

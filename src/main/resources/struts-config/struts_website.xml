@@ -157,5 +157,13 @@
                 <param name="root">result</param>
             </result>
         </action>
+        <!--导航搜索-->
+        <action name="SearchAction_*" class="com.newage.iep.action.search.SearchAction" method="{1}">
+            <result name="toSearch">/WEB-INF/views/search/search_result.jsp</result>
+        </action>
+        <!--系统参数设置-->
+        <action name="SetAction_*" class="com.newage.iep.action.systemparametermanagement.SetAction" method="{1}">
+            <result name="toSet">/WEB-INF/views/setting/settings.jsp</result>
+        </action>
     </package>
 </struts>

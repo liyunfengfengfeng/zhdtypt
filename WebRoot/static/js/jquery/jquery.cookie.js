@@ -54,7 +54,7 @@
  * @author Klaus Hartl/klaus.hartl@stilbuero.de
  */
 jQuery.cookie = function(name, value, options) {
-    if (typeof value != 'undefined') { // name and value given, set cookie
+    if (typeof value != 'undefined') { // name and value given, systemparametermanagement cookie
         options = options || {};
         if (value === null) {
             value = '';

@@ -57,7 +57,7 @@
         return !!(typeof Node === "object" ? o instanceof Node : o && typeof o === "object" && typeof o.nodeType === "number" && typeof o.nodeName === "string");
     }
     $.print = $.fn.print = function () {
-        // Print a given set of elements
+        // Print a given systemparametermanagement of elements
         var options, $this, self = this;
         // console.log("Printing", this, arguments);
         if (self instanceof $) {

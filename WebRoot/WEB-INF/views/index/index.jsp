@@ -69,7 +69,7 @@
                 <li class="lockscreen"><a href="#" ><span class="glyphicon glyphicon-lock icon-white"></span></a></li>
             </ul>
             <ul class=" nav navbar-nav navbar-right" >
-                <li id="search"><a href="#" ><span class="glyphicon glyphicon-search "></span></a></li>
+                <li id="search"><a href="#" ><span class="glyphicon glyphicon-search "></span></a></li><!--搜索框-->
                 <li id="fullscreen"><a href="#" ><span class="glyphicon glyphicon-resize-full "></span></a></li>
                 <li><a href="LoginOutAction_quit.do" ><span class="glyphicon glyphicon-log-out "></span></a></li>
                 <li id="msg" >
@@ -82,12 +82,12 @@
                 <li><a href="#" ><span class="glyphicon glyphicon-book "></span></a></li>
             </ul>
             <div id="topsearch" class="nav navbar-nav navbar-right">
-                <div class="input-group">
-                    <input type="text" class="form-control">
+                    <form action="SearchAction_toSearch.do" target="show" method="post"  class="input-group">
+                    <input type="text" name="searchecontent" id="searchecontent" class="form-control">
                     <span class="input-group-btn">
-                        <button class="btn btn-info" type="button"><span class="glyphicon glyphicon-search "></span></button>
+                        <button class="btn btn-info" type="submit" ><span class="glyphicon glyphicon-search "></span></button><!--<a href="SearchAction_toSearch.do" target="show">搜索框进行查询-->
                     </span>
-                </div>
+                    </form>
             </div>
         </div>
     </nav>
@@ -257,7 +257,7 @@
             </div>
             <a href="manageAudit.html" target="show">点击进入注册管理</a> <br>
             <a href="dataPermission.html" target="show">点击进入数据权限管理</a> <br>
-            <a href="orgdepartment.html" target="show">点击进入组织管理</a>
+            <a href="orgdepartment.html" target="show">点击进入组织管理</a> <br>
         </aside>
     </div>
     <div id="content">
@@ -375,7 +375,7 @@
     function getMenu(data) {
         str+="<ul class='metismenu' style='height:0px' aria-expanded='true'>";
         $(data).each(function (index) {
-            var turn= data[index].url==""? "javascript:void(0)":data[index].url+".html";
+            var turn= data[index].url==""? "javascript:void(0)":data[index].url+".do";
             str+="<li class=''><a href='"+turn+"' aria-expanded='true' target='show'>"
                     +data[index].title
                     +"</a>";

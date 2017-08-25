@@ -52,7 +52,7 @@ $(function() {
     var current 	= 1;
     /*
      sum and save the widths of each one of the fieldsets
-     set the final sum as the total width of the steps element
+     systemparametermanagement the final sum as the total width of the steps element
      */
     var stepsWidth	= 0;
     var widths 		= new Array();

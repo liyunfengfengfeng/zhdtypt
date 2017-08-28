@@ -205,151 +205,209 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   </nav>
                   <div class="content-wrap">
                       <section id="section-flip-1">
-                          <form class="form-horizontal" role="form">
+                          <!--基础设置-->
+                          <form class="form-horizontal" role="form" action="SetAction_saveOrUpdateBasicSetting.do" method="post">
                               <div class="form-group">
                                   <label for="overtime" class="col-sm-2 control-label">登陆超时</label>
                                   <div class="col-sm-10">
-                                      <input type="text" class="form-control" id="overtime">
+                                      <input type="text" class="form-control" id="overtime" name="logintimeout">
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label for="link" class="col-sm-2 control-label">链接路径</label>
                                   <div class="col-sm-10">
-                                      <input type="text" class="form-control" id="link">
+                                      <input type="text" class="form-control" id="link" name="linkpath">
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label for="compname" class="col-sm-2 control-label">公司名称</label>
                                   <div class="col-sm-10">
-                                      <input type="text" class="form-control" id="compname">
+                                      <input type="text" class="form-control" id="compname" name="companyname">
                                   </div>
                               </div>
                               <div class="form-group">
                               <label for="contactway" class="col-sm-2 control-label">联系方式</label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="contactway">
+                                  <input type="text" class="form-control" id="contactway" name="contactinfo">
                               </div>
                              </div>
                               <div class="form-group">
                                   <label for="welcomewords" class="col-sm-2 control-label">欢迎语</label>
                                   <div class="col-sm-10">
-                                      <textarea  class="form-control" id="welcomewords"></textarea>
+                                      <textarea  class="form-control" id="welcomewords" name="welcomespeech"></textarea>
                                   </div>
                               </div>
                               <div class="form-group">
                                   <div class="col-sm-12">
-                                      <button class="btn btn-success center-block" style="margin-top: 10px;width: 130px;font-size: 18px">保存 <span class="glyphicon glyphicon-circle-arrow-right"> </span></button>
+                                      <button type="submit" class="btn btn-success center-block" style="margin-top: 10px;width: 130px;font-size: 18px">保存 <span class="glyphicon glyphicon-circle-arrow-right"> </span></button>
                                   </div>
                               </div>
                           </form>
                       </section>
                       <section id="section-flip-2">
-                          <form class="form-horizontal" role="form">
+
+
+
+
+
+                          <!--故障设置-->
+                          <form class="form-horizontal" role="form" action="SetAction_saveOrUpdateFaultSetting.do" method="post">
                           <div class="form-group">
                               <label for="troublewarning" class="col-sm-2 control-label">故障预警方式</label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="troublewarning">
+                                  <input type="text" class="form-control" id="troublewarning" name="errorwarningmethod">
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="warning" class="col-sm-2 control-label">预警方式</label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="warning">
+                                  <input type="text" class="form-control" id="warning" name="warningmethod">
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="informman" class="col-sm-2 control-label">通知人员</label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="informman">
+                                  <input type="text" class="form-control" id="informman" name="noticepersonnel">
                               </div>
                           </div>
                           <div class="form-group">
                               <div class="col-sm-12">
-                                  <button class="btn btn-success center-block" style="margin-top: 10px;width: 130px;font-size: 18px">保存 <span class="glyphicon glyphicon-circle-arrow-right"> </span></button>
+                                  <button type="submit" class="btn btn-success center-block" style="margin-top: 10px;width: 130px;font-size: 18px">保存 <span class="glyphicon glyphicon-circle-arrow-right"> </span></button>
                               </div>
                           </div>
                       </form>
+
+
+
+
+
+
+
+
                       </section>
                       <section id="section-flip-3">
-                          <form class="form-horizontal" role="form">
+
+
+
+
+
+
+                          <!--应急设置-->
+                          <form class="form-horizontal" role="form" action="SetAction_saveOrUpdateEmergencySetting.do" method="post">
                           <div class="form-group">
                               <label for="arrivetime" class="col-sm-4 control-label">应急人员到场时间</label>
                               <div class="col-sm-8">
-                                  <input type="text" class="form-control" id="arrivetime">
+                                  <input type="text" class="form-control" id="arrivetime" name="emergencypersonnelarrivaltime">
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="sendtoW" class="col-sm-4 control-label left">报警后是否发送短信至维保人员</label>
                               <div class="col-sm-8">
-                                  <input type="checkbox" class="form-control" id="sendtoW">
+                                  <input type="checkbox" class="form-control" id="sendtoW" name="smstomaintenancer">
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="sendtoS" class="col-sm-4 control-label">报警后是否发送短信至使用人员</label>
                               <div class="col-sm-8">
-                                  <input type="checkbox" class="form-control" id="sendtoS">
+                                  <input type="checkbox" class="form-control" id="sendtoS" name="smstouser">
                               </div>
                           </div>
                           <div class="form-group">
                               <div class="col-sm-12">
-                                  <button class="btn btn-success center-block" style="margin-top: 10px;width: 130px;font-size: 18px">保存 <span class="glyphicon glyphicon-circle-arrow-right"> </span></button>
+                                  <button type="submit" class="btn btn-success center-block" style="margin-top: 10px;width: 130px;font-size: 18px">保存 <span class="glyphicon glyphicon-circle-arrow-right"> </span></button>
                               </div>
                           </div>
                       </form>
+
+
+
+
+
+
+
+
                       </section>
                       <section id="section-flip-4">
-                          <form class="form-horizontal" role="form">
+
+
+
+
+
+
+                          <!--预警设置-->
+                          <form class="form-horizontal" role="form" action="SetAction_saveOrUpdateWarningSetting.do" method="post">
                               <div class="form-group">
                                   <label for="winadvance" class="col-sm-3 control-label">维保提前预警</label>
                                   <div class="col-sm-9">
-                                      <input type="text" class="form-control" id="winadvance">
+                                      <input type="text" class="form-control" id="winadvance" name="earlywarning">
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label for="ifsend" class="col-sm-3 control-label left">预警是否发送通知</label>
                                   <div class="col-sm-9">
-                                      <input type="checkbox" class="form-control" id="ifsend">
+                                      <input type="checkbox" class="form-control" id="ifsend" name="sendnotice">
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label for="yinadvance" class="col-sm-3 control-label">年检提前预警</label>
                                   <div class="col-sm-9">
-                                      <input type="text" class="form-control" id="yinadvance">
+                                      <input type="text" class="form-control" id="yinadvance" name="annualadvancewarning">
                                   </div>
                               </div>
                               <div class="form-group">
                                   <div class="col-sm-12">
-                                      <button class="btn btn-success center-block" style="margin-top: 10px;width: 130px;font-size: 18px">保存 <span class="glyphicon glyphicon-circle-arrow-right"> </span></button>
+                                      <button type="submit" class="btn btn-success center-block" style="margin-top: 10px;width: 130px;font-size: 18px">保存 <span class="glyphicon glyphicon-circle-arrow-right"> </span></button>
                                   </div>
                               </div>
                           </form>
+
+
+
+
+
+
+
                       </section>
                       <section id="section-flip-5">
-                          <form class="form-horizontal" role="form">
+
+
+
+
+
+                          <!--公告设置-->
+                          <form class="form-horizontal" role="form" action="SetAction_saveOrUpdateAnnounceSetting.do" method="post">
                               <div class="form-group">
                                   <label for="updatawarn" class="col-sm-3 control-label">节目更新提醒</label>
                                   <div class="col-sm-9">
-                                      <input type="text" class="form-control" id="updatawarn">
+                                      <input type="text" class="form-control" id="updatawarn" name="programupdatereminder">
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label for="ifupload" class="col-sm-3 control-label left">是否实时上传</label>
                                   <div class="col-sm-9">
-                                      <input type="checkbox" class="form-control" id="ifupload">
+                                      <input type="checkbox" class="form-control" id="ifupload" name="realtimeupload">
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label for="updatefacility" class="col-sm-3 control-label">节目同时更新(设备)</label>
                                   <div class="col-sm-9">
-                                      <input type="text" class="form-control" id="updatefacility">
+                                      <input type="text" class="form-control" id="updatefacility" name="programupdatedevice">
                                   </div>
                               </div>
                               <div class="form-group">
                                   <div class="col-sm-12">
-                                      <button class="btn btn-success center-block" style="margin-top: 10px;width: 130px;font-size: 18px">保存 <span class="glyphicon glyphicon-circle-arrow-right"> </span></button>
+                                      <button type="submit" class="btn btn-success center-block" style="margin-top: 10px;width: 130px;font-size: 18px">保存 <span class="glyphicon glyphicon-circle-arrow-right"> </span></button>
                                   </div>
                               </div>
                           </form>
+
+
+
+
+
+
+
+
                       </section>
                   </div><!-- /content -->
               </div>

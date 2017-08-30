@@ -207,36 +207,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <section id="section-flip-1">
                           <!--基础设置-->
                           <form class="form-horizontal" role="form" action="SetAction_saveOrUpdateBasicSetting.do" method="post">
+                              <s:if test="%{#request.basicSettings != null}">
+                              <s:iterator value="%{#request.basicSettings}" var="basicSetting">
                               <div class="form-group">
                                   <label for="overtime" class="col-sm-2 control-label">登陆超时</label>
                                   <div class="col-sm-10">
-                                      <input type="text" class="form-control" id="overtime" name="logintimeout">
+                                      <input type="text" class="form-control" id="overtime" name="logintimeout" value="<s:property value="%{#basicSetting.logintimeout}"/>">
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label for="link" class="col-sm-2 control-label">链接路径</label>
                                   <div class="col-sm-10">
-                                      <input type="text" class="form-control" id="link" name="linkpath">
+                                      <input type="text" class="form-control" id="link" name="linkpath" value="<s:property value="%{#basicSetting.linkpath}"/>">
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label for="compname" class="col-sm-2 control-label">公司名称</label>
                                   <div class="col-sm-10">
-                                      <input type="text" class="form-control" id="compname" name="companyname">
+                                      <input type="text" class="form-control" id="compname" name="companyname" value="<s:property value="%{#basicSetting.companyname}"/>">
                                   </div>
                               </div>
                               <div class="form-group">
                               <label for="contactway" class="col-sm-2 control-label">联系方式</label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="contactway" name="contactinfo">
+                                  <input type="text" class="form-control" id="contactway" name="contactinfo" value="<s:property value="%{#basicSetting.contactinfo}"/>">
                               </div>
                              </div>
                               <div class="form-group">
                                   <label for="welcomewords" class="col-sm-2 control-label">欢迎语</label>
                                   <div class="col-sm-10">
-                                      <textarea  class="form-control" id="welcomewords" name="welcomespeech"></textarea>
+                                      <textarea  class="form-control" id="welcomewords" name="welcomespeech"><s:property value="%{#basicSetting.welcomespeech}"/></textarea>
                                   </div>
                               </div>
+                                  </s:iterator>
+                                  </s:if>
                               <div class="form-group">
                                   <div class="col-sm-12">
                                       <button type="submit" class="btn btn-success center-block" style="margin-top: 10px;width: 130px;font-size: 18px">保存 <span class="glyphicon glyphicon-circle-arrow-right"> </span></button>
@@ -252,24 +256,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                           <!--故障设置-->
                           <form class="form-horizontal" role="form" action="SetAction_saveOrUpdateFaultSetting.do" method="post">
+                              <s:if test="%{#request.faultSettings != null}">
+                              <s:iterator value="%{#request.faultSettings}" var="faultSetting">
                           <div class="form-group">
                               <label for="troublewarning" class="col-sm-2 control-label">故障预警方式</label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="troublewarning" name="errorwarningmethod">
+                                  <input type="text" class="form-control" id="troublewarning" name="errorwarningmethod" value="<s:property value="%{#faultSetting.errorwarningmethod}"/>">
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="warning" class="col-sm-2 control-label">预警方式</label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="warning" name="warningmethod">
+                                  <input type="text" class="form-control" id="warning" name="warningmethod" value="<s:property value="%{#faultSetting.warningmethod}"/>">
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="informman" class="col-sm-2 control-label">通知人员</label>
                               <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="informman" name="noticepersonnel">
+                                  <input type="text" class="form-control" id="informman" name="noticepersonnel" value="<s:property value="%{#faultSetting.noticepersonnel}"/>">
                               </div>
                           </div>
+                                  </s:iterator>
+                                  </s:if>
                           <div class="form-group">
                               <div class="col-sm-12">
                                   <button type="submit" class="btn btn-success center-block" style="margin-top: 10px;width: 130px;font-size: 18px">保存 <span class="glyphicon glyphicon-circle-arrow-right"> </span></button>
@@ -294,24 +302,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                           <!--应急设置-->
                           <form class="form-horizontal" role="form" action="SetAction_saveOrUpdateEmergencySetting.do" method="post">
+                              <s:if test="%{#request.emergencySettings != null}">
+                                  <c:forEach items="${requestScope.emergencySettings }" var="emergencySetting">
                           <div class="form-group">
                               <label for="arrivetime" class="col-sm-4 control-label">应急人员到场时间</label>
                               <div class="col-sm-8">
-                                  <input type="text" class="form-control" id="arrivetime" name="emergencypersonnelarrivaltime">
+                                  <input type="text" class="form-control" id="arrivetime" name="emergencypersonnelarrivaltime" value="${emergencySetting.emergencypersonnelarrivaltime}">
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="sendtoW" class="col-sm-4 control-label left">报警后是否发送短信至维保人员</label>
                               <div class="col-sm-8">
-                                  <input type="checkbox" class="form-control" id="sendtoW" name="smstomaintenancer">
+                                  <c:if test="${emergencySetting.smstomaintenancer=='1'}">
+                                      <c:set scope="page" value="checked" var="smstomaintenancer"/>
+                                  </c:if>
+                                  <input type="checkbox" class="form-control" id="sendtoW" name="smstomaintenancer" ${smstomaintenancer } >
                               </div>
                           </div>
                           <div class="form-group">
                               <label for="sendtoS" class="col-sm-4 control-label">报警后是否发送短信至使用人员</label>
                               <div class="col-sm-8">
-                                  <input type="checkbox" class="form-control" id="sendtoS" name="smstouser">
+                                  <c:if test="${emergencySetting.smstouser=='1'}">
+                                         <c:set scope="page" value="checked" var="smstouser"/>
+                                  </c:if>
+                                  <input type="checkbox" class="form-control" id="sendtoS" name="smstouser" ${smstouser }>
                               </div>
+
                           </div>
+                                  </c:forEach>
+                              </s:if>
                           <div class="form-group">
                               <div class="col-sm-12">
                                   <button type="submit" class="btn btn-success center-block" style="margin-top: 10px;width: 130px;font-size: 18px">保存 <span class="glyphicon glyphicon-circle-arrow-right"> </span></button>
@@ -336,24 +355,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                           <!--预警设置-->
                           <form class="form-horizontal" role="form" action="SetAction_saveOrUpdateWarningSetting.do" method="post">
+                              <s:if test="%{#request.warningSettings != null}">
+                              <s:iterator value="%{#request.warningSettings}" var="warningSetting">
                               <div class="form-group">
                                   <label for="winadvance" class="col-sm-3 control-label">维保提前预警</label>
                                   <div class="col-sm-9">
-                                      <input type="text" class="form-control" id="winadvance" name="earlywarning">
+                                      <input type="text" class="form-control" id="winadvance" name="earlywarning" value="<s:property value="%{#warningSetting.earlywarning}"/>">
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label for="ifsend" class="col-sm-3 control-label left">预警是否发送通知</label>
                                   <div class="col-sm-9">
-                                      <input type="checkbox" class="form-control" id="ifsend" name="sendnotice">
+                                      <c:if test="${warningSetting.sendnotice=='1'}">
+                                          <c:set scope="page" value="checked" var="sendnotice"/>
+                                      </c:if>
+                                      <input type="checkbox" class="form-control" id="ifsend" name="sendnotice" ${sendnotice }>
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label for="yinadvance" class="col-sm-3 control-label">年检提前预警</label>
                                   <div class="col-sm-9">
-                                      <input type="text" class="form-control" id="yinadvance" name="annualadvancewarning">
+                                      <input type="text" class="form-control" id="yinadvance" name="annualadvancewarning" value="<s:property value="%{#warningSetting.annualadvancewarning}"/>">
                                   </div>
                               </div>
+                                  </s:iterator>
+                                  </s:if>
                               <div class="form-group">
                                   <div class="col-sm-12">
                                       <button type="submit" class="btn btn-success center-block" style="margin-top: 10px;width: 130px;font-size: 18px">保存 <span class="glyphicon glyphicon-circle-arrow-right"> </span></button>
@@ -376,24 +402,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                           <!--公告设置-->
                           <form class="form-horizontal" role="form" action="SetAction_saveOrUpdateAnnounceSetting.do" method="post">
+                              <s:if test="%{#request.announceSettings != null}">
+                              <s:iterator value="%{#request.announceSettings}" var="announceSetting">
                               <div class="form-group">
                                   <label for="updatawarn" class="col-sm-3 control-label">节目更新提醒</label>
                                   <div class="col-sm-9">
-                                      <input type="text" class="form-control" id="updatawarn" name="programupdatereminder">
+                                      <input type="text" class="form-control" id="updatawarn" name="programupdatereminder" value="<s:property value="%{#announceSetting.programupdatereminder}"/>">
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label for="ifupload" class="col-sm-3 control-label left">是否实时上传</label>
                                   <div class="col-sm-9">
-                                      <input type="checkbox" class="form-control" id="ifupload" name="realtimeupload">
+                                      <c:if test="${announceSetting.realtimeupload=='1'}">
+                                          <c:set scope="page" value="checked" var="realtimeupload"/>
+                                      </c:if>
+                                      <input type="checkbox" class="form-control" id="ifupload" name="realtimeupload" ${realtimeupload}>
                                   </div>
                               </div>
                               <div class="form-group">
                                   <label for="updatefacility" class="col-sm-3 control-label">节目同时更新(设备)</label>
                                   <div class="col-sm-9">
-                                      <input type="text" class="form-control" id="updatefacility" name="programupdatedevice">
+                                      <input type="text" class="form-control" id="updatefacility" name="programupdatedevice" value="<s:property value="%{#announceSetting.programupdatedevice}"/>">
                                   </div>
                               </div>
+                                  </s:iterator>
+                                  </s:if>
                               <div class="form-group">
                                   <div class="col-sm-12">
                                       <button type="submit" class="btn btn-success center-block" style="margin-top: 10px;width: 130px;font-size: 18px">保存 <span class="glyphicon glyphicon-circle-arrow-right"> </span></button>

@@ -52,4 +52,11 @@ public class FaultSettingServiceImpl extends GenericHibernateDAO implements Faul
             this.save(faultSetting);
         }
     }
+    //查询所有的故障记录
+    @Override
+    public List<FaultSetting> selectAllFaultSettings() {
+        Query query = this.createQuery(" from FaultSetting ");
+        List list = query.list();
+        return list;
+    }
 }

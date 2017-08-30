@@ -51,4 +51,15 @@ public class BasicSettingServiceImpl extends GenericHibernateDAO implements Basi
             this.save(basicSetting);
         }
     }
+
+    /**
+     * 查询所有的基础设置
+     * @return
+     */
+    @Override
+    public List<BasicSetting> selectAllBasicSettings() {
+        Query query = this.createQuery(" from BasicSetting ");
+        List list = query.list();
+        return list;
+    }
 }

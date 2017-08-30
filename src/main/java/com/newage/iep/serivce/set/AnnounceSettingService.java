@@ -15,4 +15,6 @@ public interface AnnounceSettingService {
     void updateAnnounceSetting(AnnounceSetting announceSetting);
     //保存公告设置
     void saveAnnounceSetting(AnnounceSetting announceSetting);
+    //查询所有的公告设置
+    List<AnnounceSetting> selectAllAnnounceSettings();
 }

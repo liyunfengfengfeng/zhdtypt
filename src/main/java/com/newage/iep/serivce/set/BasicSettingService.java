@@ -18,4 +18,6 @@ public interface BasicSettingService {
     void updateBasicSetting(BasicSetting basicSetting);
     //保存基础设置
     void saveBasicSetting(BasicSetting basicSetting);
+    //查询所有的基础设置
+    List<BasicSetting> selectAllBasicSettings();
 }

@@ -15,4 +15,6 @@ public interface WarningSettingService {
     void updateWarningSetting(WarningSetting warningSetting);
     //保存预警设置
     void saveWarningSetting(WarningSetting warningSetting);
+    //查询所有的预警设置
+    List<WarningSetting> selectAllWarningSettings();
 }

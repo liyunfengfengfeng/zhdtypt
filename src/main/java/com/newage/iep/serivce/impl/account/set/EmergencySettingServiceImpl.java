@@ -40,4 +40,11 @@ public class EmergencySettingServiceImpl extends GenericHibernateDAO implements 
             this.save(emergencySetting);
         }
     }
+    //查询所有的应急设置
+    @Override
+    public List<EmergencySetting> selectAllEmergencySettings() {
+        Query query = this.createQuery(" from EmergencySetting ");
+        List list = query.list();
+        return list;
+    }
 }

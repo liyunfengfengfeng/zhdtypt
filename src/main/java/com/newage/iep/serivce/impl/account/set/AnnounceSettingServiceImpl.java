@@ -40,4 +40,15 @@ public class AnnounceSettingServiceImpl extends GenericHibernateDAO implements A
             this.save(announceSetting);
         }
     }
+
+    /**
+     * 查询所有的公告设置
+     * @return
+     */
+    @Override
+    public List<AnnounceSetting> selectAllAnnounceSettings() {
+        Query query = this.createQuery(" from AnnounceSetting ");
+        List list = query.list();
+        return list;
+    }
 }

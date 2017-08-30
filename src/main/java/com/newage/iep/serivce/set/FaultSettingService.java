@@ -15,4 +15,6 @@ public interface FaultSettingService {
     void updateFaultSetting(FaultSetting faultSetting);
     //保存故障信息
     void saveFaultSetting(FaultSetting faultSetting);
+    //查询所有的故障记录
+    List<FaultSetting> selectAllFaultSettings();
 }

@@ -66,16 +66,21 @@ public class SetAction extends ActionSupport implements ServletRequestAware,Serv
      * @return
      */
     public String toSet(){
-        //查询基础设置信息
-
-        //查询故障设置信息
-
-        //查询应急设置信息
-
-        //查询预警设置信息
-
-        //查询公告设置信息
-
+        //查询基础设置信息  BasicSetting
+        List<BasicSetting> basicSettings = basicSettingService.selectAllBasicSettings();
+        //查询故障设置信息  FaultSetting
+        List<FaultSetting> faultSettings = faultSettingService.selectAllFaultSettings();
+        //查询应急设置信息  EmergencySetting
+        List<EmergencySetting> emergencySettings = emergencySettingService.selectAllEmergencySettings();
+        //查询预警设置信息  WarningSetting
+        List<WarningSetting> warningSettings = warningSettingService.selectAllWarningSettings();
+        //查询公告设置信息  AnnounceSetting
+        List<AnnounceSetting> announceSettings = announceSettingService.selectAllAnnounceSettings();
+        request.setAttribute("basicSettings",basicSettings);
+        request.setAttribute("faultSettings",faultSettings);
+        request.setAttribute("emergencySettings",emergencySettings);
+        request.setAttribute("warningSettings",warningSettings);
+        request.setAttribute("announceSettings",announceSettings);
         return "toSet";
     }
 
@@ -95,7 +100,7 @@ public class SetAction extends ActionSupport implements ServletRequestAware,Serv
             basicSetting.setWelcomespeech(welcomespeech);
             basicSetting.setLogintimeout(logintimeout);
             basicSettingService.updateBasicSetting(basicSetting);
-            return "toSet";
+            return "saveOrUpdateSetting";
         }else{
             //保存用户填写的信息
             BasicSetting basicSetting = new BasicSetting();
@@ -105,7 +110,7 @@ public class SetAction extends ActionSupport implements ServletRequestAware,Serv
             basicSetting.setWelcomespeech(welcomespeech);
             basicSetting.setLogintimeout(logintimeout);
             basicSettingService.saveBasicSetting(basicSetting);
-            return "toSet";
+            return "saveOrUpdateSetting";
         }
 
     }
@@ -123,7 +128,7 @@ public class SetAction extends ActionSupport implements ServletRequestAware,Serv
             faultSetting.setWarningmethod(warningmethod);
             faultSetting.setNoticepersonnel(noticepersonnel);
             faultSettingService.updateFaultSetting(faultSetting);
-            return "toSet";
+            return "saveOrUpdateSetting";
         }else{
             //保存用户填写的信息
             FaultSetting faultSetting = new FaultSetting();
@@ -131,7 +136,7 @@ public class SetAction extends ActionSupport implements ServletRequestAware,Serv
             faultSetting.setWarningmethod(warningmethod);
             faultSetting.setNoticepersonnel(noticepersonnel);
             faultSettingService.saveFaultSetting(faultSetting);
-            return "toSet";
+            return "saveOrUpdateSetting";
         }
 
     }
@@ -157,7 +162,7 @@ public class SetAction extends ActionSupport implements ServletRequestAware,Serv
                 emergencySetting.setSmstouser(0);
             }
             emergencySettingService.updateEmergencySetting(emergencySetting);
-            return "toSet";
+            return "saveOrUpdateSetting";
         }else{
             //保存用户填写的信息
             EmergencySetting emergencySetting = new EmergencySetting();
@@ -173,7 +178,7 @@ public class SetAction extends ActionSupport implements ServletRequestAware,Serv
                 emergencySetting.setSmstouser(0);
             }
             emergencySettingService.saveEmergencySetting(emergencySetting);
-            return "toSet";
+            return "saveOrUpdateSetting";
         }
     }
 
@@ -195,7 +200,7 @@ public class SetAction extends ActionSupport implements ServletRequestAware,Serv
                 warningSetting.setSendnotice(0);
             }
             warningSettingService.updateWarningSetting(warningSetting);
-            return "toSet";
+            return "saveOrUpdateSetting";
         }else{
             //保存用户填写的信息
             WarningSetting warningSetting = new WarningSetting();
@@ -207,7 +212,7 @@ public class SetAction extends ActionSupport implements ServletRequestAware,Serv
                 warningSetting.setSendnotice(0);
             }
             warningSettingService.saveWarningSetting(warningSetting);
-            return "toSet";
+            return "saveOrUpdateSetting";
         }
     }
 
@@ -229,7 +234,7 @@ public class SetAction extends ActionSupport implements ServletRequestAware,Serv
             }
 
             announceSettingService.updateAnnounceSetting(announceSetting);
-            return "toSet";
+            return "saveOrUpdateSetting";
         }else{
             //保存用户填写的信息
             AnnounceSetting announceSetting = new AnnounceSetting();
@@ -241,7 +246,7 @@ public class SetAction extends ActionSupport implements ServletRequestAware,Serv
                 announceSetting.setRealtimeupload(0);
             }
             announceSettingService.saveAnnounceSetting(announceSetting);
-            return "toSet";
+            return "saveOrUpdateSetting";
         }
     }
     @Override

@@ -15,4 +15,6 @@ public interface EmergencySettingService {
     void updateEmergencySetting(EmergencySetting emergencySetting);
     //保存应急设置
     void saveEmergencySetting(EmergencySetting emergencySetting);
+    //查询所有的应急设置
+    List<EmergencySetting> selectAllEmergencySettings();
 }

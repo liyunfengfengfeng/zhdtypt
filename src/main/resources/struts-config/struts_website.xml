@@ -164,6 +164,10 @@
         <!--系统参数设置-->
         <action name="SetAction_*" class="com.newage.iep.action.systemparametermanagement.SetAction" method="{1}">
             <result name="toSet">/WEB-INF/views/setting/settings.jsp</result>
+            <!--保存或更新系统设置-->
+            <result name="saveOrUpdateSetting" type="redirectAction">
+                <param name="actionName">SetAction_toSet</param>
+            </result>
         </action>
     </package>
 </struts>

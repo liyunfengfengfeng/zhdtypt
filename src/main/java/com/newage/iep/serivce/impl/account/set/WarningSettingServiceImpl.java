@@ -41,4 +41,11 @@ public class WarningSettingServiceImpl extends GenericHibernateDAO implements Wa
             this.save(warningSetting);
         }
     }
+    //查询所有的预警设置
+    @Override
+    public List<WarningSetting> selectAllWarningSettings() {
+        Query query = this.createQuery(" from WarningSetting ");
+        List list = query.list();
+        return list;
+    }
 }

@@ -169,5 +169,14 @@
                 <param name="actionName">SetAction_toSet</param>
             </result>
         </action>
+        <!--审核用户注册信息-->
+        <action name="CheckAccount_*" class="com.newage.iep.action.checkAccount.CheckAccountAction" method="{1}">
+            <result name="checkAccountList">/WEB-INF/views/checkAccount/checkAccount.jsp</result>
+            <result name="queryString" type="json"><param name="root">result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 --></param></result>
+            <result name="1success">/WEB-INF/views/checkAccount/checkAccountComplete.jsp</result>
+            <result name="2success">/WEB-INF/views/checkAccount/checkAccountComplete.jsp</result>
+            <result name="1failed">/WEB-INF/views/checkAccount/checkAccountFailed.jsp</result>
+            <result name="2failed">/WEB-INF/views/checkAccount/checkAccountFailed.jsp</result>
+        </action>
     </package>
 </struts>

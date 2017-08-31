@@ -32,5 +32,8 @@
 		<property name="Modify_date">
 			<column name="Modify_date" />
 		</property>
+		<property name="Role_level">
+			<column name="Role_level" />
+		</property>
 	</class>
 </hibernate-mapping>

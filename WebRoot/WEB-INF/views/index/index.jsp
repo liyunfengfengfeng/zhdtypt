@@ -255,7 +255,7 @@
                 <!--</ul>-->
             </nav>
             </div>
-            <a href="manageAudit.html" target="show">点击进入注册管理</a> <br>
+            <a href="CheckAccount_queryByStatus.do" target="show">点击进入注册管理</a> <br>
             <a href="dataPermission.html" target="show">点击进入数据权限管理</a> <br>
             <a href="orgdepartment.html" target="show">点击进入组织管理</a> <br>
         </aside>

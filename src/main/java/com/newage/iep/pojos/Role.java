@@ -19,6 +19,7 @@ public class Role {
     private Date Create_date;//创建日期
     private String Modify_by;//修改人
     private Date Modify_date;//修改日期
+    private String Role_level;//角色等级
 
     public String getRole_id() {
         return Role_id;
@@ -90,5 +91,13 @@ public class Role {
 
     public void setModify_date(Date modify_date) {
         Modify_date = modify_date;
+    }
+
+    public String getRole_level() {
+        return Role_level;
+    }
+
+    public void setRole_level(String role_level) {
+        Role_level = role_level;
     }
 }

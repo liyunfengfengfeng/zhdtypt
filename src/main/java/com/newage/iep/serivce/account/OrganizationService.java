@@ -15,4 +15,8 @@ public interface OrganizationService {
     List<Organization> queryAllOrgs();
     //根据id查询组织单位
     Organization queryOrgById(String orgid);
+    //模糊查询标题与内容
+    List searchInfor(String searchecontent);
+    //查询所有信息
+    List searchInfor();
 }

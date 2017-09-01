@@ -58,4 +58,31 @@ public class OrganizationServiceImpl extends GenericHibernateDAO implements Orga
         }
         return null;
     }
+
+    /**
+     * 搜索组织中匹配的标题与内容标题与内容
+     * @param searchecontent
+     * @return
+     */
+    @Override
+    public List searchInfor(String searchecontent) {
+        Query query = this.createQuery("from Organization organization where organization.title like :name1 or organization.content like :content1 ");
+        query.setString("name1","%" + searchecontent + "%");
+        query.setString("content1","%" + searchecontent + "%");
+        List orgs = query.list();
+        System.out.println("orgs size is "  +  orgs.size());
+        return orgs;
+    }
+
+    /**
+     * 查询所有组织信息
+     * @return
+     */
+    @Override
+    public List searchInfor() {
+        Query query = this.createQuery("from Organization organization  ");
+        List orgs = query.list();
+
+        return orgs;
+    }
 }

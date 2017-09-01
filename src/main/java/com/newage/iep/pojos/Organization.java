@@ -48,6 +48,8 @@ public class Organization {
   private String modify_by;//修改者
   private java.util.Date modify_date;//修改日期
   private String fax;//传真
+  private String title;//标题
+  private String content;//内容
 
   public String getCmp_id() {
     return cmp_id;
@@ -399,5 +401,21 @@ public class Organization {
 
   public void setFax(String fax) {
     this.fax = fax;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public String getContent() {
+    return content;
+  }
+
+  public void setContent(String content) {
+    this.content = content;
   }
 }

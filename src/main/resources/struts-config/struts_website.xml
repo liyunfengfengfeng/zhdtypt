@@ -160,6 +160,7 @@
         <!--导航搜索-->
         <action name="SearchAction_*" class="com.newage.iep.action.search.SearchAction" method="{1}">
             <result name="toSearch">/WEB-INF/views/search/search_result.jsp</result>
+            <result name="searchResultDetails">/WEB-INF/views/search/search_result_details.jsp</result>
         </action>
         <!--系统参数设置-->
         <action name="SetAction_*" class="com.newage.iep.action.systemparametermanagement.SetAction" method="{1}">

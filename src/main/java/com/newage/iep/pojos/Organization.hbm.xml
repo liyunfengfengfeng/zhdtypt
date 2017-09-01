@@ -137,6 +137,11 @@
 		<property name="fax">
 			<column name="Fax" />
 		</property>
-
+		<property name="title">
+			<column name="title" />
+		</property>
+		<property name="content">
+			<column name="content" />
+		</property>
 	</class>
 </hibernate-mapping>

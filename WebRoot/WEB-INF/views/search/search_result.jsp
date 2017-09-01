@@ -44,32 +44,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 <div class="container">
     <div class="page-header" id="title">
-        <h1>....的搜索结果</h1>
+        <h1>${searchecontent}搜索结果</h1>
     </div>
     <div class="row" id="searchresult">
+        <s:if test="%{#request.orgs != null}">
+        <s:iterator value="%{#request.orgs}" var="org">
         <div class="col-md-12 list">
-                <h3><a href="search_result_details.jsp" style="color: #ffffff">sdklgsd</a></h3>
+
+                <h3><a href="SearchAction_searchResultDetails.do?id=<s:property value="%{#org.Cmp_id}"/>" style="color: #ffffff"><s:property value="%{#org.title}"/></a></h3>
                 <div class="content">
-                    sdagassdagassdagassdad打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个gas
-                        打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个
-                        打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个sdagassdagassdagassdad打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个gas
-                        打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个
-                        打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个sdagassdagassdagassdad打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个gas
-                        打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个
-                        打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个sdagassdagassdagassdad打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个gas
-                        打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个
-                        打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个
+                    <s:property value="%{#org.content}"/>
                 </div>
+
         </div>
-        <div class="col-md-12 list"></div>
-        <div class="col-md-12 list"></div>
-        <div class="col-md-12 list"></div>
-        <div class="col-md-12 list"></div>
-        <div class="col-md-12 list"></div>
-        <div class="col-md-12 list"></div>
-        <div class="col-md-12 list"></div>
-        <div class="col-md-12 list"></div>
-        <div class="col-md-12 list"></div>
+        </s:iterator>
+        </s:if>
     </div>
       <div class="row">
           <ul class="pagination center-block" id="page">

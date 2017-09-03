@@ -3,6 +3,7 @@ package com.newage.iep.serivce.impl.account;
 import com.newage.iep.business.dao.GenericHibernateDAO;
 import com.newage.iep.pojos.Organization;
 import com.newage.iep.serivce.account.OrganizationService;
+import com.newage.iep.util.page.Page;
 import org.hibernate.Query;
 import org.springframework.stereotype.Service;
 
@@ -84,5 +85,37 @@ public class OrganizationServiceImpl extends GenericHibernateDAO implements Orga
         List orgs = query.list();
 
         return orgs;
+    }
+
+    /**
+     * 通过id查询组织信息
+     * @param cmpid
+     * @return
+     */
+    @Override
+    public Organization searchOrgInfor(String cmpid) {
+        Query query = this.createQuery("from Organization organization where organization.cmp_id=:cmp_id1 ");
+        query.setString("cmp_id1",cmpid);
+        List list = query.list();
+        if(list!=null&&list.size()==1){
+            Organization organization = (Organization) list.get(0);
+            return organization;
+        }
+        return null;
+    }
+
+    /**
+     * 分页查询出所有数据
+     * @param page
+     * @return
+     */
+    @Override
+    public List<Organization> selectOrganizationsByPage(Page page) {
+        Query query = this.createQuery("from Organization ");
+        query.setFirstResult(page.getStart());//是int值，是开始查询的位置
+        query.setMaxResults(page.getPageSize());//最大容量
+        //返回分页后的数据
+        List list = query.list();
+        return list;
     }
 }

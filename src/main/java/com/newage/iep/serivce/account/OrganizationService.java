@@ -1,6 +1,7 @@
 package com.newage.iep.serivce.account;
 
 import com.newage.iep.pojos.Organization;
+import com.newage.iep.util.page.Page;
 
 import java.util.List;
 
@@ -19,4 +20,8 @@ public interface OrganizationService {
     List searchInfor(String searchecontent);
     //查询所有信息
     List searchInfor();
+    //通过id查询组织信息
+    Organization searchOrgInfor(String cmpid);
+    //分页查询出所有数据
+    List<Organization> selectOrganizationsByPage(Page page);
 }

@@ -34,25 +34,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="row">
         <div id="detail" class="col-md-12">
             <div class="page-header title">
-                <h2>某某title</h2>
+                <h2>${info.title}</h2>
             </div>
             <div class="content">
-                打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个
-                打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个
-                sdagassdagassdagassdad打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个gas
-                打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个
-                打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个
-                sdagassdagassdagassdad打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个gas
-                打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个
-                打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个
-                sdagassdagassdagassdad打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个gas
-                打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个
-                打算干啥德国是大噶事耽搁单个阿斯顿噶山豆根大使馆撒大个
+                ${info.content}
             </div>
         </div>
-        <div class="col-md-12">
-            <button class="btn btn-warning backbtn center-block" style="margin-top: 30px;width: 150px;font-size: 18px"><span class="glyphicon glyphicon-circle-arrow-left"></span> 返回</button>
-        </div>
+        <%--<div class="col-md-12">--%>
+            <%--<button class="btn btn-warning backbtn center-block" style="margin-top: 30px;width: 150px;font-size: 18px"><span class="glyphicon glyphicon-circle-arrow-left"></span> 返回</button>--%>
+        <%--</div>--%>
     </div>
 </div>
 <script src="js/jquery/jquery.min.js"></script>

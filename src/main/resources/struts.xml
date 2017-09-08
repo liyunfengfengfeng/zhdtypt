@@ -15,4 +15,5 @@
     <constant name="struts.action.excludePattern" value="/static/.*?" /><!-- default locale -->
     <!-- 站点 -->
     <include file="struts-config/struts_website.xml"/>
+    <include file="struts-config/check_work.xml"/>
 </struts>

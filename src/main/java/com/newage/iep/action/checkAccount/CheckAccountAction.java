@@ -4,9 +4,11 @@ package com.newage.iep.action.checkAccount;
  * Created by qq101 on 2017/8/14.
  */
 
+import com.newage.iep.form.AccountForm;
 import com.newage.iep.pojos.Account;
 import com.newage.iep.pojos.Role;
 import com.newage.iep.serivce.checkAccount.CheckAccountService;
+import com.newage.iep.util.DateChange.DataType;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import net.sf.json.JSONArray;
@@ -19,7 +21,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -68,9 +73,36 @@ public class CheckAccountAction extends ActionSupport implements ModelDriven<Acc
         List<Account> list=new ArrayList<Account>();
         //对用户的信息通过邮箱进行查询
         list= checkAccountService.queryPersonByMail(mail);
+        List accountForms = new ArrayList();
+        if(list!=null&&list.size()==1) {
+            Account account = list.get(0);
+            String s = DataType.dateToString(account.getBath(), "MEDIUM");
+            String dstr = s;
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                Date date = sdf.parse(dstr);
+                account.setBath(date);
+                list.clear();
+                list.add(account);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            AccountForm accountForm = new AccountForm();
+            accountForm.setId_number(account.getId_number());
+            accountForm.setBath(dstr);
+            accountForm.setCmp_id(account.getCmp_id());
+            accountForm.setEmail(account.getEmail());
+            accountForm.setName(account.getName());
+            accountForm.setPassword(account.getPassword());
+            accountForm.setSex(account.getSex());
+            accountForms.clear();
+            accountForms.add(accountForm);
+
+
+        }
+
 
         result = JSONArray.fromObject(list).toString();
-
 
         return "queryString";
     }

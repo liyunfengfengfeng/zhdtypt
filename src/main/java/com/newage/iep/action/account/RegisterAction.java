@@ -97,7 +97,7 @@ public class RegisterAction extends ActionSupport implements ModelDriven<Registe
             }
 
 
-                // }
+            // }
         } catch (ParseException e) {
             e.printStackTrace();
         }

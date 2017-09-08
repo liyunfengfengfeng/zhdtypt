@@ -291,6 +291,7 @@
                 var myear=jsonObj[0].bath.year;
                 var mmonth=jsonObj[0].bath.month+1;
                 var mdate=jsonObj[0].bath.date;
+               // var birthday = jsonObj[0].bath;
                 $('#birthdate').html(myear+"年"+mmonth+"月"+mdate+"日");
                 $('#organize').html(jsonObj[0].cmp_id);
 

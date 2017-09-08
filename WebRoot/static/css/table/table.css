@@ -1,0 +1,113 @@
+body{
+    /*padding: 30px;*/
+    background: rgb(11, 46, 56);
+}
+#record{
+    height: 120px;
+    margin-bottom: 26px;
+}
+.title{
+    height: 50px;
+    background: #01596f;
+    box-shadow: 0px 0px 5px 6px #01596f;
+    /*border: solid 1px #01485c;*/
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 8px;
+    font-size: 25px;
+    color: #ffffff;
+}
+#record .topcontent{
+    height: 75px;
+    /*border: solid 1px #01596f;*/
+    box-shadow: 0px 0px 5px 6px #01596f;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+#record .recordbtn{
+    margin: 20px;
+    background: #2aabd2;
+    color: white;
+}
+a{
+    color: white;
+}
+.contentcontrol{
+    display: -webkit-box;
+    display: -moz-box;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-pack:justify;
+}
+.contentcontrol select{
+    width: 80px;
+    height: 35px;
+    color: #01344a;
+    border-radius: 5px;
+    background: #f5f5f5;
+}
+#contentmain{
+    background: #01485c;
+    box-shadow: 0px 0px 5px 6px #01485c;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+}
+
+/*输出表格样式*/
+.top {
+    caption-side: top;
+}
+
+.bottom {
+    caption-side: bottom;
+}
+.button-default, .button-default:hover, .button-default:focus, .button-default:active {
+    text-decoration: none;
+}
+
+.button-default {
+    font: bold 12px sans-serif;
+    color: #222222;
+    cursor: pointer;
+    padding: 5px;
+    margin: 5px;
+}
+
+.button-default.xlsx:before, .button-default.xls:before, .button-default.csv:before, .button-default.txt:before {
+    content: none;
+}
+
+.xlsx, .xls, .csv, .txt {
+    margin: 4px 0;
+}
+
+.xlsx:before, .xls:before, .csv:before, .txt:before {
+    margin-right: 10px;
+    padding: 12px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.xlsx:before {
+    background-color: darkgreen;
+    content: url("../../img/ixlsx.png");
+}
+
+.xls:before {
+    background-color: green;
+    content: url("../../img/ixls.png");
+}
+
+.csv:before {
+    background-color: blue;
+    content: url("../../img/icsv.png");
+}
+
+.txt:before {
+    background-color: purple;
+    content: url("../../img/itxt.png");
+}
+/*表格过滤样式*/
+.filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
+.fitler-table .quick:hover { text-decoration: underline; }
+td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }

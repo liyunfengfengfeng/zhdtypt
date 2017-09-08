@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="check_work" extends="struts-default,json-default" namespace="/checkwork">
+        <!--考勤组-->
+        <action name="CheckWorkAction_*" class="com.newage.iep.action.checkwork.CheckWorkAction" method="{1}">
+            <result name="toCheckWork">/WEB-INF/views/checkWork/checkwork.jsp</result>
+            <result name="addCheckWork">/WEB-INF/views/checkWork/checkwork_add.jsp</result>
+            <!--<interceptor-ref name="json"/>-->
+            <!--返回到考勤组页面-->
+            <result name="backToCheckWork" type="json">
+                <param name="root">result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 --></param>
+            </result>
+            <!--删除考勤组记录-->
+            <result name="delCheckWorkInfo" type="redirectAction">
+                <param name="actionName">CheckWorkAction_toCheckWork</param>
+                <param name="namespace">/checkwork</param>
+            </result>
+        </action>
+    </package>
+</struts>

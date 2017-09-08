@@ -23,7 +23,7 @@
 		<property name="sex">
 			<column name="Sex" />
 		</property>
-		<property name="bath">
+		<property name="bath" type="date">
 			<column name="Bath" />
 		</property>
 		<property name="depart_id">

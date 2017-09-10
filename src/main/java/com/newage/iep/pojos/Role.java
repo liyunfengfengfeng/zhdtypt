@@ -10,31 +10,31 @@ import java.util.Date;
  * 角色信息
  */
 public class Role {
-    private String Role_id;//角色id 主键
-    private String Role_name;//角色名称
+    private String roleid;//角色id 主键
+    private String rolename;//角色名称
     private String Belong_by;//所属用户编码
     private String Belong_module;//功能模块编码
-    private String Rmk;//备注
-    private String Create_by;//创建人
-    private Date Create_date;//创建日期
-    private String Modify_by;//修改人
-    private Date Modify_date;//修改日期
+    private String rmk;//备注
+    private String createby;//创建人
+    private Date createdate;//创建日期
+    private String modifyby;//修改人
+    private Date modifydate;//修改日期
     private String Role_level;//角色等级
 
-    public String getRole_id() {
-        return Role_id;
+    public String getRoleid() {
+        return roleid;
     }
 
-    public void setRole_id(String role_id) {
-        Role_id = role_id;
+    public void setRoleid(String roleid) {
+        this.roleid = roleid;
     }
 
-    public String getRole_name() {
-        return Role_name;
+    public String getRolename() {
+        return rolename;
     }
 
-    public void setRole_name(String role_name) {
-        Role_name = role_name;
+    public void setRolename(String rolename) {
+        this.rolename = rolename;
     }
 
     public String getBelong_by() {
@@ -54,43 +54,45 @@ public class Role {
     }
 
     public String getRmk() {
-        return Rmk;
+        return rmk;
     }
 
     public void setRmk(String rmk) {
-        Rmk = rmk;
+        this.rmk = rmk;
     }
 
-    public String getCreate_by() {
-        return Create_by;
+    public String getCreateby() {
+        return createby;
     }
 
-    public void setCreate_by(String create_by) {
-        Create_by = create_by;
+    public void setCreateby(String createby) {
+        this.createby = createby;
     }
 
-    public Date getCreate_date() {
-        return Create_date;
+
+
+    public String getModifyby() {
+        return modifyby;
     }
 
-    public void setCreate_date(Date create_date) {
-        Create_date = create_date;
+    public void setModifyby(String modifyby) {
+        this.modifyby = modifyby;
     }
 
-    public String getModify_by() {
-        return Modify_by;
+    public Date getCreatedate() {
+        return createdate;
     }
 
-    public void setModify_by(String modify_by) {
-        Modify_by = modify_by;
+    public void setCreatedate(Date createdate) {
+        this.createdate = createdate;
     }
 
-    public Date getModify_date() {
-        return Modify_date;
+    public Date getModifydate() {
+        return modifydate;
     }
 
-    public void setModify_date(Date modify_date) {
-        Modify_date = modify_date;
+    public void setModifydate(Date modifydate) {
+        this.modifydate = modifydate;
     }
 
     public String getRole_level() {

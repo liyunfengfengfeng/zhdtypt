@@ -108,8 +108,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </c:choose>
                     </td>
                     <td class="btns">
-                        <button type="button" class="btn btn-success" style="width:50%;float: left;font-size: 12px">
-                            <a href="fence_update.html"><span class="glyphicon glyphicon-ok-circle"></span> 编辑</a></button>
+                        <button type="button" class="btn btn-success" id="btn-edit" style="width:50%;float: left;font-size: 12px">
+                            <a href="/checkwork/CheckWorkAction_editCheckWork.do?checkWorkId=${checkWork.id}"><span class="glyphicon glyphicon-ok-circle"></span> 编辑</a></button>
                         <button type="button" id="delcheckworkbutton"  class="btn btn-danger" style="width:50%;float: right;font-size: 12px"><a href="/checkwork/CheckWorkAction_delCheckWorkInfo.do?checkid=${checkWork.id}"><span class="glyphicon glyphicon-remove-circle"></span> 删除</a></button>
                     </td>
                 </tr>
@@ -221,6 +221,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
         });
     });
+</script>
+<script>
+
+
 </script>
 </body>
 </html>

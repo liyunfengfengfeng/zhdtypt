@@ -49,4 +49,47 @@ public class CheckWorkServiceImpl extends GenericHibernateDAO implements CheckWo
         List list = query.list();
         return list;
     }
+    //保存考勤组信息
+    @Transactional
+    @Override
+    public void saveCheckWork(AttendanceTeam attendanceTeam) {
+        this.save(attendanceTeam);
+    }
+
+    /**
+     * 通过考勤组名称查询寻其id
+     * @param checkworkname
+     * @return
+     */
+    @Override
+    public String selectAttendencrIdByName(String checkworkname) {
+        Query query = this.createQuery("from AttendanceTeam attendanceTeam where attendanceTeam.rolename=:rolenameId1");
+        query.setString("rolenameId1",checkworkname);
+        List list = query.list();
+        AttendanceTeam attendanceTeam = null;
+        if(list!=null&&list.size()==1){
+            attendanceTeam = (AttendanceTeam)list.get(0);
+        }
+        if(attendanceTeam!=null){
+            return attendanceTeam.getId();
+        }
+        return null;
+    }
+
+    /**
+     * 通过id查询出考勤组信息
+     * @param checkWorkId
+     * @return
+     */
+    @Override
+    public AttendanceTeam selectCheckWorkById(String checkWorkId) {
+        Query query = this.createQuery("from AttendanceTeam attendanceTeam where attendanceTeam.id=:id1");
+        query.setString("id1",checkWorkId);
+        List list = query.list();
+        if(list!=null&&list.size()==1){
+            AttendanceTeam attendanceTeam = (AttendanceTeam)list.get(0);
+            return attendanceTeam;
+        }
+        return null;
+    }
 }

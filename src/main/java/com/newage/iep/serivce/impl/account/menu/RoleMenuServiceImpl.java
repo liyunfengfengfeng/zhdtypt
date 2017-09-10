@@ -5,6 +5,7 @@ import com.newage.iep.pojos.RoleMenu;
 import com.newage.iep.serivce.menu.RoleMenuService;
 import org.hibernate.Query;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,5 +35,31 @@ public class RoleMenuServiceImpl extends GenericHibernateDAO implements RoleMenu
             }
         }
         return null;
+    }
+
+    /**
+     * 为角色分配菜单权限
+     * @param s
+     * @param s1
+     */
+    @Transactional
+    @Override
+    public void allotMenuForRole(String s, String s1) {
+
+        RoleMenu roleMenu = new RoleMenu();
+        roleMenu.setMenu_id(s1);
+        roleMenu.setRole_id(s);
+        this.save(roleMenu);
+    }
+    //删除该角色对应的所有的菜单
+    @Transactional
+    @Override
+    public void deleteAllMenus(String s) {
+        Query query = this.createQuery("from RoleMenu roleMenu where roleMenu.role_id=:roleid1 ");
+        query.setString("roleid1",s);
+        List<RoleMenu> list = query.list();
+        for(RoleMenu roleMenu:list){
+            this.delete(roleMenu);
+        }
     }
 }

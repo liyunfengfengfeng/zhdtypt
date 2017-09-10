@@ -1,6 +1,7 @@
 package com.newage.iep.serivce.impl.account.menu;
 
 import com.newage.iep.business.dao.GenericHibernateDAO;
+import com.newage.iep.pojos.Menu;
 import com.newage.iep.serivce.menu.MenuService;
 import org.hibernate.Query;
 import org.springframework.stereotype.Service;
@@ -69,5 +70,17 @@ public class MenuServiceImpl extends GenericHibernateDAO implements MenuService{
             return firstFunctionMenus;
         }
         return null;
+    }
+
+    /**
+     * 查询出所有一级菜单
+     * @return
+     */
+    @Override
+    public List<Menu> selectAllRootMenus() {
+        Query query = this.createQuery("from Menu menu where menu.parent_id=:parent_id1 ");
+        query.setString("parent_id1","0");
+        List list = query.list();
+        return list;
     }
 }

@@ -19,4 +19,15 @@ public interface CheckWorkService {
     void delCheckWork(String checkWorkId);
     //分页查询出考勤组信息
     List<AttendanceTeam> selectcheckWorkPages(Page page);
+    //保存考勤组信息
+    void saveCheckWork(AttendanceTeam attendanceTeam);
+
+    /**
+     * 通过考勤组名称查询寻其id
+     * @param checkworkname
+     * @return
+     */
+    String selectAttendencrIdByName(String checkworkname);
+    //通过id查询出考勤组信息
+    AttendanceTeam selectCheckWorkById(String checkWorkId);
 }

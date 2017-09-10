@@ -18,6 +18,29 @@
                 <param name="actionName">CheckWorkAction_toCheckWork</param>
                 <param name="namespace">/checkwork</param>
             </result>
+            <!--保存考勤组信息-->
+            <result name="saveCheckWork" type="redirectAction">
+                <param name="actionName">CheckWorkAction_toCheckWork</param>
+                <param name="namespace">/checkwork</param>
+            </result>
+            <!--编辑考勤组页面-->
+            <result name="editCheckWork">/WEB-INF/views/checkWork/checkwork_edit.jsp</result>
         </action>
+        <!--创建角色-->
+        <action name="RoleAction_*" class="com.newage.iep.action.role.RoleAction" method="{1}">
+            <result name="toRoleCreate">/WEB-INF/views/role/roleCreate.jsp</result>
+            <!--角色权限-->
+            <result name="roleDistribute">/WEB-INF/views/menu/roleDistribute.jsp</result>
+            <!--展示角色详细信息-->
+            <result name="queryRoleInfo" type="json">
+                <param name="root">result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 --></param>
+            </result>
+            <result name="completeRoleDistribute" type="redirectAction">
+                <param name="actionName">RoleAction_toRoleDistribute</param>
+                <param name="namespace">/checkwork</param>
+            </result>
+        </action>
+
+
     </package>
 </struts>

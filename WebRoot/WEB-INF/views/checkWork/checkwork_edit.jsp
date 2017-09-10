@@ -60,7 +60,7 @@
             <div class="form-group col-sm-12">
                 <label  class="col-sm-3 control-label text-left">考勤组名称</label>
                 <div class="col-sm-8">
-                    <input  class="form-control" type="text" name="checkworkname" placeholder="必填" AUTOCOMPLETE=OFF />
+                    <input  class="form-control" type="text" name="checkworkname" value="${attendanceTeam.rolename}" placeholder="必填" AUTOCOMPLETE=OFF />
                 </div>
             </div>
             <div class="form-group col-sm-12">
@@ -69,9 +69,13 @@
                     <div style="width: 100%">
                         <c:if test="${ ! empty requestScope.organizations }">
                             <c:forEach items="${requestScope.organizations }" var="organization" varStatus="abc">
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" name="of" value="${organization.cmp_id}"> ${organization.cmp_name}
-                                </label>
+                                <%--<c:if test="${ ! empty requestScope.attendenceOrgs }">--%>
+                                    <%--<c:forEach items="${requestScope.attendenceOrgs }" var="attendenceOrg" >    <c:if test="${organization.cmp_id==attendenceOrg.orgid}">checked</c:if>--%>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="of"  value="${organization.cmp_id}"> ${organization.cmp_name}
+                                        </label>
+                                    <%--</c:forEach>--%>
+                                <%--</c:if>--%>
                             </c:forEach>
                         </c:if>
                     </div>
@@ -80,14 +84,14 @@
             <div class="form-group col-sm-12">
                 <label  class="col-sm-3 control-label text-left">描述</label>
                 <div class="col-sm-8">
-                    <textarea class="form-control" rows="3" name="descriptions"></textarea>
+                    <textarea class="form-control" rows="3"  name="descriptions">${attendanceTeam.decriptions}</textarea>
                 </div>
             </div>
 
             <div class="form-group col-sm-12">
                 <label  class="col-sm-3 control-label text-left">包含用户</label>
                 <div class="col-sm-8">
-                    <input id="users" name="users" class="form-control" type="text" value="Sydney,Beijing,Cairo" data-role="tagsinput"/>
+                    <input id="users" name="users" class="form-control" type="text" value="${attendanceTeam.includeusers}" data-role="tagsinput"/>
                 </div>
             </div>
 
@@ -97,12 +101,12 @@
                     <!--<input class="form-control" type="text"  AUTOCOMPLETE=OFF/>-->
                     <div class="radio">
                     <label>
-                        <input type="radio" name="state"  value="1" checked> 启用
+                        <input type="radio" name="state" <s:if test="%{#request.attendanceTeam.status==1}">checked</s:if>  value="1" checked> 启用
                     </label>
                 </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="state"  value="0">  停用
+                            <input type="radio" name="state" <s:if test="%{#request.attendanceTeam.status==0}">checked</s:if>  value="0">  停用
                         </label>
                     </div>
                 </div>
@@ -113,7 +117,7 @@
                     <%--<button type="button" id="backbtn" class="btn btn-warning backbtn" style="margin-top: 30px;width: 150px;font-size: 20px"><a href="/checkwork/CheckWorkAction_toCheckWork.do"><span class="glyphicon glyphicon-circle-arrow-left"></span> 返回</a></button>--%>
                         <button type="button" id="backbtn" class="btn btn-warning backbtn" style="margin-top: 30px;width: 150px;font-size: 20px"><span class="glyphicon glyphicon-circle-arrow-left"></span> 返回</button>
                     <!--不要把type换成submit！！！-->
-                    <button type="submit" class="btn btn-success" id="submit" style="margin-top: 30px;width: 150px;font-size: 20px"><span class="glyphicon glyphicon-saved"></span>  保存</button></button>
+                    <button type="submit" class="btn btn-success" id="submit" style="margin-top: 30px;width: 150px;font-size: 20px"><span class="glyphicon glyphicon-saved"></span>  修改</button></button>
                 </div>
             </div>
 

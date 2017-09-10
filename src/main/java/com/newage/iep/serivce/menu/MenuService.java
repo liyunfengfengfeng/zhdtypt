@@ -1,5 +1,7 @@
 package com.newage.iep.serivce.menu;
 
+import com.newage.iep.pojos.Menu;
+
 import java.util.List;
 
 /**
@@ -12,4 +14,6 @@ public interface MenuService {
     List queryFirstMenus(List root_menus_ids);
     //根据跟菜单id查询所有的跟菜单  功能模块菜单
     List queryFirstFunctionMenus(List root_menus_ids);
+    //查询parentid=0的菜单
+    List<Menu> selectAllRootMenus();
 }

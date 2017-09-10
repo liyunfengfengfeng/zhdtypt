@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="/static/css/optiscroll.css">
     <style>
         body{
-            padding: 15px;
-            background: rgb(229, 243, 233);
+            /*padding: 15px;*/
+            /*background: rgb(229, 243, 233);*/
         }
         .show{
             display: block;
@@ -26,9 +26,9 @@
         .hide{
             display: none;
         }
-        body{
-            padding: 80px;
-        }
+        /*body{*/
+            /*padding: 80px;*/
+        /*}*/
         #startbtn{
             margin: 20px;
         }
@@ -99,6 +99,7 @@
     </style>
 </head>
 <body>
+<canvas id="canvas" style="position:fixed;z-index:-1;height: 100%;width: 100%;"></canvas>
 <div class="container" >
     <div class="row clearfix" id="waitAudit">
         <div class="table-responsive">
@@ -192,8 +193,8 @@
             <div class="roles col-sm-6">
                 <select name="roles" multiple="multiple" class="optiscroll center-block" id="roles" style=" width: 60%;height: 250px">
                     <s:iterator value="%{#request.roleList}" id="TRoleEntity">
-                        <option value=<s:property value="#TRoleEntity.Role_id"/>>
-                            <s:property value="#TRoleEntity.Role_name"/>
+                        <option value=<s:property value="#TRoleEntity.roleid"/>>
+                            <s:property value="#TRoleEntity.rolename"/>
                         </option>
                     </s:iterator>
                 </select>
@@ -218,6 +219,7 @@
 <script src="/static/js/jquery-2.1.1.min.js"></script>
 <script src="/static/js/bootstrap/bootstrap.min.js"></script>
 <script src="/static/js/jquery.optiscroll.js"></script> <!--滚动条样式-->
+<script src="/static/js/background/milkybg.js"></script>
 <script>
     $(function () {
         $('#startbtn').on('click',function () {

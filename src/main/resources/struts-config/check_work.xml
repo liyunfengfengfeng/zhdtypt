@@ -25,6 +25,10 @@
             </result>
             <!--编辑考勤组页面-->
             <result name="editCheckWork">/WEB-INF/views/checkWork/checkwork_edit.jsp</result>
+            <result name="updateCheckWork" type="redirectAction">
+                <param name="actionName">CheckWorkAction_toCheckWork</param>
+                <param name="namespace">/checkwork</param>
+            </result>
         </action>
         <!--创建角色-->
         <action name="RoleAction_*" class="com.newage.iep.action.role.RoleAction" method="{1}">
@@ -39,6 +43,7 @@
                 <param name="actionName">RoleAction_toRoleDistribute</param>
                 <param name="namespace">/checkwork</param>
             </result>
+
         </action>
 
 

@@ -30,4 +30,10 @@ public interface CheckWorkService {
     String selectAttendencrIdByName(String checkworkname);
     //通过id查询出考勤组信息
     AttendanceTeam selectCheckWorkById(String checkWorkId);
+
+    /**
+     * 更新考勤组
+     * @param attendanceTeam
+     */
+    void updateAttendanceTeam(AttendanceTeam attendanceTeam);
 }

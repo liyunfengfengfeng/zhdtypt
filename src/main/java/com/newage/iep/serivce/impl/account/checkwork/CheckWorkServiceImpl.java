@@ -92,4 +92,14 @@ public class CheckWorkServiceImpl extends GenericHibernateDAO implements CheckWo
         }
         return null;
     }
+
+    /**
+     * 更新考勤组
+     * @param attendanceTeam
+     */
+    @Transactional
+    @Override
+    public void updateAttendanceTeam(AttendanceTeam attendanceTeam) {
+        this.update(attendanceTeam);
+    }
 }

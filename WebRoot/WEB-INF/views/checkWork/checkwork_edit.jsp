@@ -56,11 +56,12 @@
         </div>
     </div>
     <div class="row" id="content">
-        <form action="/checkwork/CheckWorkAction_saveCheckWork.do" class="col-md-12" method="post" >
+        <form action="/checkwork/CheckWorkAction_updateCheckWork.do" class="col-md-12" method="post" >
             <div class="form-group col-sm-12">
                 <label  class="col-sm-3 control-label text-left">考勤组名称</label>
                 <div class="col-sm-8">
                     <input  class="form-control" type="text" name="checkworkname" value="${attendanceTeam.rolename}" placeholder="必填" AUTOCOMPLETE=OFF />
+                    <input  class="form-control" type="hidden" name="checkworkid" value="${attendanceTeam.id}"/>
                 </div>
             </div>
             <div class="form-group col-sm-12">
@@ -84,7 +85,7 @@
             <div class="form-group col-sm-12">
                 <label  class="col-sm-3 control-label text-left">描述</label>
                 <div class="col-sm-8">
-                    <textarea class="form-control" rows="3"  name="descriptions">${attendanceTeam.decriptions}</textarea>
+                    <textarea class="form-control" rows="3"   name="descriptions">${attendanceTeam.decriptions}</textarea>
                 </div>
             </div>
 

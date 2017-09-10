@@ -155,12 +155,31 @@ public class CheckWorkAction extends ActionSupport implements ServletRequestAwar
         AttendanceTeam attendanceTeam = checkWorkService.selectCheckWorkById(checkWorkId);
         //查询出所有的组织
         List<Organization> organizations = organizationService.searchInfor();
-        //处理所属组织的回显
+        //处理所属组织的回显  该考勤组所属的组织
         List<AttendenceOrg> attendenceOrgs = attendenceOrgService.selectAllOrgsBelongAttendence(checkWorkId);
         request.setAttribute("organizations",organizations);
         request.setAttribute("attendanceTeam",attendanceTeam);
         request.setAttribute("attendenceOrgs",attendenceOrgs);
         return "editCheckWork";
+    }
+
+    /**
+     * 修改考勤组信息
+     * @param
+     */
+    public String updateCheckWork(){
+        String checkworkid = (String)request.getParameter("checkworkid");
+        String checkworkname = (String)request.getParameter("checkworkname");
+        String descriptions = (String)request.getParameter("descriptions");
+        String users = (String)request.getParameter("users");
+        String state = (String)request.getParameter("state");
+        AttendanceTeam attendanceTeam = checkWorkService.selectCheckWorkById(checkworkid);
+        attendanceTeam.setIncludeusers(users);
+        attendanceTeam.setDecriptions(descriptions);
+        attendanceTeam.setRolename(checkworkname);
+        attendanceTeam.setStatus(Integer.parseInt(state));
+        checkWorkService.updateAttendanceTeam(attendanceTeam);
+        return "updateCheckWork";
     }
     @Override
     public void setServletRequest(HttpServletRequest request) {

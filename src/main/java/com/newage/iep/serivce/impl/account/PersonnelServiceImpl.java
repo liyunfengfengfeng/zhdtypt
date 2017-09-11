@@ -1,7 +1,7 @@
 package com.newage.iep.serivce.impl.account;
 
 import com.newage.iep.business.dao.GenericHibernateDAO;
-import com.newage.iep.pojos.Personnel;
+import com.newage.iep.pojos.account.Personnel;
 import com.newage.iep.serivce.account.PersonnelService;
 import org.hibernate.Query;
 import org.springframework.stereotype.Service;

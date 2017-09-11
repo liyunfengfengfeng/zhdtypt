@@ -1,9 +1,9 @@
 package com.newage.iep.action.role;
 
 
-import com.newage.iep.pojos.Menu;
-import com.newage.iep.pojos.Personnel;
-import com.newage.iep.pojos.Role;
+import com.newage.iep.pojos.menu.Menu;
+import com.newage.iep.pojos.account.Personnel;
+import com.newage.iep.pojos.role.Role;
 import com.newage.iep.serivce.Role.RoleService;
 import com.newage.iep.serivce.account.PersonnelService;
 import com.newage.iep.serivce.checkAccount.CheckAccountService;

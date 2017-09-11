@@ -1,8 +1,8 @@
 package com.newage.iep.action.checkwork;
 
-import com.newage.iep.pojos.AttendanceTeam;
-import com.newage.iep.pojos.AttendenceOrg;
-import com.newage.iep.pojos.Organization;
+import com.newage.iep.pojos.checkwork.AttendanceTeam;
+import com.newage.iep.pojos.checkwork.AttendenceOrg;
+import com.newage.iep.pojos.organization.Organization;
 import com.newage.iep.serivce.account.OrganizationService;
 import com.newage.iep.serivce.checkwork.AttendenceOrgService;
 import com.newage.iep.serivce.checkwork.CheckWorkService;

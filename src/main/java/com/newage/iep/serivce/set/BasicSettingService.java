@@ -1,6 +1,6 @@
 package com.newage.iep.serivce.set;
 
-import com.newage.iep.pojos.BasicSetting;
+import com.newage.iep.pojos.set.BasicSetting;
 
 import java.util.List;
 

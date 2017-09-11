@@ -1,7 +1,7 @@
 package com.newage.iep.serivce.impl.account.checkwork;
 
 import com.newage.iep.business.dao.GenericHibernateDAO;
-import com.newage.iep.pojos.AttendanceTeam;
+import com.newage.iep.pojos.checkwork.AttendanceTeam;
 import com.newage.iep.serivce.checkwork.CheckWorkService;
 import com.newage.iep.util.page.Page;
 import org.hibernate.Query;

@@ -1,6 +1,6 @@
 package com.newage.iep.serivce.Role;
 
-import com.newage.iep.pojos.Role;
+import com.newage.iep.pojos.role.Role;
 import com.newage.iep.util.page.Page;
 
 import java.util.List;

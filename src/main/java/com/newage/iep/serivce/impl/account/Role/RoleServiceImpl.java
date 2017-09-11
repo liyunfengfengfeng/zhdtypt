@@ -1,7 +1,7 @@
 package com.newage.iep.serivce.impl.account.Role;
 
 import com.newage.iep.business.dao.GenericHibernateDAO;
-import com.newage.iep.pojos.Role;
+import com.newage.iep.pojos.role.Role;
 import com.newage.iep.serivce.Role.RoleService;
 import com.newage.iep.util.page.Page;
 import org.hibernate.Query;

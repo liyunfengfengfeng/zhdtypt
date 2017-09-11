@@ -1,7 +1,7 @@
 package com.newage.iep.serivce.impl.account.set;
 
 import com.newage.iep.business.dao.GenericHibernateDAO;
-import com.newage.iep.pojos.EmergencySetting;
+import com.newage.iep.pojos.set.EmergencySetting;
 import com.newage.iep.serivce.set.EmergencySettingService;
 import org.hibernate.Query;
 import org.springframework.stereotype.Service;

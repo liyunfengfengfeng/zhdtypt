@@ -1,7 +1,7 @@
 package com.newage.iep.serivce.impl.account;
 
 import com.newage.iep.business.dao.GenericHibernateDAO;
-import com.newage.iep.pojos.Organization;
+import com.newage.iep.pojos.organization.Organization;
 import com.newage.iep.serivce.account.OrganizationService;
 import com.newage.iep.util.page.Page;
 import org.hibernate.Query;

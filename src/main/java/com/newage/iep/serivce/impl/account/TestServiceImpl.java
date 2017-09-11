@@ -1,7 +1,7 @@
 package com.newage.iep.serivce.impl.account;
 
 import com.newage.iep.business.dao.GenericHibernateDAO;
-import com.newage.iep.pojos.Seq;
+import com.newage.iep.pojos.test.Seq;
 import com.newage.iep.serivce.account.TestService;
 import org.springframework.stereotype.Service;
 

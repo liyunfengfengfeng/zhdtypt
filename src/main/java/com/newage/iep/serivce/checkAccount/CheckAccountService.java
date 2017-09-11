@@ -2,8 +2,8 @@ package com.newage.iep.serivce.checkAccount;
 
 
 
-import com.newage.iep.pojos.Account;
-import com.newage.iep.pojos.Role;
+import com.newage.iep.pojos.account.Account;
+import com.newage.iep.pojos.role.Role;
 
 import java.util.List;
 

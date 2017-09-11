@@ -1,6 +1,6 @@
 package com.newage.iep.serivce.checkwork;
 
-import com.newage.iep.pojos.AttendanceTeam;
+import com.newage.iep.pojos.checkwork.AttendanceTeam;
 import com.newage.iep.util.page.Page;
 
 import java.util.List;

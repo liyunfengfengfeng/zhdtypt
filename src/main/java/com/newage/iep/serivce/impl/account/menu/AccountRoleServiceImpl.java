@@ -1,7 +1,7 @@
 package com.newage.iep.serivce.impl.account.menu;
 
 import com.newage.iep.business.dao.GenericHibernateDAO;
-import com.newage.iep.pojos.AccountRole;
+import com.newage.iep.pojos.account.AccountRole;
 import com.newage.iep.serivce.menu.AccountRoleService;
 import org.hibernate.Query;
 import org.springframework.stereotype.Service;

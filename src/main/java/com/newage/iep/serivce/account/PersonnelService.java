@@ -1,6 +1,6 @@
 package com.newage.iep.serivce.account;
 
-import com.newage.iep.pojos.Personnel;
+import com.newage.iep.pojos.account.Personnel;
 
 /**
  * Created by a1996_000 on 2017/8/12.

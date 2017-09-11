@@ -1,7 +1,7 @@
 package com.newage.iep.serivce.impl.account.set;
 
 import com.newage.iep.business.dao.GenericHibernateDAO;
-import com.newage.iep.pojos.WarningSetting;
+import com.newage.iep.pojos.set.WarningSetting;
 import com.newage.iep.serivce.set.WarningSettingService;
 import org.hibernate.Query;
 import org.springframework.stereotype.Service;

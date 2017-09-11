@@ -1,6 +1,6 @@
 package com.newage.iep.serivce.set;
 
-import com.newage.iep.pojos.WarningSetting;
+import com.newage.iep.pojos.set.WarningSetting;
 
 import java.util.List;
 

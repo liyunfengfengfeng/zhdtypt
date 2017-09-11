@@ -1,6 +1,6 @@
 package com.newage.iep.serivce.account;
 
-import com.newage.iep.pojos.Organization;
+import com.newage.iep.pojos.organization.Organization;
 import com.newage.iep.util.page.Page;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.newage.iep.serivce.set;
 
-import com.newage.iep.pojos.AnnounceSetting;
+import com.newage.iep.pojos.set.AnnounceSetting;
 
 import java.util.List;
 

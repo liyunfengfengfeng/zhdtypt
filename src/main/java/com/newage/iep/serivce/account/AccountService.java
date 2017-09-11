@@ -1,6 +1,6 @@
 package com.newage.iep.serivce.account;
 
-import com.newage.iep.pojos.Account;
+import com.newage.iep.pojos.account.Account;
 
 import java.util.List;
 

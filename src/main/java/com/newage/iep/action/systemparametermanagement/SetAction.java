@@ -1,6 +1,6 @@
 package com.newage.iep.action.systemparametermanagement;
 
-import com.newage.iep.pojos.*;
+import com.newage.iep.pojos.set.*;
 import com.newage.iep.serivce.set.*;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.ServletRequestAware;

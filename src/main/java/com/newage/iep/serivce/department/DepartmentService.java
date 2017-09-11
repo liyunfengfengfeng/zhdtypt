@@ -1,6 +1,6 @@
 package com.newage.iep.serivce.department;
 
-import com.newage.iep.pojos.Department;
+import com.newage.iep.pojos.department.Department;
 
 import java.util.List;
 

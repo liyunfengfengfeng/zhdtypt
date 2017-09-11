@@ -1,7 +1,7 @@
 package com.newage.iep.serivce.impl.account.set;
 
 import com.newage.iep.business.dao.GenericHibernateDAO;
-import com.newage.iep.pojos.AnnounceSetting;
+import com.newage.iep.pojos.set.AnnounceSetting;
 import com.newage.iep.serivce.set.AnnounceSettingService;
 import org.hibernate.Query;
 import org.springframework.stereotype.Service;

@@ -5,8 +5,8 @@ package com.newage.iep.action.checkAccount;
  */
 
 import com.newage.iep.form.AccountForm;
-import com.newage.iep.pojos.Account;
-import com.newage.iep.pojos.Role;
+import com.newage.iep.pojos.account.Account;
+import com.newage.iep.pojos.role.Role;
 import com.newage.iep.serivce.checkAccount.CheckAccountService;
 import com.newage.iep.util.DateChange.DataType;
 import com.opensymphony.xwork2.ActionSupport;

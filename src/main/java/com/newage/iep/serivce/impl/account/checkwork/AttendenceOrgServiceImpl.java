@@ -1,7 +1,7 @@
 package com.newage.iep.serivce.impl.account.checkwork;
 
 import com.newage.iep.business.dao.GenericHibernateDAO;
-import com.newage.iep.pojos.AttendenceOrg;
+import com.newage.iep.pojos.checkwork.AttendenceOrg;
 import com.newage.iep.serivce.checkwork.AttendenceOrgService;
 import org.hibernate.Query;
 import org.springframework.stereotype.Service;

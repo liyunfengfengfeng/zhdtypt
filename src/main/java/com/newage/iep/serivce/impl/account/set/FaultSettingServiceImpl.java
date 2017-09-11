@@ -1,7 +1,7 @@
 package com.newage.iep.serivce.impl.account.set;
 
 import com.newage.iep.business.dao.GenericHibernateDAO;
-import com.newage.iep.pojos.FaultSetting;
+import com.newage.iep.pojos.set.FaultSetting;
 import com.newage.iep.serivce.set.FaultSettingService;
 import org.hibernate.Query;
 import org.springframework.stereotype.Service;

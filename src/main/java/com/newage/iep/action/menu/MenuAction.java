@@ -1,7 +1,7 @@
 package com.newage.iep.action.menu;
 
-import com.newage.iep.pojos.Account;
-import com.newage.iep.pojos.Menu;
+import com.newage.iep.pojos.account.Account;
+import com.newage.iep.pojos.menu.Menu;
 import com.newage.iep.serivce.account.AccountService;
 import com.newage.iep.serivce.menu.AccountRoleService;
 import com.newage.iep.serivce.menu.MenuService;

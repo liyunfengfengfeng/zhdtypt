@@ -1,6 +1,6 @@
 package com.newage.iep.serivce.set;
 
-import com.newage.iep.pojos.EmergencySetting;
+import com.newage.iep.pojos.set.EmergencySetting;
 
 import java.util.List;
 

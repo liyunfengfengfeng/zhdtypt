@@ -1,7 +1,7 @@
 package com.newage.iep.action.account;
 
 import com.newage.iep.form.PersonnelForm;
-import com.newage.iep.pojos.Personnel;
+import com.newage.iep.pojos.account.Personnel;
 import com.newage.iep.serivce.account.PersonnelService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;

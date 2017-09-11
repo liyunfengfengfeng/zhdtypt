@@ -1,6 +1,6 @@
 package com.newage.iep.serivce.set;
 
-import com.newage.iep.pojos.FaultSetting;
+import com.newage.iep.pojos.set.FaultSetting;
 
 import java.util.List;
 

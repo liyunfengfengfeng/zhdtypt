@@ -1,7 +1,7 @@
 package com.newage.iep.serivce.impl.account.menu;
 
 import com.newage.iep.business.dao.GenericHibernateDAO;
-import com.newage.iep.pojos.Menu;
+import com.newage.iep.pojos.menu.Menu;
 import com.newage.iep.serivce.menu.MenuService;
 import org.hibernate.Query;
 import org.springframework.stereotype.Service;

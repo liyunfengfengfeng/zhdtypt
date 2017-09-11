@@ -1,7 +1,7 @@
 package com.newage.iep.action.account;
 
-import com.newage.iep.pojos.Account;
-import com.newage.iep.pojos.Personnel;
+import com.newage.iep.pojos.account.Account;
+import com.newage.iep.pojos.account.Personnel;
 import com.newage.iep.serivce.account.AccountService;
 import com.newage.iep.serivce.account.OrganizationService;
 import com.newage.iep.serivce.account.PersonnelService;

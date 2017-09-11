@@ -1,6 +1,6 @@
 package com.newage.iep.serivce.menu;
 
-import com.newage.iep.pojos.Menu;
+import com.newage.iep.pojos.menu.Menu;
 
 import java.util.List;
 

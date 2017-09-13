@@ -1,5 +1,6 @@
 package com.newage.iep.action.account;
 
+import com.newage.iep.pojos.account.Account;
 import com.newage.iep.serivce.account.AccountService;
 import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONObject;
@@ -73,6 +74,8 @@ public class LoginAction extends ActionSupport implements ServletRequestAware,Se
                 //用户登录成功 将用户的邮箱到session中
                 HttpSession session = ServletActionContext.getRequest().getSession();
                 session.setAttribute("user_email",email);
+                Account account = accountService.queryAccountByEmail(email);
+                session.setAttribute("accountName",account.getName());
                 JSONObject json = JSONObject.fromObject(map1);//将map对象转换成json类型数据
                 result = json.toString();//给result赋值，传递给页面
             }else if(state==2){//审核未通过

@@ -85,6 +85,7 @@
                         <div class="col-sm-8">
                             <input name="cmp_code" id="cmp_code" class="form-control"value="<s:property value="%{#request.organizationDetail.cmp_code}"/>"  type="text" placeholder="必填" AUTOCOMPLETE=OFF />
                         </div>
+                        <span></span>
                     </div>
                     <div class="form-group">
                         <label for="cmp_address" class="col-sm-3 control-label text-left">所属区域</label>
@@ -124,8 +125,10 @@
                     <div class="form-group">
                         <label for="cmp_name" class="col-sm-3 control-label text-left">名称</label>
                         <div class="col-sm-8">
-                            <input name="cmp_name" id="cmp_name" class="form-control"value="<s:property value="%{#request.organizationDetail.cmp_name}"/>"  type="text" placeholder="必填" AUTOCOMPLETE=OFF />
+                            <input name="cmp_name" id="cmp_name" class="form-control"value="<s:property value="%{#request.organizationDetail.cmp_name}"/>"  type="text" placeholder="必填" AUTOCOMPLETE=OFF  />
+
                         </div>
+                        <span></span>
                     </div>
                     <div class="form-group">
                         <label for="email" class="col-sm-3 control-label text-left">邮箱</label>
@@ -153,13 +156,13 @@
                             <!--<input  name="" class="form-control" type="text" AUTOCOMPLETE=OFF />-->
                             <select name="cmp_type" id="type" class="form-control">
                                 <s:iterator value="%{#request.typeList}" id="TOrganizationTypeEntity">
-                                    <option value="${TOrganizationTypeEntity.cmpTypeId}">${TOrganizationTypeEntity.cmpType}</option>
+                                    <option value="${TOrganizationTypeEntity.cmptypeid}">${TOrganizationTypeEntity.cmptype}</option>
                                 </s:iterator>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label text-left">传真</label>
+                        <label for="Mfax" class="col-sm-3 control-label text-left">传真</label>
                         <div class="col-sm-8">
                             <input  name="fax" class="form-control"value="<s:property value="%{#request.organizationDetail.fax}"/>" type="text" AUTOCOMPLETE=OFF />
                         </div>
@@ -192,6 +195,7 @@
 <script src="/static/js/uploadfile/jquery.filer.min.js"></script><!--上传文件-->
 <script src="/static/js/placechoose/distpicker.data.js"></script>
 <script src="/static/js/placechoose/distpicker.js"></script>
+<script src="/static/js/tojson.js"></script>
 <script>
     $('#chooseplace').distpicker({
         autoSelect: false
@@ -374,6 +378,63 @@
     });
 </script>
 
+<script type="text/javascript">
+    $(function() {
+        //校验
+        $('#cmp_name').bind('blur',function(){
+
+            var json=JSON.stringify($("#cmp_name").serializeObject());
+            var value=$('#cmp_name').val();
+            $.ajax({
+                type:"GET",
+                url:"/organization/OrganizationManager_checkCmpName.do?cmp_name="+value,
+                contentType:"application/json",
+                dataType:"html json",
+
+                success:function (data) {
+                    var jsonStr=data;
+                    var jsonObj =  JSON.parse(jsonStr);
+                    console.log(jsonObj);
+                    console.log(jsonObj.state);
+                    if(jsonObj.state==1){//
+                        $('#cmp_name').next().html("组织名称可用");
+                    }else{//验证码错误
+                        $('#cmp_name').next().html("名称已经注册");
+                    }
+                }
+            })
+        });
+    });
+    $(function() {
+        //校验验证码
+        $('#cmp_code').bind('blur',function(){
+            var value=$('#cmp_code').val();
+            var json=JSON.stringify($("#cmp_code").serializeObject());
+            $.ajax({
+                type:"POST",
+                url:"/organization/OrganizationManager_checkCmpId.do?cmp_code="+value,
+                contentType:"application/json",
+                dataType:"html json",
+                success:function (data) {
+
+                    var jsonStr=data;
+                    var jsonObj =  JSON.parse(jsonStr);
+                    console.log(jsonObj);
+                    console.log(jsonObj.state);
+                    if(jsonObj.state==1){//验证码正确
+                        $('#cmp_code').next().html("");
+                        $("#addbtn").attr('disabled',false);
+                    }else{//验证码错误
+                        $('#cmp_code').next().html("代码已经注册");
+                        $("#addbtn").attr('disabled',true);
+
+                    }
+                }
+            })
+        });
+    });
+
+</script>
 
 <script type="text/javascript">
 

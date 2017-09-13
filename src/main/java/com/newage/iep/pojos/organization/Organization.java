@@ -1,6 +1,7 @@
 package com.newage.iep.pojos.organization;
 
 import java.util.Date;
+import java.util.Set;
 
 //组织单位信息
 public class Organization {
@@ -51,6 +52,16 @@ public class Organization {
   private String title;//标题
   private String content;//内容
   private String Parent_id;
+  private Set<Accessory> accessoryEntities;
+
+  public Set<Accessory> getAccessoryEntities() {
+    return accessoryEntities;
+  }
+
+  public void setAccessoryEntities(Set<Accessory> accessoryEntities) {
+    this.accessoryEntities = accessoryEntities;
+  }
+
   public String getCmp_id() {
     return cmp_id;
   }

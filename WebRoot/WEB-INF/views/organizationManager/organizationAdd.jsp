@@ -68,7 +68,7 @@
 <canvas id="canvas" style="position:fixed;z-index:-1;height: 100%;width: 100%;"></canvas>
 <div class="container">
     <!--<div style="height: 100px"></div>-->
-    <form  action="OrganizationManager_add.do" class="row" id="mainform" method="post">
+    <form  action="/organization/OrganizationManager_add.do" class="row" id="mainform" method="post">
         <div class="col-sm-12 contenttop">
             <h4 style="float: left;">基本信息</h4>
             <div class="btn-group btns" style="float: right;font-size: 15px;">
@@ -83,27 +83,28 @@
                         <label for="cmp_code" class="col-sm-3 control-label text-left">单位编码</label>
                         <div class="col-sm-8">
                             <input name="cmp_code" id="cmp_code" class="form-control" type="text" placeholder="必填" AUTOCOMPLETE=OFF />
+                            <span style="font-size: 15px;color: red"></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="cmp_address" class="col-sm-3 control-label text-left">所属区域</label>
                         <div class="col-sm-8">
-                                <div class="form-group col-sm-4">
-                                    <select style="WIDTH: 80px" id="province" name="provinceName" >
-                                        <option value="unchoose">--请选择省份--</option>
+                                <div class="form-group col-sm-4" style="padding: 0">
+                                    <select id="province" width="100%" name="provinceName" class="form-control">
+                                        <option value="unchoose">省份</option>
                                         <s:iterator value="%{#request.provinceList}" id="TCityEntity">
                                             <option value="${TCityEntity.id}">${TCityEntity.name}</option>
                                         </s:iterator>
                                     </select>
                                 </div>
-                                <div class="form-group col-sm-4">
-                                    <select style="WIDTH: 80px" id="city" name="cityName" >
-                                        <option value="unchoose">--请选择城市--</option>
+                                <div class="form-group col-sm-4" style="padding: 0">
+                                    <select id="city" width="100%" name="cityName" class="form-control" >
+                                        <option value="unchoose">城市</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-sm-4">
-                                    <select style="WIDTH: 90px" id="area" name="districtName" >
-                                        <option value="unchoose">--请选择区域--</option>
+                                <div class="form-group col-sm-4" style="padding: 0">
+                                    <select  id="area" width="100%" name="districtName" class="form-control">
+                                        <option value="unchoose">区域</option>
                                     </select>
                                 </div>
                         </div>
@@ -124,6 +125,7 @@
                         <label for="cmp_name" class="col-sm-3 control-label text-left">名称</label>
                         <div class="col-sm-8">
                             <input name="cmp_name" id="cmp_name" class="form-control" type="text" placeholder="必填" AUTOCOMPLETE=OFF />
+                        <span style="font-size: 15px;color: red"></span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -152,7 +154,7 @@
                             <!--<input  name="" class="form-control" type="text" AUTOCOMPLETE=OFF />-->
                             <select name="cmp_type" id="type" class="form-control">
                                 <s:iterator value="%{#request.typeList}" id="TOrganizationTypeEntity">
-                                    <option value="${TOrganizationTypeEntity.cmpTypeId}">${TOrganizationTypeEntity.cmpType}</option>
+                                    <option value="${TOrganizationTypeEntity.cmptypeid}">${TOrganizationTypeEntity.cmptype}</option>
                                 </s:iterator>
                             </select>
                         </div>
@@ -173,27 +175,10 @@
             </div>
         </div>
         <input type="hidden" name="area" id="areahidden">
-
-        <%--<div class="col-sm-12 contenttop" style="margin-top: 15px">--%>
-            <%--<h4 style="float: left">附件资料</h4>--%>
-        <%--</div>--%>
-        <%--<div  class="col-sm-12 formpart basic additions">--%>
-            <%--<div class="row">--%>
-                <%--<div class="col-md-12">--%>
-                    <%--<input type="file" name="files[]"  id="filer_input" multiple="multiple">--%>
-                    <%--<input type="file" name="files" multiple="multiple">--%>
-                    <%--<input type="file" name="files" multiple="multiple">--%>
-
-                    <%--<!--<input type="submit" value="Submit">-->--%>
-                    <%--<!--<button type="submit" class="btn btn-info center-block" value="Submit" style="width: 100px;font-size: 15px;">提交 <span class="glyphicon glyphicon-ok-circle"></span></button>-->--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-
         <div class="col-sm-12" style="margin-top: 15px">
             <div class="btn-group center-block" style="width: 160px">
                 <button type="button" id="backbtn" class="btn btn-default center-block">&nbsp;<span class="glyphicon glyphicon-circle-arrow-left"></span> 返回&nbsp;</button>
-                <button type="submit" id="addbtn" class="btn btn-success center-block">&nbsp;<span class="glyphicon glyphicon-saved"></span> 保存&nbsp;</button>
+                <button type="submit" id="addbtn" class="btn btn-success center-block" >&nbsp;<span class="glyphicon glyphicon-saved"></span> 保存&nbsp;</button>
             </div>
         </div>
     </form>
@@ -207,6 +192,8 @@
 <script src="/static/js/uploadfile/jquery.filer.min.js"></script><!--上传文件-->
 <script src="/static/js/placechoose/distpicker.data.js"></script>
 <script src="/static/js/placechoose/distpicker.js"></script>
+<script src="/static/js/tojson.js"></script>
+
 <script>
     $('#chooseplace').distpicker({
         autoSelect: false
@@ -388,8 +375,6 @@
         }
     });
 </script>
-
-
 <script type="text/javascript">
 
     $('#addbtn').on('click',function () {
@@ -452,6 +437,63 @@
             });
         });
     }
+</script>
+<script type="text/javascript">
+    $(function() {
+        //校验
+        $('#cmp_name').bind('blur',function(){
+
+            var json=JSON.stringify($("#cmp_name").serializeObject());
+            var value=$('#cmp_name').val();
+            $.ajax({
+                type:"GET",
+                url:"/organization/OrganizationManager_checkCmpName.do?cmp_name="+value,
+                contentType:"application/json",
+                dataType:"html json",
+
+                success:function (data) {
+                    var jsonStr=data;
+                    var jsonObj =  JSON.parse(jsonStr);
+                    console.log(jsonObj);
+                    console.log(jsonObj.state);
+                    if(jsonObj.state==1){//验证码正确
+                        $('#cmp_name').next().html("组织名称可用");
+                    }else{//验证码错误
+                        $('#cmp_name').next().html("名称已经注册");
+                    }
+                }
+            })
+        });
+    });
+    $(function() {
+        //校验验证码
+        $('#cmp_code').bind('blur',function(){
+            var value=$('#cmp_code').val();
+            var json=JSON.stringify($("#cmp_code").serializeObject());
+            $.ajax({
+                type:"POST",
+                url:"/organization/OrganizationManager_checkCmpId.do?cmp_code="+value,
+                contentType:"application/json",
+                dataType:"html json",
+                success:function (data) {
+
+                    var jsonStr=data;
+                    var jsonObj =  JSON.parse(jsonStr);
+                    console.log(jsonObj);
+                    console.log(jsonObj.state);
+                    if(jsonObj.state==1){//验证码正确
+                        $('#cmp_code').next().html("");
+                        $("#addbtn").attr('disabled',false);
+                    }else{//验证码错误
+                        $('#cmp_code').next().html("代码已经注册");
+                        $("#addbtn").attr('disabled',true);
+
+                    }
+                }
+            })
+        });
+    });
+
 </script>
 </body>
 

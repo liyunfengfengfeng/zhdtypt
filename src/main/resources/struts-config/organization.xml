@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="organization" extends="json-default" namespace="/organization">
+        <!--组织管理-->
+        <action name="OrganizationManager_*" class="com.newage.iep.action.organizationManager.OrganizationManagerAction" method="{1}">
+            <result name="indexOfOrganization">/WEB-INF/views/organizationManager/organizationManager.jsp</result>
+            <result name="organizationLookOver">/WEB-INF/views/organizationManager/orgdepartment_lookOver.jsp</result>
+            <result name="addPageOfOrganization">/WEB-INF/views/organizationManager/organizationAdd.jsp</result>
+            <result name="organizationEdit">/WEB-INF/views/organizationManager/orgdepartment_edit.jsp</result>
+            <result name="success">/WEB-INF/views/organizationManager/organizationUploadFile.jsp</result>
+            <result name="error">/WEB-INF/views/organizationManager/AddFailed.jsp</result>
+            <result name="return" type="redirect">OrganizationManager_archive.do </result>
+            <result name="checkCmpName" type="json"><param name="root">result</param></result>
+            <result name="checkCmpId" type="json"><param name="root">result2</param></result>
+        </action>
+        <!--组织管理 上传文件-->
+        <action name="OrganizationUploadFile_*" class="com.newage.iep.action.organizationManager.OrganizationUploadFileAction" method="{1}">
+            <result name="success">/WEB-INF/views/organizationManager/AddSuccess.jsp</result>
+            <result name="error">/WEB-INF/views/organizationManager/AddFailed.jsp</result>
+        </action>
+
+        <action name="PersonManager_*" class="com.newage.iep.action.personManager.PersonManagerAction" method="{1}">
+            <result name="indexOfPerson">/WEB-INF/views/personManager/personManager.jsp</result>
+        </action>
+
+        <!--省市区三级-->
+        <action name="DataDictionary_*" class="com.newage.iep.action.dataDictionary.DataDictionaryAction" method="{1}">
+            <result name="cityList" type="json"><param name="root">result</param></result>
+            <result name="areaList" type="json"><param name="root">result2</param></result>
+        </action>
+    </package>
+</struts>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="community" extends="json-default" namespace="/community">
+        <!--围栏组-->
+        <action name="enclosureAction_*" class="com.newage.iep.action.Enclosure.EnclosureAction" method="{1}">
+            <interceptor-ref name="json"/>
+            <result name="error">/WEB-INF/views/Enclosure/error.jsp</result>
+            <result name="success" type="json">
+                <param name="root">result</param>
+            </result>
+            <result name="getallenclosure">/WEB-INF/views/Enclosure/fence.jsp</result>
+            <result name="showEnclosure">/WEB-INF/views/Enclosure/fence_update.jsp</result>
+            <result name="deleteEnclosure" type="redirectAction">
+                <param name="actionName">enclosureAction_getAllEnclosure</param>
+                <param name="namespace">/community</param>
+            </result>
+            <result name="updateEnclosure" type="json">
+            </result>
+            <result name="toCheckWork">/WEB-INF/views/Enclosure/fence.jsp</result>
+            <result name="changepage">/WEB-INF/views/Enclosure/fence_add.jsp</result>
+        </action>
+
+        <!--小区管理-->
+        <action name="communityAction_*" class="com.newage.iep.action.Community.CommunityAction" method="{1}">
+            <result name="error">/WEB-INF/views/Enclosure/error.jsp</result>
+            <interceptor-ref name="json"/>
+            <result name="success" type="json"></result>
+            <result name="getCity" type="json">
+                <param name="root">result</param>
+            </result>
+            <result name="getDistrict" type="json">
+                <param name="root">result</param>
+            </result>
+            <result name="getAllCommunity">/WEB-INF/views/Community/community.jsp</result>
+            <result name="saveCommunity" type="json">
+            </result>
+            <result name="changePage">/WEB-INF/views/Community/community_add.jsp</result>
+            <result name="deleteCommunity" type="redirectAction">
+                <param name="actionName">communityAction_getAllCommunity</param>
+                <param name="namespace">/community</param>
+            </result>
+            <result name="showCommunity">/WEB-INF/views/Community/community_update.jsp</result>
+            <result name="updateCommunity">/WEB-INF/views/Community/community.jsp</result>
+        </action>
+
+
+    </package>
+</struts>

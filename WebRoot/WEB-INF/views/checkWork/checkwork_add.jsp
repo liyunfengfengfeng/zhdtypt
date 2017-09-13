@@ -111,9 +111,9 @@
             <div class="col-sm-12">
                 <div class="center-block" style="width: 320px">
                     <%--<button type="button" id="backbtn" class="btn btn-warning backbtn" style="margin-top: 30px;width: 150px;font-size: 20px"><a href="/checkwork/CheckWorkAction_toCheckWork.do"><span class="glyphicon glyphicon-circle-arrow-left"></span> 返回</a></button>--%>
-                        <button type="button" id="backbtn" class="btn btn-warning backbtn" style="margin-top: 30px;width: 150px;font-size: 20px"><span class="glyphicon glyphicon-circle-arrow-left"></span> 返回</button>
+                    <button type="button" id="backbtn" class="btn btn-warning backbtn" style="margin-top: 30px;width: 150px;font-size: 20px"><span class="glyphicon glyphicon-circle-arrow-left"></span> 返回</button>
                     <!--不要把type换成submit！！！-->
-                    <button type="submit" class="btn btn-success" id="submit" style="margin-top: 30px;width: 150px;font-size: 20px"><span class="glyphicon glyphicon-saved"></span>  保存</button></button>
+                    <button  class="btn btn-success"  type="button" id="checksubmit" style="margin-top: 30px;width: 150px;font-size: 20px"><span class="glyphicon glyphicon-saved"></span>  保存</button></button>
                 </div>
             </div>
 
@@ -131,8 +131,18 @@
 <script>
     $(function () {
 
-        $('#submit').on('click',function () {
-            console.log($(this).tagsinput('items'));//获取包含用户的方式
+        $('#checksubmit').on('click',function () {
+            var $checkworkname=$('[name=checkworkname]').val();
+            var $of=$('[name=of]').val();
+            var $descriptions=$('[name=descriptions]').val();
+            var $users=$('[name=users]').val();
+            var $state=$('[name=state]').val();
+            if($checkworkname==''||$of==''||$descriptions==''||$users==''||$state==''){
+               alert("请完整填写信息");
+            }else{
+                $('form').submit();
+            }
+//            console.log($(this).tagsinput('items'));//获取包含用户的方式
         })
 //        //返回考勤组页面
         $('#backbtn').on('click',function () {

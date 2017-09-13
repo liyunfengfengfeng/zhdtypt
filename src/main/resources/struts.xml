@@ -16,4 +16,6 @@
     <!-- 站点 -->
     <include file="struts-config/struts_website.xml"/>
     <include file="struts-config/check_work.xml"/>
+    <include file="struts-config/community.xml"/>
+    <include file="struts-config/organization.xml"/>
 </struts>

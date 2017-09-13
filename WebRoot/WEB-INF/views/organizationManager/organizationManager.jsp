@@ -133,7 +133,7 @@
         <div class="col-md-12" id="record">
             <div class="title">单位档案</div>
             <div class="topcontent">
-                <button type="button" class="btn recordbtn"><a href="OrganizationManager_addPage.do"><span class="glyphicon glyphicon-plus"></span> 新增</a></button>
+                <button type="button" class="btn recordbtn"><a href="/organization/OrganizationManager_addPage.do"><span class="glyphicon glyphicon-plus"></span> 新增</a></button>
             </div>
         </div>
             <div class="col-md-12" >
@@ -167,13 +167,13 @@
                     </div>
                     <thead>
                     <tr>
-                        <th style="width:6%">序号</th>
+                        <th style="width:10%">序号</th>
                         <th style="width:10%">单位名称</th>
-                        <th style="width:14%">地址</th>
-                        <th style="width:7%">负责人</th>
-                        <th style="width:13%">电话</th>
-                        <th style="width:13%">传真</th>
-                        <th style="width:17%">操作</th>
+                        <th style="width:10%">地址</th>
+                        <th style="width:10%">负责人</th>
+                        <th style="width:10%">电话</th>
+                        <th style="width:10%">传真</th>
+                        <th style="width:40%">操作</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -214,10 +214,10 @@
 <script src="/static/js/bootstrap/bootstrap.min.js"></script>
 <script src="/static/js/milkybg.js"></script>
 <script src="/static/js/jQuery.print.js"></script>
-<script src="/static/js/export/xlsx.core.min.js"></script>
-<script src="/static/js/export/blob.js"></script>
-<script src="/static/js/export/FileSaver.min.js"></script>
-<script src="/static/js/export/tableexport.min.js"></script>
+<script src="/static/js/table/export/xlsx.core.min.js"></script>
+<script src="/static/js/table/export/blob.js"></script>
+<script src="/static/js/table/export/FileSaver.min.js"></script>
+<script src="/static/js/table/export/tableexport.min.js"></script>
 <script type="text/javascript">
     $(function(){
         $("table").tableExport({
@@ -256,23 +256,24 @@
     //每页展示的记录数
     $('#recordnumber').change(function(){
         var record = $("#recordnumber").val();
-        window.location.href = "OrganizationManager_archive.do?pageSize="+record;
+        window.location.href = "/organization/OrganizationManager_archive.do?pageSize="+record;
     })
 
 
     $('.btn-info').on('click',function () {
         var str1=$(this).attr("name"); // jQuery attr() 方法用于获取属性值
-        var str2="OrganizationManager_lookOver.do?param="+str1;
+        var str2="/organization/OrganizationManager_lookOver.do?param="+str1;
         window.location.href = str2;
     })
     $('.btn-success').on('click',function () {
         var str1=$(this).attr("name"); // jQuery attr() 方法用于获取属性值
-        var str2="OrganizationManager_edit.do?param="+str1;
+        var str2="/organization/OrganizationManager_edit.do?param="+str1;
         window.location.href = str2;
     })
+    //删除
     $('.btn-danger').on('click',function () {
         var str1=$(this).attr("name"); // jQuery attr() 方法用于获取属性值
-        var str2="OrganizationManager_delete.do?param="+str1;
+        var str2="/organization/OrganizationManager_delete.do?param="+str1;
         window.location.href = str2;
     })
 
@@ -300,7 +301,7 @@
             //总数据条数
             totalRecords : totalRecords,
             //链接前部
-            hrefFormer : 'OrganizationManager_archive',
+            hrefFormer : '/organization/OrganizationManager_archive',
             //链接尾部
             hrefLatter : '.do',
             getLink : function(n){
@@ -310,6 +311,5 @@
         });
     });
 </script>
-
 </body>
 </html>

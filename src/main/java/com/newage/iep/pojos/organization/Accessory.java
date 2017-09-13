@@ -1,11 +1,8 @@
 package com.newage.iep.pojos.organization;
 
-/**
- * Created by a1996_000 on 2017/9/11.
- */
-//上传附件类
-public class Accessory {
 
+
+public class Accessory {
     private String accessoryId;//附件Id
     private String accessoryName;//附件名称
     private String accessoryPath;//附件存储路径
@@ -45,7 +42,6 @@ public class Accessory {
     public void setAccessoryPath(String accessoryPath) {
         this.accessoryPath = accessoryPath;
     }
-
 
 
 }

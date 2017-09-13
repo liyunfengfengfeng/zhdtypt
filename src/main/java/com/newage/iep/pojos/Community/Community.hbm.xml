@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.newage.iep.pojos.Community.Community" table="t_community">
+        <id name="communityId" type="java.lang.String">
+            <column name="Community_id"/>
+            <generator class="uuid"/>
+        </id>
+        <property name="communityName" column="Community_name"/>
+        <property name="communityAddress" column="Community_address"/>
+        <property name="belongDistrict" column="Belong_district"/>
+        <property name="belongCity" column="Belong_city"/>
+        <property name="coordinateType" column="coordinateType"/>
+    </class>
+</hibernate-mapping>

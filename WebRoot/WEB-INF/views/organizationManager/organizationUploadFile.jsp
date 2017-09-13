@@ -63,7 +63,7 @@
 <canvas id="canvas" style="position:fixed;z-index:-1;height: 100%;width: 100%;"></canvas>
 <div class="container">
 
-    <form  action="OrganizationUploadFile_upload.do"  id="fileform" enctype="multipart/form-data" method="post">
+    <form  action="/organization/OrganizationUploadFile_upload.do"  id="fileform" enctype="multipart/form-data" method="post">
         <div class="col-sm-12 contenttop" style="margin-top: 15px">
             <h4 style="float: left">附件资料</h4>
         </div>
@@ -105,8 +105,9 @@
 //        $('#filer_input').attr("name","files");
 
     })
+    //back to the before
     $('#backbtn').on('click',function () {
-        window.location.href = "http://127.0.0.1:8080/OrganizationManager_archive.do";
+        window.history.back();
     })
 </script>
 
